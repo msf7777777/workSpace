@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 
+		 location：浏览器中的地址栏对象
+		 常用属性：href  可以获取地址栏中的URL
+		                可以设置地址栏中的URL
+		 常用方法：reload   重新加载页面（相当于刷新）
+						 
+		 -->
+	</head>
+	<body>
+		<img id="im" src="../../homework-day02/images/02/regbtn.jpg" />
+
+		<script>
+			//获取当前地址栏中的URL信息
+			var url = window.location.href;
+			document.write(url);
+
+			//派发事件
+			document.getElementById("im").onclick = function() {
+              location.href="http://www.itcast.cn";
+			}
+		</script>
+
+
+
+	</body>
+</html>

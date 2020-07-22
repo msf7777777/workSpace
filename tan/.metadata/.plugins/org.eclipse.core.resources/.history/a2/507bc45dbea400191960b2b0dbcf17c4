@@ -1,0 +1,7 @@
+package Diary0623;
+
+public class day09_05_ZuoYe_03_01 {
+	public static boolean c(int a,int b,int c){
+		
+	}
+}

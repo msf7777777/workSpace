@@ -1,0 +1,7 @@
+aaa java root
+bbb hello
+ccc rt
+ddd root nologin
+eee rtt
+fff ROOT nologin
+ggg rttt

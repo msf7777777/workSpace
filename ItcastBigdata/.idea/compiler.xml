@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Day01_Zookeeper" />
+        <module name="Day01_Zookeeper_msf" />
+        <module name="Day04_HDFS" />
+        <module name="Day04_HDFS_msf" />
+        <module name="Day05_MapReduce_01" />
+        <module name="Day05_MapReduce_01_msf" />
+        <module name="Day06_MapReduce_02" />
+        <module name="Day07_MapReduce_03" />
+        <module name="Day07_MapReduce_03_msf" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

@@ -1,0 +1,12 @@
+
+public class day1111 {
+	public static void m1(Cat a) {
+		
+	}
+	
+	public static void main(String[] args) {
+		Cat c1 = new Cat("ÕÅ¼ÎÃô",23);
+		Cat c2 = new Cat("ÂéÉÙ·É",28);
+		
+	}
+}

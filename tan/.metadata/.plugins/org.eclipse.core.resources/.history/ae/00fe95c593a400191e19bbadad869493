@@ -1,0 +1,13 @@
+package Diary0623;
+
+public class day09_05_ZuoYe_01 {
+	public static void f1(int m,int n) {
+		System.out.println("ÄãºÃ£¡");
+		
+		
+		
+	}
+	public static void main(String[] args) {
+		print();
+	}
+}

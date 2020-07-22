@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		  // toLocaleString() 按照客户端本地的日期时间格式对Date进行格式操作（变为字符串类型）
+		  /*举例：     客户端1的日期格式： yyyy-MM-dd HH:mm:ss
+		              客户端2的日期格式:  yyyy年MM月dd日 hh时mm分ss秒
+					  我的客户端日期格式： yyyy/MM/dd HH:mm:ss
+		  */
+		 //创建一个Date对象
+		 var date  = new Date();//存储本地日期和时间
+		 document.write("date:"+date+"<br/>");
+		 //获取年月日
+		 var year = date.getFullYear();
+		 var month = date.getMonth();
+		 var day =date.getDate();
+		 document.write(year+"年"+(month+1)+"月"+day+"日"+"<br/>");
+		 
+		 // 获取毫秒值
+		 document.write(date.getTime())
+		 
+		</script>
+	</body>
+</html>

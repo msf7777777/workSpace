@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//定义一个数组
+			var arr =[4,"A",true,3.14];
+			document.write("数组的长度是："+arr.length +"<br/>");
+			
+			arr[3]=300;
+			//省去索引是4的元素   undefined 
+			arr[5]=100;
+			//省去索引是6的元素
+			arr[7]=false;
+			
+			document.write("数组的长度是："+arr.length +"<br/>");
+			//遍历数组
+			for(var i=0;i<arr.length;i++){
+				document.write(arr[i]+"&nbsp;")
+			}
+			
+		</script>
+	</body>
+</html>

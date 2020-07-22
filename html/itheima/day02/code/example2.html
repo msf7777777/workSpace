@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>乘法表</title>
+		<style>
+			table{
+				/* 细边框样式。 单元格之间没有间隔 */
+				border-collapse: collapse;
+			}
+			td{
+				/* 内边距 */
+				padding: 5px;
+			}
+			/* 扩展 ： 当鼠标移到某个单元格时，激活一个样式*/
+			td:hover{
+				background-color: yellow;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<script>
+			//prompt和alert相似，都是弹出一个窗体
+			//prompt(“提示的信息“, "默认值")   方法的返回值就是输入的数值
+			var num = prompt("请输入乘法表的行数：", "9");
+			
+			//在嵌套循环的外面，书写打印：<table>
+			//当要使用html的属性时，外面已有双引号时，属性使用单引号包含
+			document.write("<table border='1'>");
+	
+			//99乘法表
+			for(var i=1;i<=num;i++){ //外层循环控制行数
+				
+				document.write("<tr>");     
+			
+				for(var j=1;j<=i;j++){ //控制列数
+				   document.write("<td>");
+				   document.write(i + "x"+ j + "="+(i*j));	
+				   document.write("</td>");
+				}
+				
+				document.write("</tr>");
+			}
+			
+			document.write("</table>");
+			
+			
+			
+			
+			//因为js不同于html标签，想要在js中输出html标签，需要把标签打印出来
+			//document.write("<br />");
+		</script>
+	</body>
+</html>

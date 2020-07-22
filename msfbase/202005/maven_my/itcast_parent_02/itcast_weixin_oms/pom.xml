@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--指定父工程-->
+    <parent>
+        <artifactId>itcast_parent_02</artifactId>
+        <groupId>cn.itcast</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--给当前项目起名-->
+    <artifactId>itcast_weixin_oms</artifactId>
+
+    <!--给web项目指定打包方式-->
+    <packaging>pom</packaging>
+
+    <!--指定maven视图中显示的名称-->
+    <name>itcast_weixin_oms</name>
+    <modules>
+        <module>../../../itcast_parent_07</module>
+    </modules>
+
+    <dependencies>
+        <!--依赖公共子模块项目-->
+        <dependency>
+            <groupId>cn.itcast</groupId>
+            <artifactId>itcast_commons</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-dbutils</groupId>
+            <artifactId>commons-dbutils</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <configuration>
+                    <port>7070</port>
+                    <path>/weixin</path>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

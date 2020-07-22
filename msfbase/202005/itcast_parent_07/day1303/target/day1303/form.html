@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>get表单</h1>
+<form action="/RegisterServlet" method="get">
+    <table>
+        <tr>
+            <td>用户名</td>
+            <td><input type="text" name="username" id="username"/></td>
+            <td id="usernameMsg"></td>
+        </tr>
+        <tr>
+            <td>昵称</td>
+            <td><input type="text" name="nickname" id="nickname"/></td>
+            <td id="nicknameMsg"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="提交"/></td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+
+<h1>Post表单</h1>
+<form action="/RegisterServlet" method="post">
+    <table>
+        <tr>
+            <td>用户名</td>
+            <td><input type="text" name="username"/></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>昵称</td>
+            <td><input type="text" name="nickname"/></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="提交"/></td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

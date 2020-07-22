@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   <bean id="birthday" class="java.util.Date"/>
+   <bean id="person" class="cn.itcast.di.Person">
+      <property name="name" value="麻少飞"/>
+      <property name="age" value="29"/>
+      <property name="address" value="山西省忻州市忻府区"/>
+      <property name="birthday" ref="birthday"/>
+   </bean>
+
+   <bean id="personZ" class="cn.itcast.di.Person">
+      <!--<constructor-arg name="name" value="张嘉敏"/>-->
+      <constructor-arg index="0" value="张嘉敏"/>
+      <constructor-arg name="age" value="24"/>
+      <constructor-arg name="address" value="河南省漯河市源汇区"/>
+      <constructor-arg name="birthday" value="1996/01/22"/>
+   </bean>
+
+</beans>

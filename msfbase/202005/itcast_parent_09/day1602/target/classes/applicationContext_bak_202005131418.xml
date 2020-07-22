@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/tx
+                            http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--1 关联 jdbc.properties 文件-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <!--2 将连接池交给spring管理-->
+    <bean id="ds" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <!--3 将dao交给spring管理-->
+    <bean id="accountDao" class="cn.itcast.dao.AccountDao">
+        <property name="dataSource" ref="ds"/>
+    </bean>
+
+    <!--4 将service类(目标类)交给spring管理-->
+    <bean id="accountService" class="cn.itcast.service.AccountService">
+        <property name="accountDao" ref="accountDao"/>
+    </bean>
+
+    <!--5 增强类: 由spring框架提供的-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="ds"/>
+    </bean>
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <!--表示对 zhuanzhang 方法 增加事务-->
+            <tx:method name="zhuanzhang"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!--6 建立目标类和增强类的关系-->
+    <aop:config proxy-target-class="false">
+        <!--确定目标类和增强类-->
+        <aop:advisor advice-ref="txAdvice" pointcut="bean(*Service)"/>
+    </aop:config>
+</beans>

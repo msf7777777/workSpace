@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：命名空间，用于隔离sql -->
+<mapper namespace="test1">
+
+    <!-- findAll -->
+
+    <select id="findAll" resultType="com.itheima.pojo.User">
+        select * from user
+    </select>
+
+    <!-- 实现根据id查询用户
+        id: 代表语句的唯一名称
+        parameterType : 传入的参数的类型
+        resultType : 返回的结果对应的JavaBean类型
+        #{id}: 类似JDBC中的占位符
+    -->
+    <select id="findById" parameterType="int" resultType="com.itheima.pojo.User">
+        select * from user where id=#{id}
+    </select>
+
+
+    <!--实现根据用户名模糊查询用户-->
+    <select id="findByName1" parameterType="String" resultType="com.itheima.pojo.User">
+        SELECT * FROM user WHERE username like #{username};
+    </select>
+</mapper>

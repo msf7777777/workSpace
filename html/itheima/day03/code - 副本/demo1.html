@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!--JS事件概念 
+		 事件： 某一个发生在HTML上的动作（发生在HTML元素上的动作）
+		       例：按钮点击   按钮双击
+		 事件源：被监听的HTML元素
+         
+		 事件和事件源的关系： 绑定关系（在事件源上要注册一个监听事件）
+		 -->
+		 <!-- HTML中常用的事件：
+		 onload  : 页面加载完成后，触发的事件
+		 onclick : 点击事件。通常是在按钮上注册，但是超链接、图片也可以使用
+		 onsubmit: 提交事件。针对form表单在进行提交时，触发的事件
+		           针对submit按钮
+		 onblur  : 失去焦点(光标定位)时，会触发的事件
+		 onfocus : 获取焦点时，会触发的事件
+		 onchange: 当内容改变时，会触发的事件 
+		 onmouseover : 当鼠标移动到上面时，会触发的事件
+		 onmouseout : 当鼠标离开时，会触发的事件
+		  -->
+		<!-- 事件绑定函数：
+		 在HTML标签上，添加一个事件。当这个HTML元素激活这个事件时，会执行绑定了事件的函数
+		 -->
+		
+		
+		<!-- 偷懒了：不添加form了。标准写法需要有form表单 -->
+		<!-- 在文本框中添加一个点击事件：onclick -->
+		<input type="button" value="点击我试试" onclick="btnOnclick()">
+		<input type="text" placeholder="请输入用户名" onfocus="textOnfocus('传智播客')"/>
+		<img src="img/small03.jpg" onmousemove="imgOnmouseover()">
+		
+		<script>
+			// 当激活点击事件时，执行函数
+			function btnOnclick(){
+				alert("我点击了按钮!")
+			}
+			// 当激活获得焦点事件时，执行函数
+			function textOnfocus(name){
+				alert(name)
+			}
+			function imgOnmouseover(){
+				alert("鼠标移动到了图片上")
+			}
+		</script>
+	</body>
+</html>

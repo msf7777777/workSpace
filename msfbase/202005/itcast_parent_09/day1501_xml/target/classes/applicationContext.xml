@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/aop
+                            http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <!--将类交给spring管理-->
+    <bean id="accountDao1" class="cn.itcast.a.AccountDao"/>
+
+    <bean id="accountService" class="cn.itcast.a.AccountService">
+        <!--设置属性-->
+        <property name="accountDao" ref="accountDao1"/>
+    </bean>
+
+    <!--1.1 将目标类交给spring管理-->
+    <bean id="productService" class="cn.itcast.b.ProductServiceImpl"/>
+    <bean id="userService" class="cn.itcast.b.UserService"/>
+
+    <!--1.2 配置增强类-->
+    <bean id="myMethodInterceptor" class="cn.itcast.c.MyMethodInterceptor"/>
+
+    <!--1.3 建立目标类和增强类的关系-->
+    <aop:config proxy-target-class="false">
+        <!--确定目标类-->
+        <aop:pointcut id="myPointcut" expression="within(cn.itcast..*)"/>
+        <!--建立 目标类和增强类的关系-->
+        <aop:advisor advice-ref="myMethodInterceptor" pointcut-ref="myPointcut"/>
+    </aop:config>
+</beans>

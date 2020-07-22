@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//创建String对象
+			var str1 ="abc";//类型是：string
+			var str2 = new String("ABC");//类型是：Object
+			
+			var str="x-y-z-NBA"
+			document.write("字符串的长度："+str.length+"<br/>");
+			// charAt(索引)
+			document.write("第2个字符："+str.charAt(1)+"<br/>");
+			//indexOf(字符)
+			document.write("N字符的位置(索引)："+str.indexOf("N")+"<br/>");
+			//split(字符)
+			var strArr = str.split("-");
+			for (var i = 0; i < strArr.length; i++) {
+				document.write(strArr[i]+"&nbsp;")
+			}
+			document.write("<br/>");
+			
+			//substring(开始索引，结束索引)
+			var sub1 = str.substring(6,9);//包头不包尾
+			document.write("子字符串："+sub1+"<br/>")
+			//substr(开始索引，个数)
+			var sub2 = str.substr(6,3)
+			document.write("子字符串："+sub2+"<br/>")
+			
+		</script>
+	</body>
+</html>

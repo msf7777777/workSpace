@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="day1001" />
+        <module name="day1002" />
+        <module name="day1003" />
+        <module name="day1004" />
+        <module name="day1004_msf" />
+        <module name="itcast_parent_04_msf" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="day1001" target="1.8" />
+      <module name="day1002" target="1.8" />
+      <module name="day1003" target="1.8" />
+      <module name="day1004" target="1.8" />
+      <module name="day1004_msf" target="1.8" />
+      <module name="day1303" target="1.5" />
+      <module name="itcast_parent_04" target="1.8" />
+      <module name="itcast_parent_04_msf" target="1.8" />
+      <module name="itcast_parent_07" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

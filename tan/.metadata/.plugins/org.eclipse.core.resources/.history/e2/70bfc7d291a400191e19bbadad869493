@@ -1,0 +1,18 @@
+package Diary0623;
+
+public class day09_04_ZuoYongYu_02_03 {
+	//类变量
+	public static int x = 0;
+	
+	//类常量
+	public static final int count = 0;
+	
+	//类方法
+	public static void f(){
+		
+	}
+	
+	public static void main(String[] args) {
+		
+	}
+}

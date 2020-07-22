@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>标题</title>
+		<!--
+			为什么style要书写在head中？
+			在html页面中U加载各种html元素（标签）时，是html头部开始向下加载的（从上向下）
+			当html页面中的某个标签
+		 -->
+		<style type="text/css">
+			/* 定义选择器：p 代表是一个HTML标签 */
+			p{
+				color: red;
+				font-size: 100px;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 当浏览器解析p标签时，会给p标签添加之前定义好的样式 -->
+		<p>测试</p>
+	</body>
+</html>

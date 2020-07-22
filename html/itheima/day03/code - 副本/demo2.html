@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 
+		派发事件：
+		不修改html, 通过js方式获取到一个html中的元素对象,
+		并且给它动态的设置一个事件并关联一个函数，我们称为事件派发
+		
+		不修改html中的代码，仅仅只是利用js程序，
+		动态的给html中的元素添加一个事件，并给事件关联一个函数
+		
+		好处：不破坏HTML代码
+		弊端：必须要保证所有的html代码全部加载完成之后，才能使用派发事件
+		     为了避免弊端，通常派发事件是书写在onload中
+			 另一种文案：书写在html最后面
+		-->
+		<script>
+			//获取到一个html中的元素对象：button
+			// 此外讲解，超纲
+			//在当前的HTML文档中，通过id名称，获取到一个html标签元素对象
+			//当获得到HTML元素对象后，可以动态的给元素对象添加事件（派发事件）
+
+			window.onload = function() {
+				document.getElementById("btn").onclick = function() {
+					alert("我点击了Button");
+				}
+			}
+
+
+			//思考：派发事件的弊端
+		</script>
+
+	</head>
+	<body>
+		<!-- <button>标签，相当于：<input type="button"> 
+		     使用<input type="button">时，需要<form>标签
+			 使用<button>标签时，不需要考虑<form>标签
+		-->
+		<button id="btn">我是按钮，请点击我</button>
+		
+	</body>
+</html>

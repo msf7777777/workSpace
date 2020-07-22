@@ -1,0 +1,26 @@
+package diary0620;
+
+import java.util.Scanner;
+
+public class day0620_09_LianXi_03_ZuoYe {
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int high;
+		int money;
+		int face;
+		System.out.println("«Î ‰»Înum1");
+		int high = s.nextInt();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+}

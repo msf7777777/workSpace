@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.itcast</groupId>
+    <artifactId>itcast_parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <modules>
+        <module>zi_01</module>
+        <module>zi_02_web</module>
+        <module>zi_01</module>
+        <module>zi_02_web</module>
+        <module>zi_02_web</module>
+    </modules>
+
+    <properties>
+        <mysql-connector-java.version>5.1.32</mysql-connector-java.version>
+        <junit.version>4.11</junit.version>
+        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+    </properties>
+
+    <!--指定父工程的打包方式-->
+    <packaging>pom</packaging>
+
+    <!--
+        父模块的缺点: 子模块一旦继承, 不管你是否需要都会继承
+        解决: 子模块需要哪个jar包, 我就给你哪个jar包
+    -->
+    <dependencyManagement>
+        <dependencies>
+            <!--mysql-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax.servlet-api.version}</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DOM中常用方法</title>
+		<script>
+			//在整个页面加载完后，再执行js程序
+			window.onload=function(){
+				//点击btn1按钮（派发事件）
+				document.getElementById("btn1").onclick=function(){
+					
+					//获取id为username的标签对象
+					var inp= document.getElementById("username");
+					//在浏览器控制台，打印元素对象
+					console.log(inp);//按下键盘F12
+					
+				}	
+				
+				//点击btn2按钮
+				document.getElementById("btn2").onclick=function(){
+					//获取name为	hobby 的所有元素对象
+					var inp =document.getElementsByName("hobby");
+					console.log(inp);
+				}
+				
+				//点击btn3按钮
+				document.getElementById("btn3").onclick=function(){
+					//获取所有的input标签对象
+					var inp = document.getElementsByTagName("input");
+					console.log(inp);
+				}
+				
+				//点击btn4按钮
+				document.getElementById("btn4").onclick=function(){
+					//通过class获取所有的HTML标签对象
+					var inp = document.getElementsByClassName("form-item");
+					console.log(inp);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h2>document对象获取页面标签</h2>
+		<button id="btn1">
+			点击btn1，在控制台打印id为username的标签对象
+		</button>
+		<button id="btn2">
+			点击btn2，在控制台打印name为hobby的标签对象
+		</button>
+		<button id="btn3">
+			点击btn3，在控制台打印input标签对象
+		</button>
+		<button id="btn4">
+			点击btn4，在控制台打印className为form-item的标签对象
+		</button>
+		<hr />
+		<form action="#" method="get" id="registForm">
+			用户名:
+			<input type="text" name="username" id="username" class="form-item"><br />
+			密码:
+			<input type="password" name="password" id="password" class="form-item"><br />
+			性别：
+			<input type="radio" name="sex" value="男"> 男
+			<input type="radio" name="sex" value="女" />女<br />
+			爱好：
+			<input type="checkbox" name="hobby" value="sj " />睡觉
+			<input type="checkbox" name="hobby" value="bc" />编程
+			<input type="checkbox" name="hobby" value="cj " />吃鸡<br />
+			城市：
+			<select name="city" id="city">
+				<option value="bj ">北京</option>
+				<option value="sh">上海</option>
+				<option value="gz">广州</option>
+				<option value="sz">深圳</option>
+			</select>
+			<br />
+			<input type="submit" value="注册" />
+		</form>
+
+	</body>
+</html>

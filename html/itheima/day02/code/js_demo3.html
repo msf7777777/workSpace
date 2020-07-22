@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* js中的流程控制语法：
+			 if语句：
+			 1、单支if语句    if(条件表达式)
+			 2、双支if语句    if(条件表达式){  }else {  }
+			 3、多支if语句    if(条件表达式1){}else if(条件表达式2)else{ }
+			 */
+			//针对非布尔类型的运算
+			// var obj; //没有赋值
+			// if(obj){
+			// 	document.write("true");
+			// }else{
+			// 	document.write("false");//此时打印：false
+			// }
+			/* 在书写js程序时，为了避免一些后续问题的发生，
+			通常不要使用非布尔类型的表达式做为条件判断 */
+			
+			var obj=new Date();//实例化一个Date类对象
+			if(obj){
+				document.write("true");//打印：true
+			}else{
+				document.write("false");
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- java中的可变参数
+		 
+		 可变参数： 可以改变个数的参数。
+		           参数，通常都是使用函数/方法中
+	     public void method(int num1,int num2,int num3){
+		 }			
+		 //以上方法中的参数，类型相同，只是名称不同
+		 在java中，提出了一个新的概念：能不能改变参数的个数（在类型相同的情况下）
+		 public void method(int ... nums){
+			 //允许method方法中，可以接收任意个int类型的参数
+			 //底层：其实就是使用数组
+			 
+			 //当想要获取每一个传递的参数时，需要使用数组遍历
+			 for(int n : nums){
+				 ......
+			 }
+		 }
+			
+		 
+		 
+		 -->
+	</head>
+	<body>
+		<script>
+			//Math对象，不需要创建，可以直接使用（和java类同）
+			//min函数，可以接收任意个参数（可变参数）
+			var min = Math.min(10, 3, 21, 4);
+			document.write("最小值：" + min + "<br/>");
+			
+			var max = Math.max(10, 3, 21, 4);
+			document.write("最大值：" + max + "<br/>");
+			
+			//四舍五入
+			var num=Math.round(3.55);
+			document.write("四舍五入的值：" + num + "<br/>");
+			
+			//随机数: 获取0~1之间的随机小数（不包含1）
+			var num2 = Math.random();
+			//  round（0.4493377114526369*100）
+			document.write("随机值：" + num2 + "<br/>");
+			
+		</script>
+	</body>
+</html>

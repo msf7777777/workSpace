@@ -1,0 +1,45 @@
+package diary0620;
+
+import java.util.Scanner;
+
+public class day0620_09_LianXi_03_ZuoYe {
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		System.out.println("请输入_身高（CM）");
+		int high = s.nextInt();
+		System.out.println("请输入_金钱（RMB）");
+		int money = s.nextInt();
+		System.out.println("请输入_脸蛋（0-100分）");
+		int face = s.nextInt();
+		
+		if(high >= 180 && high <= 200){
+			if(money >= 100000000 && money <= 999999999){
+				if(face >= 80){
+					System.out.println("我一定要嫁给它");
+				}else if(face < 80 && face >= 60){
+					System.out.println("出家吧，比上不足，比下有余，耳根清净、不颜控");
+				}else if(face < 60 && face > 0){
+					System.out.println("撒泼尿照照自己长啥逼样");
+				}
+			}else if(money > 999999999){
+				if(face >= 80 && face <= 100){
+					System.out.println("长得人模人样的，怎么满嘴跑火车？");
+				}else if(face < 80 && face >= 0){
+					System.out.println("别你妈吹牛逼！草！不瞅瞅自己长啥逼样，傻大个儿");	
+				}
+			}else if(money < 100000000 && money >= 100){
+				System.out.println("出家吧，比上不足，比下有余，六根清净、不贪财");
+			}else if(face >=80 && face <= 100){
+				System.out.println("小红帽：100块都不给我！你个小白脸儿");
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+}

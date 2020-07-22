@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="itcast_weixin_oms:war">
+    <output-path>$PROJECT_DIR$/itcast_parent_02/itcast_weixin_oms/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>itcast_weixin_oms</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="itcast_weixin_oms.war">
+      <element id="artifact" artifact-name="itcast_weixin_oms:war exploded" />
+    </root>
+  </artifact>
+</component>

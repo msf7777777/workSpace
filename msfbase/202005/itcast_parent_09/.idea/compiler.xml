@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="day1301" />
+        <module name="day1401" />
+        <module name="day1402" />
+        <module name="day1403_web" />
+        <module name="day1501" />
+        <module name="day1501_xml" />
+        <module name="day1502" />
+        <module name="day1502_annotation" />
+        <module name="day1601" />
+        <module name="day1602" />
+        <module name="day1603" />
+        <module name="day1701" />
+        <module name="day1702" />
+        <module name="day1704" />
+        <module name="day1801" />
+        <module name="day1802" />
+        <module name="day1803" />
+        <module name="day1804_web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="day1601" target="1.7" />
+      <module name="day1601_失败" target="1.7" />
+      <module name="day1602_失败" target="1.7" />
+      <module name="day1603_失败" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

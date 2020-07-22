@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+
+		<!-- 定时器:
+		     启动一个程序，该程序会在规定的时间，进行某个操作
+			 例：手机中的闹钟
+			     设置时间为： 7:00
+				毫秒值  = 拿第二天的7:00 - 此时设置的时间
+			 
+			 JS中的定时器：
+			 1、setTimeout(函数名, 间隔毫秒数)
+			    在指定的"间隔毫秒数"后，会自动执行1次指定的函数。
+				返回值为当前的定时器对象。
+				例：setTimeout(func(),10000); //在10秒钟后，执行1次func函数
+				
+			    clearTimeout(计时器)	  取消setTimeout定时器
+		    		
+				
+			 2、setInterval(函数名, 间隔毫秒数)
+			    在指定的"间隔毫秒数"后，就会自动执行指定的函数
+				注意：每隔"间隔毫秒数"后，都会执行指定的函数（可以执行任意次）
+				例：setInterval("func()", 1000*60)  //每隔1分钟，执行1次func函数
+		 
+		        clearInterval(计时器)   取消setInterval定时器
+		 -->
+	</head>
+	<body>
+		<script>
+			//setTimeout(函数名,毫秒值)
+			// var sid = setTimeout(function(){
+			// 	alert("BOOM 爆炸了. . . . . . . . . . . . . . .");
+			// },5000);//在5秒钟后，执行函数
+
+           
+            var sid = setTimeout("doIt()",2000);
+
+			//定义函数
+			function doIt() {
+				alert("BOOM 爆炸了. . . . . . . . . . . . . . .");
+			}
+			document.write("在炸弹没有爆炸前：撤消炸弹");
+			clearTimeout(sid);//把sid定时器对象取消
+			
+			/*定时器的应用场景：
+			1、图片自动切换（每隔x时间后，图片切换到下一张）
+			2、网站上自带的时间值，时间会一直变动
+			3、隐藏的程序：每隔x时间，采集用户浏览的信息，把用户信息发送给服务器
+			*/ 
+		</script>
+	</body>
+</html>

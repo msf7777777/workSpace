@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="day0901_java" />
+        <module name="day0902_java" />
+        <module name="day0903_web" />
+        <module name="day0904_web" />
+        <module name="itcast_commons" />
+        <module name="zi_01" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="day0901_java" target="1.5" />
+      <module name="day0902_java" target="1.7" />
+      <module name="day0903_web" target="1.9" />
+      <module name="day0904_web" target="1.10" />
+      <module name="itcast_commons" target="1.8" />
+      <module name="itcast_parent" target="1.5" />
+      <module name="itcast_parent_02" target="1.8" />
+      <module name="itcast_weixin_oms" target="1.8" />
+      <module name="zi_01" target="1.5" />
+      <module name="zi_02_web" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

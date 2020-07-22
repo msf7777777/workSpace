@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            // 需求: 点击按钮, 获取5条笑话,显示 div中
+            // 1 给按钮绑定单击事件
+            $("#mybtn").click(function () {
+                // 1.1 通过ajax向服务器请求, 要5个笑话
+                /**
+                 * 请求地址: https://autumnfish.cn/api/joke/list
+                 * 请求方法: get
+                 * 请求参数: num
+                 */
+                $.ajax({
+                    type: "get",
+                    url: "https://autumnfish.cn/api/joke/list",
+                    data: "num=5",
+                    success: function(data){
+                        console.log("服务器返回的数据: ");
+                        console.log(data);
+                        // 1.2 处理服务器返回的数据数据
+                        // 1.2.1 声明一个变量
+                        var jokeStr = ""; // <p>笑话1</p><p>笑话2</p><p>笑话3</p><p>笑话4</p><p>笑话5</p>
+                        // 1.2.2 遍历5条笑话的数组, 将笑话放到变量中
+                        var jokeArr = data.jokes;
+                        for (let i = 0; i < jokeArr.length; i++) {
+                            jokeStr += "<p>" + jokeArr[i] + "</p>";
+                        }
+                        // 1.2.3 将变量内容 放到div中, 显示早浏览器
+                        // <div><p>笑话1</p><p>笑话2</p><p>笑话3</p><p>笑话4</p><p>笑话5</p></div>
+                        $("#mydiv").html(jokeStr);
+                    }
+                });
+            });
+        })
+    </script>
+</head>
+<body>
+<input type="button" value="更换笑话" id="mybtn"/>
+<div id="mydiv"></div>
+</body>
+</html>

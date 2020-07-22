@@ -1,0 +1,2779 @@
+     1	#
+     2	# Place your global alsa-lib configuration here...
+     3	#
+     4	
+     5	@hooks [
+     6		{
+     7			func load
+     8			files [
+     9				"/etc/alsa/pulse-default.conf"
+    10			]
+    11			errors false
+    12		}
+    13	]
+    14	#
+    15	# Define default options for autofs.
+    16	#
+    17	[ autofs ]
+    18	#
+    19	# master_map_name - default map name for the master map.
+    20	#
+    21	#master_map_name = auto.master
+    22	#
+    23	# timeout - set the default mount timeout in secons. The internal
+    24	#	    program default is 10 minutes, but the default installed
+    25	#	    configuration overrides this and sets the timeout to 5
+    26	#	    minutes to be consistent with earlier autofs releases.
+    27	#
+    28	timeout = 300
+    29	#
+    30	# master_wait - set the default maximum time to wait for the
+    31	# 		master map to become available if it cannot
+    32	# 		be read at program start (default 10, wait
+    33	# 		for 10 seconds then continue).
+    34	#
+    35	#master_wait = 10
+    36	#
+    37	# negative_timeout - set the default negative timeout for
+    38	# 		     failed mount attempts (default 60).
+    39	#
+    40	#negative_timeout = 60
+    41	#
+    42	# mount_wait - time to wait for a response from mount(8).
+    43	# 	       Setting this timeout can cause problems when
+    44	# 	       mount would otherwise wait for a server that
+    45	# 	       is temporarily unavailable, such as when it's
+    46	# 	       restarting. The default setting (-1) of waiting
+    47	# 	       for mount(8) usually results in a wait of around
+    48	# 	       3 minutes.
+    49	#
+    50	#mount_wait = -1
+    51	#
+    52	# umount_wait - time to wait for a response from umount(8).
+    53	#
+    54	#umount_wait = 12
+    55	#
+    56	# browse_mode - maps are browsable by default.
+    57	#
+    58	browse_mode = no
+    59	#
+    60	# mount_nfs_default_protocol - specify the default protocol used by
+    61	# 			       mount.nfs(8). Since we can't identify
+    62	# 			       the default automatically we need to
+    63	# 			       set it in our configuration.
+    64	#
+    65	#mount_nfs_default_protocol = 3
+    66	mount_nfs_default_protocol = 4
+    67	#
+    68	# append_options - append to global options instead of replace.
+    69	#
+    70	#append_options = yes
+    71	#
+    72	# logging - set default log level "none", "verbose" or "debug"
+    73	#
+    74	#logging = none
+    75	#
+    76	# force_standard_program_map_env - disable the use of the "AUTOFS_"
+    77	#			prefix for standard environemt variables when
+    78	#			executing a program map. Since program maps
+    79	#			are run as the privileded user this opens
+    80	#			automount(8) to potential user privilege
+    81	#			escalation when the program map is written
+    82	#			in a language that  can load components from,
+    83	#			for example, a user home directory.
+    84	#
+    85	# force_standard_program_map_env = no
+    86	#
+    87	# Define base dn for map dn lookup.
+    88	#
+    89	# Define server URIs
+    90	#
+    91	# ldap_uri - space seperated list of server uris of the form
+    92	# 	     <proto>://<server>[/] where <proto> can be ldap
+    93	# 	     or ldaps. The option can be given multiple times.
+    94	# 	     Map entries that include a server name override
+    95	# 	     this option.
+    96	#
+    97	#	     This configuration option can also be used to
+    98	#	     request autofs lookup SRV RRs for a domain of
+    99	#	     the form <proto>:///[<domain dn>]. Note that a
+   100	#	     trailing "/" is not allowed when using this form.
+   101	#	     If the domain dn is not specified the dns domain
+   102	#	     name (if any) is used to construct the domain dn
+   103	#	     for the SRV RR lookup. The server list returned
+   104	#	     from an SRV RR lookup is refreshed according to
+   105	#	     the minimum ttl found in the SRV RR records or
+   106	#	     after one hour, whichever is less.
+   107	#
+   108	#ldap_uri = ""
+   109	#
+   110	# ldap_timeout - timeout value for the synchronous API  calls
+   111	#		  (default is LDAP library default).
+   112	#
+   113	#ldap_timeout = -1
+   114	#
+   115	# ldap_network_timeout - set the network response timeout (default 8).
+   116	#
+   117	#ldap_network_timeout = 8
+   118	#
+   119	# search_base - base dn to use for searching for map search dn.
+   120	# 		Multiple entries can be given and they are checked
+   121	# 		in the order they occur here.
+   122	#
+   123	#search_base = ""
+   124	#
+   125	# Define the LDAP schema to used for lookups
+   126	#
+   127	# If no schema is set autofs will check each of the schemas
+   128	# below in the order given to try and locate an appropriate
+   129	# basdn for lookups. If you want to minimize the number of
+   130	# queries to the server set the values here.
+   131	#
+   132	#map_object_class = nisMap
+   133	#entry_object_class = nisObject
+   134	#map_attribute = nisMapName
+   135	#entry_attribute = cn
+   136	#value_attribute= nisMapEntry
+   137	#
+   138	# Other common LDAP nameing
+   139	#
+   140	#map_object_class = automountMap
+   141	#entry_object_class = automount
+   142	#map_attribute = ou
+   143	#entry_attribute = cn
+   144	#value_attribute= automountInformation
+   145	#
+   146	#map_object_class = automountMap
+   147	#entry_object_class = automount
+   148	#map_attribute = automountMapName
+   149	#entry_attribute = automountKey
+   150	#value_attribute= automountInformation
+   151	#
+   152	# auth_conf_file - set the default location for the SASL
+   153	#		   authentication configuration file.
+   154	#
+   155	#auth_conf_file = /etc/autofs_ldap_auth.conf
+   156	#
+   157	# map_hash_table_size - set the map cache hash table size.
+   158	# 			Should be a power of 2 with a ratio of
+   159	# 			close to 1:8 for acceptable performance
+   160	# 			with maps up to around 8000 entries.
+   161	# 			See autofs.conf(5) for more details.
+   162	#
+   163	#map_hash_table_size = 1024
+   164	#
+   165	# use_hostname_for_mounts - nfs mounts where the host name resolves
+   166	# 			 to more than one IP address normally need
+   167	# 			 to use the IP address to esure a mount to
+   168	# 			 a host that isn't responding isn't done.
+   169	# 			 If that behaviour is not wanted then set
+   170	#			 ths to "yes", default is "no".
+   171	#
+   172	#use_hostname_for_mounts = "no"
+   173	#
+   174	# sss_master_map_wait - When sssd is starting up it can sometimes return
+   175	# 			"no such entry" for a short time until it has read
+   176	# 			in the LDAP map information. Internal default is 0
+   177	# 			seconds, don't wait but if there is a problem with
+   178	# 			autofs not finding the master map at startup (when
+   179	# 			it should) then try setting this to 10 to work
+   180	# 			around it.
+   181	#
+   182	#sss_master_map_wait = 0
+   183	#
+   184	# Otions for the amd parser within autofs.
+   185	#
+   186	# amd configuration options that are aren't used, haven't been
+   187	# implemented or have different behaviour within autofs.
+   188	#
+   189	# A number of the amd configuration options are not used by autofs,
+   190	# some because they are not relevant within autofs, some because
+   191	# they are done differently in autofs and others that are not yet
+   192	# implemented.
+   193	#
+   194	# Since "mount_type" is always autofs (because there's no user space
+   195	# NFS server) the configuration entries relating to that aren't used.
+   196	# Also, server availability is done differently within autofs so the
+   197	# options that relate to the amd server monitoring sub-system are
+   198	# also not used.
+   199	#
+   200	# These options are mount_type, auto_attrcache, portmap_program,
+   201	# nfs_vers_ping, nfs_allow_any_interface, nfs_allow_insecure_port,
+   202	# nfs_proto, nfs_retransmit_counter, nfs_retransmit_counter_udp,
+   203	# nfs_retransmit_counter_tcp, nfs_retransmit_counter_toplvl,
+   204	# nfs_retry_interval, nfs_retry_interval_udp, nfs_retry_interval_tcp,
+   205	# nfs_retry_interval_toplvl and nfs_vers.
+   206	#
+   207	#
+   208	# Other options that are not used within the autofs implementation:
+   209	#
+   210	# log_file, truncate_log - autofs used either stderr when running in
+   211	#	the foreground or sends its output to syslog so an alternate
+   212	#	log file (or truncating the log) can't be used.
+   213	#
+   214	# print_pid - there's no corresponding option for this within autofs.
+   215	#
+   216	# use_tcpwrappers, show_statfs_entries - there's no user space NFS
+   217	#	server to control access to so this option isn't relevant.
+   218	#	The show_statfs_entries can't be implemented for the same
+   219	#	reason.
+   220	#
+   221	# debug_mtab_file - there's no user space NFS server and autofs
+   222	#	avoids using file based mtab whenever possible.
+   223	#
+   224	# sun_map_syntax - obviously, are provided by autofs itself.
+   225	#
+   226	# plock, show_statfs_entries, preferred_amq_port - not supported.
+   227	#
+   228	# ldap_cache_maxmem, ldap_cache_seconds - external ldap caching
+   229	#	is not used by autofs.
+   230	#
+   231	# ldap_proto_version - autofs always attempts to use the highest
+   232	#	available ldap protocol version.
+   233	#
+   234	# cache_duration, map_reload_interval, map_options - the map
+   235	#	entry cache is continually updated and stale entries
+   236	#	cleaned on re-load, which is done when map changes are
+   237	#	detected so these configuration entries are not used
+   238	#	by autofs.
+   239	#
+   240	# localhost_address - is not used within autofs. This
+   241	#	configuration option was only used in the amd user
+   242	#	space server code and is not relevant within autofs.
+   243	#
+   244	#
+   245	# Options that are handled differently within autofs:
+   246	#
+   247	# pid_file - must be given as a command line option on startup.
+   248	#
+   249	# print_version - program version and feature information is obtained
+   250	#	by using the automount command line option "-V".
+   251	#
+   252	# debug_options, log_options - autofs has somewhat more limited
+   253	#	logging and debug logging options. When the log_options
+   254	#	options is encountered it is converted to the nearest
+   255	#	matching autofs logging option. Since the configuration
+   256	#	option debug_options would be handled the same way it
+   257	#	is ignored.
+   258	#
+   259	# restart_mounts - has no sensible meaning within autofs because autofs
+   260	#	always tries to re-connect to existing mounts. While this
+   261	#	has its own set of problems not re-connecting to existing
+   262	#	mounts always results in a non-functional automount tree if
+   263	#	mounts were busy at the last shutdown (as is also the case
+   264	#	with amd when using mount_type autofs).
+   265	#
+   266	# forced_unmounts - detaching mounts often causes serious problems
+   267	#	for users of existing mounts. It is used by autofs in some
+   268	#	cases, either at the explicit request of the user (with a
+   269	#	command line or init option) and in some special cases during
+   270	#	program operation but is avoided whenever possible.
+   271	#
+   272	#
+   273	# A number of configuration options are not yet implemented:
+   274	#
+   275	# fully_qualified_hosts - not yet implemented.
+   276	#
+   277	# unmount_on_exit - since autofs always tries to re-connect
+   278	#	to mounts left mounted from a previous shutdown this
+   279	#	is a sensible option to implement and that will be
+   280	#	done.
+   281	#
+   282	# browsable_dirs - not yet implemented.
+   283	#
+   284	# exec_map_timeout - a timeout is not currently used for
+   285	#	for program maps, might be implemented.
+   286	#
+   287	# tag - the tag option is not implemented within autofs.
+   288	#
+   289	#
+   290	# Supported options:
+   291	#
+   292	# arch, karch, os, osver - these options default to what is returned
+   293	#	from uname(2) and can be overridden if required.
+   294	#
+   295	# full_os - has no default and must be set in the configuration
+   296	#	if used in maps.
+   297	#
+   298	# cluster - if not set defaults to the host domain name. This option
+   299	#	corresponds to the HP_UX cluster name (according to the amd
+   300	#	source) and is probably not used in Linux but is set anyway.
+   301	#
+   302	# vendor - has a default value of "unknown", it must be set in the
+   303	#	configuration if used in maps.
+   304	#
+   305	# auto_dir - is the base name of the mount tree used for external
+   306	#	mounts that are sometimes needed by amd maps. Its default
+   307	#	value is "/a".
+   308	#
+   309	# map_type - specifies the autofs map source, such as file, nis,
+   310	#	ldap etc. and has no default value set.
+   311	#
+   312	# map_defaults - is used to override /defaults entries within maps
+   313	#	and can be used to provide different defaults on specific
+   314	#	machines without having to modify centrally managed maps.
+   315	#	It is empty by default.
+   316	#
+   317	# search_path - colon seperated paths to search for maps that
+   318	#	are not specified as a full path.
+   319	#
+   320	# dismount_interval - is equivalent to the autofs timeout option. It
+   321	#	is only possible to use this with type "auto" mounts due
+   322	#	to the way the autofs kernel module performs expiry. It
+   323	#	takes its default value from the autofs internal default
+   324	#	of 600 seconds.
+   325	#
+   326	# autofs_use_lofs - if set to "yes" autofs will attempt to use bind
+   327	#	mounts for type "auto" when possible.
+   328	#
+   329	# nis_domain - allows setting of a domain name other than the system
+   330	#	default.
+   331	#
+   332	# local_domain - is used to override (or set) the host domain name.
+   333	#
+   334	# normalize_hostnames - if set to "yes" then the contents of ${rhost}
+   335	#	is translated in its official host name.
+   336	#
+   337	# domain_strip - if set to "yes" the domain name part of the host
+   338	# 	is strippped when normalizing hostnames. This can be useful
+   339	#	when using of the same maps in a multiple domain environment.
+   340	#
+   341	# normalize_slashes - is set to "yes" by default and will collapse
+   342	#	multiple unescaped occurrences of "/" to a single "/".
+   343	#
+   344	# selectors_in_defaults, selectors_on_default - has a default value
+   345	#	of "no". If set to "yes" then any defaults entry will be
+   346	#	checked for selectors to determine the values to be used.
+   347	#	selectors_in_defaults is the preferred option to use.
+   348	#
+   349	# ldap_base - has no default value. It must be set to the base dn
+   350	#	that is used for queries if ldap is to be used as a map
+   351	#	source.
+   352	#
+   353	# ldap_hostports - has no default value set. It must be set to
+   354	#	the URI of the LDAP server to be used for lookups when
+   355	#	ldap is used a map source. It may contain a comma or
+   356	#	space seperated list of LDAP URIs.
+   357	#
+   358	# hesiod_base - the base name used for hesiod map sources.
+   359	#
+   360	# Additional configuration options added:
+   361	#
+   362	# linux_ufs_mount_type - set the default system filesystem type that's
+   363	#	used for mount type ufs. There's no simple way to determine
+   364	#	what the system default filesystem is and am-utils needs to
+   365	#	be continually updated to do this and can easily get it wrong
+   366	#	anyway.
+   367	#
+   368	#
+   369	# Define global options for the amd parser within autofs.
+   370	#
+   371	[ amd ]
+   372	#
+   373	# Override the internal default with the same timeout that
+   374	# is used by the override in the autofs configuration, sanity
+   375	# only change.
+   376	#
+   377	dismount_interval = 300
+   378	#
+   379	# map_type = file
+   380	#
+   381	# Overriding this can cause autofs to use less resources because
+   382	# it will use symlinks instead of bind mounts in certain cases.
+   383	# You should ensure that the autofs kernel module your using
+   384	# supports expration of symlinks for best results (although this
+   385	# appears to work reasonably well most of the time without the
+   386	# update).
+   387	#
+   388	# autofs_use_lofs = yes
+   389	#
+   390	# Several configuration options can be set per mount point.
+   391	# In particulr map_type, map_name, map_defaults, search_path,
+   392	# browsable_dirs, dismount_interval and selectors_in_defaults
+   393	# (not all of which are currently implemented, see above).
+   394	#
+   395	# Also, if a section for an amd mount point is defined here
+   396	# it isn't necessary to specify the format in the corresponding
+   397	# master map entry and the format will be inherited for type
+   398	# "auto" mounts.
+   399	#
+   400	# [ /expamle/mount ]
+   401	# dismount_interval = 60
+   402	# map_type = nis
+   403	<?xml version="1.0" ?>
+   404	<!--
+   405	This files contains a single entry with multiple attributes tied to it.
+   406	See autofs_ldap_auth.conf(5) for more information.
+   407	-->
+   408	
+   409	<autofs_ldap_sasl_conf
+   410		usetls="no"
+   411		tlsrequired="no"
+   412		authrequired="no"
+   413	/>
+   414	# cas configuration file
+   415	# 
+   416	# Things to remember:
+   417	#
+   418	# Acceptable boolean values
+   419	# to enable: "1", "yes", "true", and "on"
+   420	# to disable: "0", "no", "false", and "off"
+   421	#
+   422	# Required settings to be defined:
+   423	# kernels, rpmFilter, debugs, workDirectory, database
+   424	
+   425	[settings]
+   426	# Set the user you wish to run cas as.
+   427	casuser=root
+   428	
+   429	# Set keytype for user authentication
+   430	# Options: RSA/DSS
+   431	sshkey=dss
+   432	
+   433	# Where kernel-debuginfo packages are stored
+   434	# NOTE: this _can_ include symlinked directories, just be careful they are
+   435	# indefinately recursive
+   436	kernels=/mnt/kernels
+   437	
+   438	# Compose emacs regular expression for determing what
+   439	# kernel debug rpms you wish to search for
+   440	rpmFilter=.*kerne.+-debuginfo-[0-9].*\.rpm
+   441	
+   442	# Define where to store necessary debug information
+   443	# NOTE: This is a temporary storage area for when
+   444	# cpio is run against an rpm and extract the debug kernel
+   445	# for a small amount of time. This could be something like
+   446	# /tmp if space permitted
+   447	debugs=/tmp
+   448	
+   449	# debug level (DEBUG, INFO)
+   450	debugLevel=DEBUG
+   451	
+   452	# define work directory
+   453	workDirectory=/cores
+   454	
+   455	# Mail server, e.g. mail.example.com
+   456	# Provides job results via email
+   457	stmphost=mail.example.com
+   458	
+   459	# database connection info
+   460	database=/var/db/cas/cas.db
+   461	
+   462	[maintenance]
+   463	# Time in days to keep jobs and its associated files
+   464	purgeLimit=90
+   465	
+   466	# Enable if want to automatically check and purge data
+   467	# whenever cas-admin is run
+   468	autoPurge=no
+   469	
+   470	[advanced]
+   471	# if running a x86_64 system and wish to analyze 32bit
+   472	# cores, define the location of 32bit crash binary
+   473	# EXAMPLE USAGE:
+   474	# rpm --relocate /usr/bin=/usr/local/i386 -ivh crash*i386.rpm
+   475	
+   476	# crash_32=/usr/local/i386/crash
+   477	
+   478	# Define a buffersize to be set when reading a core file
+   479	# Valid options are {number, None, or blank}
+   480	# If set to None or blank default will be ~515M
+   481	# buffersize=None
+   482	#
+   483	#  Copyright IBM Corporation. 2007
+   484	#
+   485	#  Authors:	Balbir Singh <balbir@linux.vnet.ibm.com>
+   486	#  This program is free software; you can redistribute it and/or modify it
+   487	#  under the terms of version 2.1 of the GNU Lesser General Public License
+   488	#  as published by the Free Software Foundation.
+   489	#
+   490	#  This program is distributed in the hope that it would be useful, but
+   491	#  WITHOUT ANY WARRANTY; without even the implied warranty of
+   492	#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+   493	#
+   494	# See man cgconfig.conf for further details.
+   495	#
+   496	# By default, mount all controllers to /cgroup/<controller>
+   497	
+   498	mount {
+   499		cpuset	= /cgroup/cpuset;
+   500		cpu	= /cgroup/cpu;
+   501		cpuacct	= /cgroup/cpuacct;
+   502		memory	= /cgroup/memory;
+   503		devices	= /cgroup/devices;
+   504		freezer	= /cgroup/freezer;
+   505		net_cls	= /cgroup/net_cls;
+   506		blkio	= /cgroup/blkio;
+   507	}
+   508	
+   509	# /etc/cgrules.conf
+   510	#The format of this file is described in cgrules.conf(5)
+   511	#manual page.
+   512	#
+   513	# Example:
+   514	#<user>		<controllers>	<destination>
+   515	#@student	cpu,memory	usergroup/student/
+   516	#peter		cpu		test1/
+   517	#%		memory		test2/
+   518	# End of file
+   519	#cgsnapshot tool configuration file
+   520	
+   521	#memory
+   522	memory.oom_control
+   523	
+   524	#cpu
+   525	
+   526	#cpuacct
+   527	
+   528	#devices
+   529	
+   530	#cpuset
+   531	
+   532	#ns
+   533	
+   534	#freezer
+   535	
+   536	#net_cls
+   537	
+   538	#blkio# Sample dracut config file
+   539	
+   540	# Specific list of dracut modules to use
+   541	#dracutmodules+=""
+   542	
+   543	# Dracut modules to omit
+   544	#omit_dracutmodules+=""
+   545	
+   546	# Dracut modules to add to the default
+   547	#add_dracutmodules+=""
+   548	
+   549	# additional kernel modules to the default
+   550	#add_drivers+=""
+   551	
+   552	# list of kernel filesystem modules to be included in the generic initramfs
+   553	#filesystems+=""
+   554	
+   555	# build initrd only to boot current hardware
+   556	#hostonly="yes"
+   557	#
+   558	
+   559	# install local /etc/mdadm.conf
+   560	mdadmconf="yes"
+   561	
+   562	# install local /etc/lvm/lvm.conf
+   563	lvmconf="yes"
+   564	## ELinks 0.12pre3 configuration file
+   565	
+   566	## This is ELinks global configuration file. You can keep global ELinks
+   567	## configuration here. Each user can also save its own ELinks configuration
+   568	## to ~/.elinks/elinks.conf. The per user configuration file can be edited
+   569	## by ELinks when you save options through UI.
+   570	
+   571	## connection
+   572	#  Connection options.
+   573	
+   574	  ## connection.ssl
+   575	  #  SSL options.
+   576	
+   577	    ## connection.ssl.cert_verify [0|1]
+   578	    #  Verify the peer's SSL certificate.
+   579	    set connection.ssl.cert_verify = 1
+   580	
+   581	    ## connection.ssl.trusted_ca_file <str>
+   582	    #  The location of a file containing certificates of trusted certification
+   583	    #  authorities in PEM format. ELinks then trusts certificates issued by
+   584	    #  these CAs.
+   585	    #
+   586	    #  If you set this option to an empty string, default NSS root certificates
+   587	    #  are loaded.
+   588	    #
+   589	    #  If you change this option or the file, you must restart ELinks for the
+   590	    #  changes to take effect. This option affects GnuTLS and nss_compat_ossl
+   591	    #  but not OpenSSL.
+   592	    set connection.ssl.trusted_ca_file = "/etc/pki/tls/certs/ca-bundle.crt"
+   593	[storage]
+   594	type=file
+   595	# grub.conf generated by anaconda
+   596	#
+   597	# Note that you do not have to rerun grub after making changes to this file
+   598	# NOTICE:  You have a /boot partition.  This means that
+   599	#          all kernel and initrd paths are relative to /boot/, eg.
+   600	#          root (hd0,0)
+   601	#          kernel /vmlinuz-version ro root=/dev/mapper/vg_node01-lv_root
+   602	#          initrd /initrd-[generic-]version.img
+   603	#boot=/dev/sda
+   604	default=0
+   605	timeout=5
+   606	splashimage=(hd0,0)/grub/splash.xpm.gz
+   607	hiddenmenu
+   608	title CentOS 6 (2.6.32-696.el6.x86_64)
+   609		root (hd0,0)
+   610		kernel /vmlinuz-2.6.32-696.el6.x86_64 ro root=/dev/mapper/vg_node01-lv_root rd_NO_LUKS LANG=en_US.UTF-8 rd_LVM_LV=vg_node01/lv_root rd_NO_MD rd_LVM_LV=vg_node01/lv_swap SYSFONT=latarcyrheb-sun16 crashkernel=auto  KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM rhgb quiet
+   611		initrd /initramfs-2.6.32-696.el6.x86_64.img
+   612	# Example /etc/gssapi_mech.conf file
+   613	#
+   614	# GSSAPI Mechanism Definitions
+   615	#
+   616	# This configuration file determines which GSS-API mechanisms
+   617	# the gssd code should use
+   618	#
+   619	# NOTE:
+   620	# The initiaiization function "mechglue_internal_krb5_init"
+   621	# is used for the MIT krb5 gssapi mechanism.  This special
+   622	# function name indicates that an internal function should
+   623	# be used to determine the entry points for the MIT gssapi
+   624	# mechanism funtions.
+   625	#
+   626	# library                               initialization function
+   627	# ================================	==========================
+   628	# The MIT K5 gssapi library, use special function for initialization.
+   629	libgssapi_krb5.so.2		mechglue_internal_krb5_init
+   630	#
+   631	# The SPKM3 gssapi library function.  Use the function spkm3_gss_initialize.
+   632	# libgssapi_spkm3.so    spkm3_gss_initialize
+   633	multi on
+   634	[General]
+   635	#Verbosity = 0
+   636	# The following should be set to the local NFSv4 domain name
+   637	# The default is the host's DNS domain name.
+   638	#Domain = local.domain.edu
+   639	
+   640	# In multi-domain environments, some NFS servers will append the identity
+   641	# management domain to the owner and owner_group in lieu of a true NFSv4
+   642	# domain.  This option can facilitate lookups in such environments.  If
+   643	# set to a value other than "none", the nsswitch  plugin will first pass
+   644	# the name to the password/group lookup function without stripping the
+   645	# domain off.  If that mapping fails then the plugin will try again using
+   646	# the old method (comparing the domain in the string to the Domain value,
+   647	# stripping it if it matches, and passing the resulting short name to the
+   648	# lookup function).  Valid values are "user", "group", "both", and
+   649	# "none".  The default is "none".
+   650	#No-Strip = none
+   651	
+   652	# Winbind has a quirk whereby doing a group lookup in UPN format
+   653	# (e.g. staff@americas.example.com) will cause the group to be
+   654	# displayed prefixed with the full domain in uppercase
+   655	# (e.g. AMERICAS.EXAMPLE.COM\staff) instead of in the familiar netbios
+   656	# name format (e.g. AMERICAS\staff).  Setting this option to true
+   657	# causes the name to be reformatted before passing it to the group
+   658	# lookup function in order to work around this.  This setting is
+   659	# ignored unless No-Strip is set to either "both" or "group".
+   660	# The default is "false".
+   661	#Reformat-Group = false
+   662	
+   663	# The following is a comma-separated list of Kerberos realm
+   664	# names that should be considered to be equivalent to the
+   665	# local realm, such that <user>@REALM.A can be assumed to
+   666	# be the same user as <user>@REALM.B
+   667	# If not specified, the default local realm is the domain name,
+   668	# which defaults to the host's DNS domain name,
+   669	# translated to upper-case.
+   670	# Note that if this value is specified, the local realm name
+   671	# must be included in the list!
+   672	#Local-Realms = 
+   673	
+   674	[Mapping]
+   675	
+   676	Nobody-User = nobody
+   677	Nobody-Group = nobody
+   678	
+   679	[Translation]
+   680	
+   681	# Translation Method is an comma-separated, ordered list of
+   682	# translation methods that can be used.  Distributed methods
+   683	# include "nsswitch", "umich_ldap", and "static".  Each method
+   684	# is a dynamically loadable plugin library.
+   685	# New methods may be defined and inserted in the list.
+   686	# The default is "nsswitch".
+   687	Method = nsswitch
+   688	
+   689	# Optional.  This is a comma-separated, ordered list of
+   690	# translation methods to be used for translating GSS
+   691	# authenticated names to ids.
+   692	# If this option is omitted, the same methods as those
+   693	# specified in "Method" are used.
+   694	#GSS-Methods = <alternate method list for translating GSS names>
+   695	 
+   696	#-------------------------------------------------------------------#
+   697	# The following are used only for the "static" Translation Method.
+   698	#-------------------------------------------------------------------#
+   699	#[Static]
+   700	
+   701	# A "static" list of GSS-Authenticated names to
+   702	# local user name mappings
+   703	
+   704	#someuser@REALM = localuser
+   705	
+   706	
+   707	#-------------------------------------------------------------------#
+   708	# The following are used only for the "umich_ldap" Translation Method.
+   709	#-------------------------------------------------------------------#
+   710	
+   711	#[UMICH_SCHEMA]
+   712	
+   713	# server information (REQUIRED)
+   714	#LDAP_server = ldap-server.local.domain.edu
+   715	
+   716	# the default search base (REQUIRED)
+   717	#LDAP_base = dc=local,dc=domain,dc=edu
+   718	
+   719	#-----------------------------------------------------------#
+   720	# The remaining options have defaults (as shown)
+   721	# and are therefore not required.
+   722	#-----------------------------------------------------------#
+   723	
+   724	# whether or not to perform canonicalization on the
+   725	# name given as LDAP_server
+   726	#LDAP_canonicalize_name = true
+   727	
+   728	# absolute search base for (people) accounts
+   729	#LDAP_people_base = <LDAP_base>
+   730	
+   731	# absolute search base for groups
+   732	#LDAP_group_base = <LDAP_base>
+   733	
+   734	# Set to true to enable SSL - anything else is not enabled
+   735	#LDAP_use_ssl = false
+   736	
+   737	# You must specify a CA certificate location if you enable SSL
+   738	#LDAP_ca_cert = /etc/ldapca.cert
+   739	
+   740	# Objectclass mapping information
+   741	
+   742	# Mapping for the person (account) object class
+   743	#NFSv4_person_objectclass = NFSv4RemotePerson
+   744	
+   745	# Mapping for the nfsv4name attribute the person object
+   746	#NFSv4_name_attr = NFSv4Name
+   747	
+   748	# Mapping for the UID number
+   749	#NFSv4_uid_attr = UIDNumber
+   750	
+   751	# Mapping for the GSSAPI Principal name
+   752	#GSS_principal_attr = GSSAuthName
+   753	
+   754	# Mapping for the account name attribute (usually uid)
+   755	# The value for this attribute must match the value of 
+   756	# the group member attribute - NFSv4_member_attr
+   757	#NFSv4_acctname_attr = uid
+   758	
+   759	# Mapping for the group object class
+   760	#NFSv4_group_objectclass = NFSv4RemoteGroup
+   761	
+   762	# Mapping for the GID attribute
+   763	#NFSv4_gid_attr = GIDNumber
+   764	
+   765	# Mapping for the Group NFSv4 name
+   766	#NFSv4_group_attr = NFSv4Name
+   767	
+   768	# Mapping for the Group member attribute (usually memberUID)
+   769	# The value of this attribute must match the value of NFSv4_acctname_attr
+   770	#NFSv4_member_attr = memberUID
+   771	# Configures where to put the kdump /proc/vmcore files
+   772	#
+   773	# This file contains a series of commands to perform (in order) when a
+   774	# kernel crash has happened and the kdump kernel has been loaded.  Directives in
+   775	# this file are only applicable to the kdump initramfs, and have no effect if
+   776	# the root filesystem is mounted and the normal init scripts are processed
+   777	#
+   778	# Currently only one dump target and path may be configured at a time. If dump
+   779	# to configured dump target fails, the default action will be preformed.
+   780	# Default action may be configured with the "default" directive below.
+   781	#
+   782	# Basics commands supported are:
+   783	# path <path> 		- Append path to the filesystem device which you are
+   784	#			  dumping to.  Ignored for raw device dumps.
+   785	#		 	  If unset, will default to /var/crash.
+   786	#
+   787	# core_collector <command> <options>
+   788	#			- This allows you to specify the command to copy the
+   789	#			  vmcore.  You could use the dump filtering program
+   790	#			  makedumpfile, the default one, to retrieve your core,
+   791	#			  which on some arches can drastically reduce core file
+   792	#			  size. See /usr/sbin/makedumpfile --help for a list of
+   793	#			  options. Note that the -i and -g options are not
+   794	#			  needed here, as the initrd will automatically be
+   795	#			  populated with a config file appropriate for the
+   796	#			  running kernel.
+   797	#			  For ssh dump, scp should be used instead of cp.
+   798	#
+   799	# raw <partition>	- Will write /proc/vmcore into raw <partition>.
+   800	#
+   801	# nfs <nfs mount>	- Will mount fs and copy /proc/vmcore to
+   802	#			  <mnt>/<path>/%HOST-%DATE/, supports DNS.
+   803	#
+   804	# nfs4 <nfs mount>      - Will use NFSv4 instead of NFSv3
+   805	#
+   806	# net <nfs mount>       - This is a deprecated option to transfer vmcore over
+   807	#			  nfs.  Use "nfs" option instead.
+   808	#
+   809	# ssh <user@server>	- Will copy /proc/vmcore to
+   810	#			  <user@server>:<path>/%HOST-%DATE/ via SSH,
+   811	#			  supports DNS. If makedumpfile is the core_collector,
+   812	#			  it is piped to an "ssh" shell, otherwise use the
+   813	#			  specified core_collector like scp.
+   814	#			  NOTE: make sure user has necessary write
+   815	#			  permissions on server
+   816	#
+   817	# net <user@server>     - This is a deprecated option to transfer vmcore over
+   818	#			  ssh.  Use "ssh" option instead.
+   819	#
+   820	# <fs type> <partition> - Will mount -t <fs type> <partition> /mnt and copy
+   821	#		 	  /proc/vmcore to /mnt/<path>/127.0.0.1-%DATE/.
+   822	#			  NOTE: <partition> can be a device node, label or uuid.
+   823	#
+   824	# disk_timeout <seconds>
+   825	#			- Number of seconds to wait for disks to appear prior
+   826	#			  to continue to save dump. By default kdump waits
+   827	#			  180 seconds for the disks to show up it needs. This
+   828	#			  can be useful in some cases if disk never shows up
+   829	#			  (Either because disk was removed or because kdump is
+   830	#			  waiting on wrong disk).
+   831	#
+   832	# link_delay <seconds>
+   833	#			- Some network cards take a long time to initialize, and
+   834	#			  some spanning tree enabled networks do not transmit
+   835	#			  user traffic for long periods after a link state
+   836	#			  changes.  This optional parameter defines a wait
+   837	#			  period after a link is activated in which the
+   838	#			  initramfs will wait before attempting to transmit
+   839	#			  user data.
+   840	#
+   841	# kdump_post <binary | script>
+   842	# 			- This directive allows you to run a specified
+   843	# 			  executable just after the memory dump process
+   844	# 			  terminates. The exit status from the dump process
+   845	# 			  is fed to the kdump_post executable, which can be
+   846	# 			  used to trigger different actions for success or
+   847	# 			  failure.
+   848	#
+   849	# kdump_pre <binary | script>
+   850	#			- works just like the kdump_post directive, but instead
+   851	#			  of running after the dump process, runs immediately
+   852	#			  before.  Exit status of this binary is interpreted
+   853	#			  as follows:
+   854	#			  0 - continue with dump process as usual
+   855	#			  non 0 - reboot/halt the system
+   856	#
+   857	# extra_bins <binaries | shell scripts>
+   858	# 			- This directive allows you to specify additional
+   859	# 			  binaries or shell scripts you'd like to include in
+   860	# 			  your kdump initrd. Generally only useful in
+   861	# 			  conjunction with a kdump_post binary or script that
+   862	# 			  relies on other binaries or scripts.
+   863	#
+   864	# extra_modules <module(s)>
+   865	# 			- This directive allows you to specify extra kernel
+   866	# 			  modules that you want to be loaded in the kdump
+   867	# 			  initrd, typically used to set up access to
+   868	# 			  non-boot-path dump targets that might otherwise
+   869	# 			  not be accessible in the kdump environment. Multiple
+   870	# 			  modules can be listed, separated by a space, and any
+   871	# 			  dependent modules will automatically be included.
+   872	# 			  Module name should be specified without ".ko" suffix.
+   873	#
+   874	# options <module> <option list>
+   875	#			- This directive allows you to specify options to apply
+   876	#			  to modules in the initramfs.  This directive overrides
+   877	#			  options specified in /etc/modprobe.conf. Module name
+   878	#			  should be specified without ".ko" suffix.
+   879	#
+   880	# blacklist <module>
+   881	#			- The blacklist keyword indicates that all of that
+   882	#			  particular modules are to be ignored in the initramfs.
+   883	#			  General terminology for blacklist has been that module
+   884	#			  is present in initramfs but it is not actually loaded
+   885	#			  in kernel. This directive can be specified multiple
+   886	#			  times or as a space separated list. Module name should
+   887	#			  be specified without ".ko" suffix.
+   888	#
+   889	# sshkey <path>
+   890	#			- Specifies the path of the ssh identity file you want
+   891	#			  to use when doing ssh dump. It must be a private key,
+   892	#			  the default value is /root/.ssh/kdump_id_rsa. When
+   893	#			  progagating public key, the key is assumed to be
+   894	#			  identity_file.pub which by default is
+   895	#			  /root/.ssh/kdump_id_rsa.pub.
+   896	#
+   897	# default <reboot | halt | poweroff | shell | mount_root_run_init>
+   898	#			- Action to preform in case dumping to intended target
+   899	#			  fails. If no default action is specified, "reboot"
+   900	#			  is assumed default.
+   901	#
+   902	#			  reboot: If the default action is reboot simply reboot
+   903	#				  the system and loose the core that you are
+   904	#				  trying to retrieve.
+   905	#			  halt:   If the default action is halt, then simply
+   906	#				  halt the system after attempting to capture
+   907	#				  a vmcore, regardless of success or failure.
+   908	#			  poweroff: The system will be powered down
+   909	#			  shell:  If the default action is shell, then drop to
+   910	#				  an hush session inside the initramfs from
+   911	#				  where you can try to record the core manually.
+   912	#				  Exiting this shell reboots the system.
+   913	#	     mount_root_run_init: Mount root filesystem and run init. Kdump
+   914	#			  	    initscript will try to save dump to root
+   915	#			  	    filesystem in /var/crash dir. This will
+   916	#			  	    likely require a lot more memory to
+   917	#			  	    be reserved for kdump kernel.
+   918	#
+   919	# debug_mem_level <0-3>
+   920	#                       - Turns on debug/verbose output of kdump scripts
+   921	#                         regarding free/used memory at various points of
+   922	#                         execution. Higher level means more debugging output.
+   923	#                         0 - no output
+   924	#                         1 - partial /proc/meminfo
+   925	#                         2 - /proc/meminfo
+   926	#                         3 - /proc/meminfo + /proc/slabinfo
+   927	#
+   928	# force_rebuild <0 | 1>
+   929	#			- By default, kdump initrd only will be rebuilt when
+   930	#			  necessary. Specify 1 here to force rebuilding kdump
+   931	#			  initrd every time when kdump service starts.
+   932	#
+   933	# fence_kdump_args <arg(s)>
+   934	#			- Command line arguments for fence_kdump_send (it can contain
+   935	#			all valid arguments except hosts to send notification to).
+   936	#
+   937	# fence_kdump_nodes <node(s)>
+   938	# 			- List of cluster node(s) separated by space to send fence_kdump
+   939	# 			notification to (this option is mandatory to enable fence_kdump).
+   940	
+   941	
+   942	#raw /dev/sda5
+   943	#ext4 /dev/sda3
+   944	#ext4 LABEL=/boot
+   945	#ext4 UUID=03138356-5e61-4ab3-b58e-27507ac41937
+   946	#net my.server.com:/export/tmp
+   947	#net user@my.server.com
+   948	path /var/crash
+   949	core_collector makedumpfile -c --message-level 1 -d 31
+   950	#core_collector scp
+   951	#core_collector cp --sparse=always
+   952	#extra_bins /bin/cp
+   953	#link_delay 60
+   954	#kdump_post /var/crash/scripts/kdump-post.sh
+   955	#extra_bins /usr/bin/lftp
+   956	#disk_timeout 30
+   957	#extra_modules gfs2
+   958	#options modulename options
+   959	#default shell
+   960	#debug_mem_level 0
+   961	#force_rebuild 1
+   962	#sshkey /root/.ssh/kdump_id_rsa
+   963	#fence_kdump_args -p 7410 -f auto -c 0 -i 10
+   964	#fence_kdump_nodes node1 node2
+   965	[logging]
+   966	 default = FILE:/var/log/krb5libs.log
+   967	 kdc = FILE:/var/log/krb5kdc.log
+   968	 admin_server = FILE:/var/log/kadmind.log
+   969	
+   970	[libdefaults]
+   971	 default_realm = EXAMPLE.COM
+   972	 dns_lookup_realm = false
+   973	 dns_lookup_kdc = false
+   974	 ticket_lifetime = 24h
+   975	 renew_lifetime = 7d
+   976	 forwardable = true
+   977	
+   978	[realms]
+   979	 EXAMPLE.COM = {
+   980	  kdc = kerberos.example.com
+   981	  admin_server = kerberos.example.com
+   982	 }
+   983	
+   984	[domain_realm]
+   985	 .example.com = EXAMPLE.COM
+   986	 example.com = EXAMPLE.COM
+   987	
+   988	/* miscelaneous functions */
+   989	#include "misc.conf"
+   990	
+   991	/* miscelaneous typedefs */
+   992	#include "typedefs.conf"
+   993	
+   994	/* /usr/include/arpa/inet.h */
+   995	#include "inet.conf"
+   996	
+   997	/* /usr/include/ctype.h */
+   998	#include "ctype.conf"
+   999	
+  1000	/* /usr/include/stdlib.h */
+  1001	#include "stdlib.conf"
+  1002	
+  1003	/* /usr/include/string.h */
+  1004	#include "string.conf"
+  1005	
+  1006	/* /usr/include/ctype.h */
+  1007	#include "ctype.conf"
+  1008	
+  1009	/* /usr/include/ncurses.h */
+  1010	#include "ncurses.conf"
+  1011	
+  1012	/* /usr/include/stdio.h */
+  1013	#include "stdio.conf"
+  1014	
+  1015	/* /usr/include/dirent.h */
+  1016	#include "dirent.conf"
+  1017	
+  1018	/* /usr/include/unistd.h */
+  1019	#include "unistd.conf"
+  1020	
+  1021	/* /usr/include/libintl.h */
+  1022	#include "libintl.conf"
+  1023	
+  1024	/* /usr/include/dlfcn.h */
+  1025	#include "dlfcn.conf"
+  1026	
+  1027	/* /usr/include/fcntl.h */
+  1028	#include "fcntl.conf"
+  1029	
+  1030	/* /usr/include/getopt.h */
+  1031	#include "getopt.conf"
+  1032	
+  1033	/* /usr/include/signal.h */
+  1034	#include "signal.conf"
+  1035	
+  1036	/* /usr/include/sys/ioctl.h */
+  1037	#include "ioctl.conf"
+  1038	
+  1039	/* /usr/include/sys/socket.h */
+  1040	#include "socket.conf"
+  1041	
+  1042	/* /usr/include/netdb.h */
+  1043	#include "netdb.conf"
+  1044	
+  1045	/* /usr/include/sys/stat.h */
+  1046	#include "stat.conf"
+  1047	
+  1048	/* /usr/include/sys/wait.h */
+  1049	#include "wait.conf"
+  1050	
+  1051	/* /usr/include/utmp.h */
+  1052	#include "utmp.conf"
+  1053	
+  1054	/* /usr/include/time.h */
+  1055	#include "time.conf"
+  1056	
+  1057	/* /usr/include/termios.h */
+  1058	#include "termios.conf"
+  1059	
+  1060	/* /usr/include/term.h */
+  1061	#include "term.conf"
+  1062	
+  1063	/* /usr/include/sys/syslog.h */
+  1064	#include "syslog.conf"
+  1065	
+  1066	/* /usr/include/pwd.h */
+  1067	#include "pwd.conf"
+  1068	
+  1069	/* /usr/include/libio.h */
+  1070	#include "libio.conf"
+  1071	
+  1072	/* /usr/include/locale.h */
+  1073	#include "locale.conf"
+  1074	
+  1075	/* /usr/include/pthread.h */
+  1076	#include "pthread.conf"
+  1077	
+  1078	/* /usr/include/sys/resource.h */
+  1079	#include "resource.conf"
+  1080	
+  1081	/* /etc/latrace.d/mman.conf */
+  1082	#include "mman.conf"
+  1083	
+  1084	include ld.so.conf.d/*.conf
+  1085	# This is the configuration file for libaudit tunables.
+  1086	# It is currently only used for the failure_action tunable.
+  1087	
+  1088	# failure_action can be: log, ignore, terminate
+  1089	failure_action = ignore
+  1090	
+  1091	
+  1092	# See libuser.conf(5) for more information.
+  1093	
+  1094	# Do not modify the default module list if you care about unattended calls
+  1095	# to programs (i.e., scripts) working!
+  1096	
+  1097	[import]
+  1098	# Data from these files is used when libuser.conf does not define a value.
+  1099	# The mapping is documented in the man page.
+  1100	login_defs = /etc/login.defs
+  1101	default_useradd = /etc/default/useradd
+  1102	
+  1103	[defaults]
+  1104	# The default (/usr/lib*/libuser) is usually correct
+  1105	# moduledir = /your/custom/directory
+  1106	
+  1107	# The following variables are usually imported:
+  1108	# skeleton = /etc/skel
+  1109	# mailspooldir = /var/mail
+  1110	
+  1111	crypt_style = sha512
+  1112	modules = files shadow
+  1113	create_modules = files shadow
+  1114	# modules = files shadow ldap
+  1115	# create_modules = ldap
+  1116	
+  1117	[userdefaults]
+  1118	LU_USERNAME = %n
+  1119	# LU_UIDNUMBER = 500
+  1120	LU_GIDNUMBER = %u
+  1121	# LU_USERPASSWORD = !!
+  1122	# LU_GECOS = %n
+  1123	# LU_HOMEDIRECTORY = /home/%n
+  1124	# LU_LOGINSHELL = /bin/bash
+  1125	
+  1126	# LU_SHADOWNAME = %n
+  1127	# LU_SHADOWPASSWORD = !!
+  1128	# LU_SHADOWLASTCHANGE = %d
+  1129	# LU_SHADOWMIN = 0
+  1130	# LU_SHADOWMAX = 99999
+  1131	# LU_SHADOWWARNING = 7
+  1132	# LU_SHADOWINACTIVE = -1
+  1133	# LU_SHADOWEXPIRE = -1
+  1134	# LU_SHADOWFLAG = -1
+  1135	
+  1136	[groupdefaults]
+  1137	LU_GROUPNAME = %n
+  1138	# LU_GIDNUMBER = 500
+  1139	# LU_GROUPPASSWORD = !!
+  1140	# LU_MEMBERUID =
+  1141	# LU_ADMINISTRATORUID =
+  1142	
+  1143	[files]
+  1144	# This is useful for the case where some master files are used to
+  1145	# populate a different NSS mechanism which this workstation uses.
+  1146	# directory = /etc
+  1147	
+  1148	[shadow]
+  1149	# This is useful for the case where some master files are used to
+  1150	# populate a different NSS mechanism which this workstation uses.
+  1151	# directory = /etc
+  1152	
+  1153	[ldap]
+  1154	# Setting these is always necessary.
+  1155	# server = ldap
+  1156	# basedn = dc=example,dc=com
+  1157	
+  1158	# Setting these is rarely necessary, since it's usually correct.
+  1159	# userBranch = ou=People
+  1160	# groupBranch = ou=Group
+  1161	
+  1162	# Set only if your administrative user uses simple bind operations to
+  1163	# connect to the server.
+  1164	# binddn = cn=Manager,dc=example,dc=com
+  1165	
+  1166	# Set this only if the default user (as determined by SASL) is incorrect
+  1167	# for SASL bind operations.  Usually, it's correct, so you'll rarely need
+  1168	# to set these.
+  1169	# user = Manager
+  1170	# authuser = Manager
+  1171	
+  1172	[sasl]
+  1173	# Set these only if your sasldb is only used by a particular application, and
+  1174	# in a particular domain.  The default (all applications, all domains) is
+  1175	# probably correct for most installations.
+  1176	# appname = imap
+  1177	# domain = EXAMPLE.COM
+  1178	# see "man logrotate" for details
+  1179	# rotate log files weekly
+  1180	weekly
+  1181	
+  1182	# keep 4 weeks worth of backlogs
+  1183	rotate 4
+  1184	
+  1185	# create new (empty) log files after rotating old ones
+  1186	create
+  1187	
+  1188	# use date as a suffix of the rotated file
+  1189	dateext
+  1190	
+  1191	# uncomment this if you want your log files compressed
+  1192	#compress
+  1193	
+  1194	# RPM packages drop log rotation information into this directory
+  1195	include /etc/logrotate.d
+  1196	
+  1197	# no packages own wtmp and btmp -- we'll rotate them here
+  1198	/var/log/wtmp {
+  1199	    monthly
+  1200	    create 0664 root utmp
+  1201		minsize 1M
+  1202	    rotate 1
+  1203	}
+  1204	
+  1205	/var/log/btmp {
+  1206	    missingok
+  1207	    monthly
+  1208	    create 0600 root utmp
+  1209	    rotate 1
+  1210	}
+  1211	
+  1212	# system-specific logs may be also be configured here.
+  1213	; ltrace.conf
+  1214	
+  1215	; Argument types:
+  1216	; +		== May vary (ie, is a returned value) (prefix)
+  1217	; void
+  1218	; int
+  1219	; uint		== (unsigned int)
+  1220	; long
+  1221	; ulong		== (unsigned long)
+  1222	; octal		== (unsigned)			[written in octal]
+  1223	; char
+  1224	; addr		== (void *)			[unsigned, written in hexa]
+  1225	; file		== (FILE *)						[TODO]
+  1226	; format	== ((const char *), ...)	[printf() like]		[TODO]
+  1227	; string	== (char *)
+  1228	; stringN	== (char *)		[N>=0]	[show only up to (arg N) bytes]
+  1229	
+  1230	; arpa/inet.h
+  1231	int inet_aton(string,addr);
+  1232	string inet_ntoa(addr);			; It isn't a ADDR but an hexa number...
+  1233	addr inet_addr(string);
+  1234	
+  1235	; bfd.h
+  1236	void bfd_init(void);
+  1237	int bfd_set_default_target(string);
+  1238	addr bfd_scan_vma(string, addr, int);
+  1239	addr bfd_openr(string,string);
+  1240	int bfd_check_format(addr,int);
+  1241	
+  1242	; ctype.h
+  1243	char tolower(char);
+  1244	char toupper(char);
+  1245	addr __ctype_b_loc(void);
+  1246	addr __ctype_tolower_loc(void);
+  1247	addr __ctype_toupper_loc(void);
+  1248	
+  1249	; curses.h
+  1250	int waddch(addr, char);
+  1251	int mvprintw(int, int, format);
+  1252	int wmove(addr, int, int);
+  1253	int waddnstr(addr, string, int);
+  1254	string tgoto(string, int, int);
+  1255	
+  1256	; dirent.h
+  1257	int closedir(addr);
+  1258	addr opendir(string);
+  1259	addr readdir(addr);
+  1260	addr readdir64(addr);
+  1261	
+  1262	; dlfcn.h
+  1263	addr  dlopen(string, int);
+  1264	string dlerror(void);
+  1265	addr  dlsym(addr, string);
+  1266	int dlclose(addr);
+  1267	
+  1268	; errno.h
+  1269	addr __errno_location(void);
+  1270	
+  1271	; fcntl.h
+  1272	int open(string,int,octal);		; WARNING: 3rd argument may not be there
+  1273	int open64(string,int,octal);		; WARNING: 3rd argument may not be there
+  1274	
+  1275	; fnmatch.h
+  1276	int fnmatch(string, string, int);
+  1277	
+  1278	; getopt.h
+  1279	int getopt_long(int,addr,string,addr,addr);
+  1280	int getopt_long_only(int,addr,string,addr,addr);
+  1281	
+  1282	; grp.h
+  1283	void endgrent(void);
+  1284	addr getgrnam(string);
+  1285	void setgrent(void);
+  1286	addr getgrent(void);
+  1287	
+  1288	; libintl.h
+  1289	string __dcgettext(string,string,int);
+  1290	string bindtextdomain(string, string);
+  1291	string textdomain(string);
+  1292	
+  1293	; libio.h
+  1294	char _IO_getc(file);
+  1295	int _IO_putc(char,file);
+  1296	
+  1297	; locale.h
+  1298	string setlocale(int, string);
+  1299	
+  1300	; mcheck.h
+  1301	void mtrace(void);
+  1302	void muntrace(void);
+  1303	
+  1304	; mntent.h
+  1305	int endmntent(file);
+  1306	file setmntent(string,string);
+  1307	addr getmntent(addr);
+  1308	
+  1309	; mqueue.h
+  1310	int mq_open(string, int, octal, addr);  ; WARNING: 3rd and 4th arguments may not be there
+  1311	int mq_close(int);
+  1312	int mq_unlink(string);
+  1313	int mq_getattr(int, addr);
+  1314	int mq_setattr(int, addr, addr);
+  1315	int mq_notify(int, addr);
+  1316	int mq_send(int, string3, ulong, uint);
+  1317	int mq_timedsend(int, string3, ulong, uint, addr);
+  1318	long mq_receive(int, +string0, ulong, addr);
+  1319	long mq_timedreceive(int, +string0, ulong, addr, addr);
+  1320	
+  1321	; netdb.h
+  1322	void endhostent(void);
+  1323	void endnetent(void);
+  1324	void endnetgrent(void);
+  1325	void endprotoent(void);
+  1326	void endservent(void);
+  1327	void freeaddrinfo(addr);
+  1328	string gai_strerror(int);
+  1329	int getaddrinfo(string, string, addr, addr);
+  1330	addr gethostbyaddr(string, uint, int);
+  1331	addr gethostbyname(string);
+  1332	addr gethostent(void);
+  1333	int getnameinfo(addr, uint, string, uint, string, uint, uint);
+  1334	addr getnetbyaddr(uint, int);
+  1335	addr getnetbyname(string);
+  1336	addr getnetent(void);
+  1337	int getnetgrent(addr, addr, addr);
+  1338	addr getprotobyname(string);
+  1339	addr getprotobynumber(int);
+  1340	addr getprotoent(void);
+  1341	addr getservbyname(string, string);
+  1342	addr getservbyport(int, string);
+  1343	addr getservent(void);
+  1344	void herror(string);
+  1345	string hstrerror(int);
+  1346	;int rcmd(addr, ushort, string, string, string, addr); FIXME implement ushort
+  1347	;int rcmd_af(addr, ushort, string, string, string, addr, int); FIXME implement ushort
+  1348	int rexec(addr, int, string, string, string, addr);
+  1349	int rexec_af(addr, int, string, string, string, addr, int);
+  1350	int rresvport (addr);
+  1351	int rresvport_af (addr, int);
+  1352	int ruserok(string, int, string, string);
+  1353	int ruserok_af(string, int, string, string, int);
+  1354	void sethostent(int);
+  1355	void setnetent(int);
+  1356	int setnetgrent(string);
+  1357	void setprotoent(int);
+  1358	void setservent(int);
+  1359	
+  1360	; netinet/in.h
+  1361	uint ntohs(uint);
+  1362	
+  1363	; pcap.h
+  1364	string pcap_lookupdev(addr);
+  1365	addr pcap_open_live(string, int, int, int, addr);
+  1366	int pcap_snapshot(addr);
+  1367	int pcap_lookupnet(string, addr, addr, addr);
+  1368	int pcap_compile(addr, addr, string, int, addr);
+  1369	
+  1370	; pwd.h
+  1371	string getpass(string);
+  1372	void endpwent(void);
+  1373	addr getpwnam(string);
+  1374	void setpwent(void);
+  1375	
+  1376	; readline/readline.h
+  1377	string readline(string);
+  1378	
+  1379	; signal.h
+  1380	int kill(int,int);
+  1381	addr signal(int,addr);
+  1382	int sigemptyset(addr);
+  1383	int sigfillset(addr);
+  1384	int sigaddset(addr, int);
+  1385	int sigdelset(addr, int);
+  1386	int sigismember(addr, int);
+  1387	int sigaction(int, addr, addr);
+  1388	int sigprocmask(int, addr, addr);
+  1389	int sigpending(addr);
+  1390	int sigsuspend(addr);
+  1391	
+  1392	; stdio.h
+  1393	int fclose(file);
+  1394	int feof(file);
+  1395	int ferror(file);
+  1396	int fflush(file);
+  1397	char fgetc(file);
+  1398	addr fgets(+string, int, file);
+  1399	int fileno(file);
+  1400	file fopen(string,string);
+  1401	file fopen64(string,string);
+  1402	int fprintf(file,format);
+  1403	int fputc(char,file);
+  1404	int fputs(string,file);
+  1405	ulong fread(addr,ulong,ulong,file);
+  1406	ulong fread_unlocked(addr,ulong,ulong,file);
+  1407	ulong fwrite(string,ulong,ulong,file);
+  1408	ulong fwrite_unlocked(string,ulong,ulong,file);
+  1409	int pclose(addr);
+  1410	void perror(string);
+  1411	addr popen(string, string);
+  1412	int printf(format);
+  1413	int puts(string);
+  1414	int remove(string);
+  1415	int snprintf(+string2,ulong,format);
+  1416	int sprintf(+string,format);
+  1417	string tempnam(string,string);
+  1418	int vfprintf(file,string,addr);
+  1419	int vsnprintf(+string2,ulong,string,addr);
+  1420	int setvbuf(file,addr,int,ulong);
+  1421	void setbuf(file,addr);
+  1422	void setbuffer(file,addr,ulong);
+  1423	void setlinebuf(file);
+  1424	int rename(string,string);
+  1425	
+  1426	; stdlib.h
+  1427	long __strtol_internal(string,addr,int);
+  1428	ulong __strtoul_internal(string,addr,int);
+  1429	int atexit(addr);
+  1430	addr bsearch(string, addr, ulong, ulong, addr);
+  1431	addr calloc(ulong, ulong);
+  1432	void exit(int);
+  1433	void free(addr);
+  1434	string getenv(string);
+  1435	int putenv(string);
+  1436	int setenv(string,string,int);
+  1437	void unsetenv(string);
+  1438	addr malloc(ulong);
+  1439	void qsort(addr,ulong,ulong,addr);
+  1440	int random(void);
+  1441	addr realloc(addr,ulong);
+  1442	void srandom(uint);
+  1443	int system(string);
+  1444	
+  1445	; string.h
+  1446	void bcopy(addr,addr,ulong);
+  1447	void bzero(addr,ulong);
+  1448	string basename(string);
+  1449	string index(string,char);
+  1450	addr memchr(string,char,ulong);
+  1451	addr memcpy(addr,string3,ulong);
+  1452	addr memset(addr,char,long);
+  1453	string rindex(string,char);
+  1454	addr stpcpy(addr,string);
+  1455	int strcasecmp(string, string);
+  1456	string strcat(string, string);
+  1457	string strchr(string,char);
+  1458	int strcoll(string,string);
+  1459	ulong strlen(string);
+  1460	int strcmp(string,string);
+  1461	addr strcpy(addr,string);
+  1462	addr strdup(string);
+  1463	string strerror(int);
+  1464	int strncmp(string,string,ulong);
+  1465	addr strncpy(addr,string3,ulong);
+  1466	string strrchr(string,char);
+  1467	string strsep(addr,string);
+  1468	ulong strspn(string,string);
+  1469	ulong strcspn(string,string);
+  1470	string strstr(string,string);
+  1471	string strtok(string, string);
+  1472	
+  1473	; sys/ioctl.h
+  1474	int ioctl(int, int, addr);
+  1475	
+  1476	; sys/socket.h
+  1477	int socket(int,int,int);
+  1478	
+  1479	; sys/stat.h
+  1480	int __fxstat(int,int,addr);
+  1481	int __xstat(int,string,addr);
+  1482	int __lxstat(int,string,addr);
+  1483	int __fxstat64(int,int,addr);
+  1484	int __xstat64(int,string,addr);
+  1485	int __lxstat64(int,string,addr);
+  1486	int chmod(string,octal);
+  1487	int fchmod(int,octal);
+  1488	int mkfifo(string,octal);
+  1489	octal umask(octal);
+  1490	
+  1491	; sys/utsname.h
+  1492	int uname(addr);
+  1493	
+  1494	; sys/vfs.h
+  1495	int statfs(string,addr);
+  1496	
+  1497	; syslog.h
+  1498	void closelog(void);
+  1499	void openlog(string,int,int);
+  1500	void syslog(int,format);
+  1501	
+  1502	; term.h
+  1503	int tputs(string, int, addr);
+  1504	
+  1505	; termios.h
+  1506	int tcgetattr(int,addr);
+  1507	int tcsetattr(int,int,addr);
+  1508	
+  1509	; time.h
+  1510	string ctime(addr);
+  1511	int gettimeofday(addr, addr);
+  1512	addr gmtime(addr);
+  1513	addr localtime(addr);
+  1514	ulong strftime(+string2,ulong,string,addr);
+  1515	long time(addr);
+  1516	
+  1517	; unistd.h
+  1518	void _exit(int);
+  1519	int access(string, int);
+  1520	uint alarm(uint);
+  1521	int chdir(string);
+  1522	int chown(string,int,int);
+  1523	int close(int);
+  1524	string crypt(string,string);
+  1525	int dup2(int,int);
+  1526	int execlp(string,string,addr,addr,addr);
+  1527	int execv(string,addr);
+  1528	int fchdir(int);
+  1529	int fork(void);
+  1530	int ftruncate(int,ulong);
+  1531	string2 getcwd(addr,ulong);
+  1532	int getdomainname(+string2,ulong);
+  1533	int geteuid(void);
+  1534	int getegid(void);
+  1535	int getgid(void);
+  1536	int gethostname(+string2,ulong);
+  1537	string getlogin(void);
+  1538	int getopt(int,addr,string);
+  1539	int getpid(void);
+  1540	int getppid(void);
+  1541	int getuid(void);
+  1542	int getpgrp(void);
+  1543	int setpgrp(void);
+  1544	int getpgid(int);
+  1545	int isatty(int);
+  1546	int link(string,string);
+  1547	int mkdir(string,octal);
+  1548	long read(int, +string0, ulong);
+  1549	int rmdir(string);
+  1550	int seteuid(uint);
+  1551	int setgid(int);
+  1552	int sethostname(+string2,ulong);
+  1553	int setpgid(int,int);
+  1554	int setreuid(uint, uint);
+  1555	int setuid(int);
+  1556	uint sleep(uint);
+  1557	int symlink(string,string);
+  1558	int sync(void);
+  1559	int truncate(string,ulong);
+  1560	string ttyname(int);
+  1561	int unlink(string);
+  1562	void usleep(uint);
+  1563	long write(int, string3, ulong);
+  1564	addr sbrk(long);
+  1565	int getpagesize(void);
+  1566	long lseek(int,long,int);
+  1567	int pipe(addr);
+  1568	
+  1569	; utmp.h
+  1570	void endutent(void);
+  1571	addr getutent(void);
+  1572	void setutent(void);
+  1573	
+  1574	; wchar.h
+  1575	int fwide(addr, int);
+  1576	
+  1577	; sys/wait.h
+  1578	int wait(addr);
+  1579	int waitpid(int,addr,int);
+  1580	
+  1581	; X11/Xlib.h
+  1582	void XCloseDisplay(addr);
+  1583	int XMapWindow(addr,addr);
+  1584	addr XOpenDisplay(string);
+  1585	
+  1586	; sys/acl.h
+  1587	int acl_add_perm(addr,uint);
+  1588	int acl_calc_mask(addr);
+  1589	int acl_clear_perms(addr);
+  1590	int acl_copy_entry(addr,addr);
+  1591	int acl_copy_ext(addr,addr,int);
+  1592	addr acl_copy_int(addr);
+  1593	int acl_create_entry(addr,addr);
+  1594	int acl_delete_def_file(string);
+  1595	int acl_delete_entry(addr,addr);
+  1596	int acl_delete_perm(addr,uint);
+  1597	addr acl_dup(addr);
+  1598	int acl_free(addr);
+  1599	addr acl_from_text(string);
+  1600	int acl_get_entry(addr,int,addr);
+  1601	addr acl_get_fd(int);
+  1602	addr acl_get_file(string,int);
+  1603	int acl_get_permset(addr,addr);
+  1604	addr acl_get_qualifier(addr);
+  1605	int acl_get_tag_type(addr,addr);
+  1606	addr acl_init(int);
+  1607	int acl_set_fd(int,addr);
+  1608	int acl_set_file(string,int,addr);
+  1609	int acl_set_permset(addr,addr);
+  1610	int acl_set_qualifier(addr,addr);
+  1611	int acl_set_tag_type(addr,int);
+  1612	int acl_size(addr);
+  1613	string acl_to_text(addr,addr);
+  1614	itn acl_valid(addr);
+  1615	
+  1616	; acl/libacl.h
+  1617	int acl_check(addr,addr);
+  1618	int acl_cmp(addr,addr);
+  1619	int acl_entries(addr);
+  1620	int acl_equiv_mode(addr,addr);
+  1621	string acl_error(int);
+  1622	int acl_extended_fd(int);
+  1623	int acl_extended_file(string);
+  1624	addr acl_from_mode(octal);
+  1625	int acl_get_perm(addr,uint);
+  1626	string acl_to_any_text(addr,string,char,int);
+  1627	
+  1628	; SYSCALLS
+  1629	addr  SYS_brk(addr);
+  1630	int   SYS_close(int);
+  1631	int   SYS_execve(string,addr,addr);
+  1632	void  SYS_exit(int);
+  1633	void  SYS_exit_group(int);
+  1634	int   SYS_fork(void);
+  1635	int   SYS_getcwd(+string2,ulong);
+  1636	int   SYS_getpid(void);
+  1637	;addr SYS_mmap(addr,ulong,int,int,int,long);
+  1638	int   SYS_munmap(addr,ulong);
+  1639	int   SYS_open(string,int,octal);
+  1640	int   SYS_personality(uint);
+  1641	long  SYS_read(int,+string0,ulong);
+  1642	int   SYS_stat(string,addr);
+  1643	octal SYS_umask(octal);
+  1644	int   SYS_uname(addr);
+  1645	long  SYS_write(int,string3,ulong);
+  1646	int   SYS_sync(void);
+  1647	int   SYS_setxattr(string,string,addr,uint,int);
+  1648	int   SYS_lsetxattr(string,string,addr,uint,int);
+  1649	int   SYS_fsetxattr(int,string,addr,uint,int);
+  1650	int   SYS_getxattr(string,string,addr,uint);
+  1651	int   SYS_lgetxattr(string,string,addr,uint);
+  1652	int   SYS_fgetxattr(int,string,addr,uint);
+  1653	int   SYS_listxattr(string,addr,uint);
+  1654	int   SYS_llistxattr(string,addr,uint);
+  1655	int   SYS_flistxattr(int,addr,uint);
+  1656	int   SYS_removexattr(string,string);
+  1657	int   SYS_lremovexattr(string,string);
+  1658	int   SYS_fremovexattr(int,string);
+  1659	[defaults]
+  1660		base_features = sparse_super,filetype,resize_inode,dir_index,ext_attr
+  1661		enable_periodic_fsck = 1
+  1662		blocksize = 4096
+  1663		inode_size = 256
+  1664		inode_ratio = 16384
+  1665	
+  1666	[fs_types]
+  1667		ext3 = {
+  1668			features = has_journal
+  1669		}
+  1670		ext4 = {
+  1671			features = has_journal,extent,huge_file,flex_bg,uninit_bg,dir_nlink,extra_isize
+  1672			inode_size = 256
+  1673		}
+  1674		ext4dev = {
+  1675			features = has_journal,extent,huge_file,flex_bg,uninit_bg,dir_nlink,extra_isize
+  1676			inode_size = 256
+  1677			options = test_fs=1
+  1678		}
+  1679		small = {
+  1680			blocksize = 1024
+  1681			inode_size = 128
+  1682			inode_ratio = 4096
+  1683		}
+  1684		floppy = {
+  1685			blocksize = 1024
+  1686			inode_size = 128
+  1687			inode_ratio = 8192
+  1688		}
+  1689		news = {
+  1690			inode_ratio = 4096
+  1691		}
+  1692		largefile = {
+  1693			inode_ratio = 1048576
+  1694			blocksize = -1
+  1695		}
+  1696		largefile4 = {
+  1697			inode_ratio = 4194304
+  1698			blocksize = -1
+  1699		}
+  1700		hurd = {
+  1701		     blocksize = 4096
+  1702		     inode_size = 128
+  1703		}
+  1704	#
+  1705	# /etc/nfsmount.conf - see nfsmount.conf(5) for details
+  1706	#
+  1707	# This is an NFS mount configuration file. This file can be broken
+  1708	# up into three different sections: Mount, Server and Global
+  1709	# 
+  1710	# [ MountPoint "Mount_point" ] 
+  1711	# This section defines all the mount options that
+  1712	# should be used on a particular mount point. The '<Mount_Point>'
+  1713	# string need to be an exact match of the path in the mount 
+  1714	# command. Example:
+  1715	#     [ MountPoint "/export/home" ]
+  1716	#       background=True
+  1717	# Would cause all mount to /export/home would be done in
+  1718	# the background
+  1719	#
+  1720	# [ Server "Server_Name" ]
+  1721	# This section defines all the mount options that
+  1722	# should be used on mounts to a particular NFS server. 
+  1723	# Example:
+  1724	#     [ Server "nfsserver.foo.com" ]
+  1725	#       rsize=32k
+  1726	#       wsize=32k
+  1727	# All reads and writes to the 'nfsserver.foo.com' server 
+  1728	# will be done with 32k (32768 bytes) block sizes.
+  1729	#
+  1730	[ NFSMount_Global_Options ]
+  1731	# This statically named section defines global mount 
+  1732	# options that can be applied on all NFS mount.
+  1733	#
+  1734	# Protocol Version [2,3,4]
+  1735	# This defines the default protocol version which will
+  1736	# be used to start the negotiation with the server.
+  1737	# Defaultvers=4
+  1738	#
+  1739	# Setting this option makes it mandatory the server supports the
+  1740	# given version. The mount will fail if the given version is 
+  1741	# not support by the server. 
+  1742	# Nfsvers=4
+  1743	#
+  1744	# Network Protocol [udp,tcp,rdma] (Note: values are case sensitive)
+  1745	# This defines the default network protocol which will
+  1746	# be used to start the negotiation with the server.
+  1747	# Defaultproto=tcp
+  1748	#
+  1749	# Setting this option makes it mandatory the server supports the
+  1750	# given network protocol. The mount will fail if the given network
+  1751	# protocol is not supported by the server.
+  1752	# Proto=tcp
+  1753	#
+  1754	# The number of times a request will be retired before 
+  1755	# generating a timeout 
+  1756	# Retrans=2
+  1757	#
+  1758	# The number of minutes that will retry mount
+  1759	# Retry=2
+  1760	#
+  1761	# The minimum time (in seconds) file attributes are cached
+  1762	# acregmin=30
+  1763	#
+  1764	# The Maximum time (in seconds) file attributes are cached
+  1765	# acregmin=60
+  1766	#
+  1767	# The minimum time (in seconds) directory attributes are cached
+  1768	# acregmin=30
+  1769	#
+  1770	# The Maximum time (in seconds) directory attributes are cached
+  1771	# acregmin=60
+  1772	#
+  1773	# Enable Access  Control  Lists
+  1774	# Acl=False
+  1775	#
+  1776	# Enable Attribute Caching
+  1777	# Ac=True
+  1778	#
+  1779	# Do mounts in background (i.e. asynchronously)
+  1780	# Background=False
+  1781	#
+  1782	# Close-To-Open cache coherence
+  1783	# Cto=True
+  1784	#
+  1785	# Do mounts in foreground (i.e. synchronously)
+  1786	# Foreground=True
+  1787	#
+  1788	# How to handle times out from servers (Hard is STRONGLY suggested)
+  1789	# Hard=True
+  1790	# Soft=False
+  1791	#
+  1792	# Enable File Locking
+  1793	# Lock=True
+  1794	#
+  1795	# Enable READDIRPLUS on NFS version 3 mounts
+  1796	# Rdirplus=True
+  1797	#
+  1798	# Maximum Read Size (in Bytes)
+  1799	# Rsize=8k
+  1800	#
+  1801	# Maximum Write Size (in Bytes)
+  1802	# Wsize=8k
+  1803	#
+  1804	# Maximum Server Block Size (in Bytes)
+  1805	# Bsize=8k
+  1806	#
+  1807	# Ignore unknown mount options
+  1808	# Sloppy=False
+  1809	#
+  1810	# Share Data and Attribute Caches
+  1811	# Sharecache=True
+  1812	#
+  1813	# The amount of time, in tenths of a seconds, the client
+  1814	# will wait for a response from the server before retransmitting
+  1815	# the request.
+  1816	# Timeo=600
+  1817	#
+  1818	# Sets all attributes times to the same time (in seconds)
+  1819	# actimeo=30
+  1820	#
+  1821	# Server Mountd port mountport
+  1822	# mountport=4001
+  1823	#
+  1824	# Server Mountd Protocol
+  1825	# mountproto=tcp
+  1826	#
+  1827	# Server Mountd Version
+  1828	# mounvers=3
+  1829	#
+  1830	# Server Mountd Host
+  1831	# mounthost=hostname
+  1832	#
+  1833	# Server Port
+  1834	# Port=2049
+  1835	#
+  1836	# RPCGSS security flavors 
+  1837	# [none, sys, krb5, krb5i, krb5p ]
+  1838	# Sec=sys
+  1839	#
+  1840	# Allow Signals to interrupt file operations
+  1841	# Intr=True
+  1842	#
+  1843	# Specifies  how the kernel manages its cache of directory
+  1844	# Lookupcache=all|none|pos|positive
+  1845	#
+  1846	# Turn of the caching of that access time
+  1847	# noatime=True
+  1848	#
+  1849	# /etc/nsswitch.conf
+  1850	#
+  1851	# An example Name Service Switch config file. This file should be
+  1852	# sorted with the most-used services at the beginning.
+  1853	#
+  1854	# The entry '[NOTFOUND=return]' means that the search for an
+  1855	# entry should stop if the search in the previous entry turned
+  1856	# up nothing. Note that if the search failed due to some other reason
+  1857	# (like no NIS server responding) then the search continues with the
+  1858	# next entry.
+  1859	#
+  1860	# Valid entries include:
+  1861	#
+  1862	#	nisplus			Use NIS+ (NIS version 3)
+  1863	#	nis			Use NIS (NIS version 2), also called YP
+  1864	#	dns			Use DNS (Domain Name Service)
+  1865	#	files			Use the local files
+  1866	#	db			Use the local database (.db) files
+  1867	#	compat			Use NIS on compat mode
+  1868	#	hesiod			Use Hesiod for user lookups
+  1869	#	[NOTFOUND=return]	Stop searching if not found so far
+  1870	#
+  1871	
+  1872	# To use db, put the "db" in front of "files" for entries you want to be
+  1873	# looked up first in the databases
+  1874	#
+  1875	# Example:
+  1876	#passwd:    db files nisplus nis
+  1877	#shadow:    db files nisplus nis
+  1878	#group:     db files nisplus nis
+  1879	
+  1880	passwd:     files
+  1881	shadow:     files
+  1882	group:      files
+  1883	
+  1884	#hosts:     db files nisplus nis dns
+  1885	hosts:      files dns
+  1886	
+  1887	# Example - obey only what nisplus tells us...
+  1888	#services:   nisplus [NOTFOUND=return] files
+  1889	#networks:   nisplus [NOTFOUND=return] files
+  1890	#protocols:  nisplus [NOTFOUND=return] files
+  1891	#rpc:        nisplus [NOTFOUND=return] files
+  1892	#ethers:     nisplus [NOTFOUND=return] files
+  1893	#netmasks:   nisplus [NOTFOUND=return] files     
+  1894	
+  1895	bootparams: nisplus [NOTFOUND=return] files
+  1896	
+  1897	ethers:     files
+  1898	netmasks:   files
+  1899	networks:   files
+  1900	protocols:  files
+  1901	rpc:        files
+  1902	services:   files
+  1903	
+  1904	netgroup:   nisplus
+  1905	
+  1906	publickey:  nisplus
+  1907	
+  1908	automount:  files nisplus
+  1909	aliases:    files nisplus
+  1910	
+  1911	# For more information about this file, see the man pages
+  1912	# ntp.conf(5), ntp_acc(5), ntp_auth(5), ntp_clock(5), ntp_misc(5), ntp_mon(5).
+  1913	
+  1914	driftfile /var/lib/ntp/drift
+  1915	
+  1916	# Permit time synchronization with our time source, but do not
+  1917	# permit the source to query or modify the service on this system.
+  1918	restrict default kod nomodify notrap nopeer noquery
+  1919	restrict -6 default kod nomodify notrap nopeer noquery
+  1920	
+  1921	# Permit all access over the loopback interface.  This could
+  1922	# be tightened as well, but to do so would effect some of
+  1923	# the administrative functions.
+  1924	restrict 127.0.0.1 
+  1925	restrict -6 ::1
+  1926	
+  1927	# Hosts on local network are less restricted.
+  1928	#restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap
+  1929	
+  1930	# Use public servers from the pool.ntp.org project.
+  1931	# Please consider joining the pool (http://www.pool.ntp.org/join.html).
+  1932	server 0.centos.pool.ntp.org iburst
+  1933	server 1.centos.pool.ntp.org iburst
+  1934	server 2.centos.pool.ntp.org iburst
+  1935	server 3.centos.pool.ntp.org iburst
+  1936	
+  1937	#broadcast 192.168.1.255 autokey	# broadcast server
+  1938	#broadcastclient			# broadcast client
+  1939	#broadcast 224.0.1.1 autokey		# multicast server
+  1940	#multicastclient 224.0.1.1		# multicast client
+  1941	#manycastserver 239.255.254.254		# manycast server
+  1942	#manycastclient 239.255.254.254 autokey # manycast client
+  1943	
+  1944	# Enable public key cryptography.
+  1945	#crypto
+  1946	
+  1947	includefile /etc/ntp/crypto/pw
+  1948	
+  1949	# Key file containing the keys and key identifiers used when operating
+  1950	# with symmetric key cryptography. 
+  1951	keys /etc/ntp/keys
+  1952	
+  1953	# Specify the key identifiers which are trusted.
+  1954	#trustedkey 4 8 42
+  1955	
+  1956	# Specify the key identifier to use with the ntpdc utility.
+  1957	#requestkey 8
+  1958	
+  1959	# Specify the key identifier to use with the ntpq utility.
+  1960	#controlkey 8
+  1961	
+  1962	# Enable writing of statistics records.
+  1963	#statistics clockstats cryptostats loopstats peerstats
+  1964	# Config file for numad
+  1965	#
+  1966	# Default INTERVAL is 15
+  1967	# modify below to change it
+  1968	INTERVAL=15
+  1969	<?xml version="1.0"?>
+  1970	
+  1971	<!-- This configuration file controls the oddjob daemon.  It controls
+  1972	     which requests the daemon will recognize, and whether or not it
+  1973	     will attempt to fulfill them on the behalf of particular users.
+  1974	
+  1975	     Each <oddjobconfig> contains a mixture of <service> and <include> nodes.
+  1976	 
+  1977	     Each <service> element corresponds to a well-known D-Bus address (given
+  1978	     in the "name" attribute) which the oddjobd daemon will answer to.  It
+  1979	     may contain one or more <object> elements which each describe an object
+  1980	     path.  Each <object>, in turn, is named by its "name" attribute.
+  1981	
+  1982	     Each <object> element must also contain zero or more <interface>
+  1983	     elements, which are named by their "name" attributes and correspond to
+  1984	     names of interfaces which the object implements.
+  1985	
+  1986	     Each <interface> element must contain zero or more <method>
+  1987	     elements, which are named by their "name" attributes.  Each
+  1988	     <method> node corresponds to a D-Bus method implemented by the
+  1989	     object as part of the interface.
+  1990	
+  1991	     Each method must include an access-control list which contains at
+  1992	     least one rule, or the daemon will ignore any attempts to call the
+  1993	     method.
+  1994	
+  1995	     When checking if a client is allowed to use a method, all deny
+  1996	     rules are processed, then all allow rules.  The first rule which
+  1997	     matches the user decides whether access is allowed or denied.
+  1998	
+  1999	     Access rules can specify either a user (using the "user"
+  2000	     attribute), or a range of UIDs (using the "min_uid" and "max_uid"
+  2001	     attributes).
+  2002	
+  2003	     If SELinux support was compiled in, then a rule can also specify
+  2004	     whether or not it applies if the SELinux policy is being enforced
+  2005	     ("selinux_enforcing"), or what the caller's SELinux context
+  2006	     ("selinux_context"), user ("selinux_user"), role ("selinux_role"),
+  2007	     or type ("selinux_type") must be for that rule to apply.
+  2008	
+  2009	     A method may, as part of its definition, specify an external
+  2010	     program which is to be run when the method is invoked, by including
+  2011	     a <helper> node.  The <helper> node should include an "exec"
+  2012	     attribute naming the external program which will be launched to
+  2013	     accomplish the given task.  Depending on the value of its
+  2014	     "argument_passing_method" attribute, it will receive its arguments
+  2015	     either over stdin, one argument per line, or on the command line.
+  2016	     Depending on the value of the "prepend_user_name" attribute, the
+  2017	     argument list may or may not begin with the calling user's name.
+  2018	     The helper will be run with superuser privileges.
+  2019	 
+  2020	     Here's what an example /etc/oddjobd.conf.d/crontabs.conf might
+  2021	     look like, allowing either users with either UID=0 or the staff_r role to
+  2022	     run the regularly scheduled cron jobs at will:
+  2023	
+  2024	     <oddjobconfig>
+  2025	       <service name="com.redhat.periodic_cron">
+  2026	         <allow user="root"/>
+  2027	         <allow selinux_enforcing="yes" selinux_role="staff_r"/>
+  2028	         <object name="/cron/hourly">
+  2029	           <interface name="com.redhat.periodic_run">
+  2030	             <method name="run">
+  2031	               <helper exec="/usr/bin/run-parts /etc/cron.hourly"
+  2032	                       arguments="0"/>
+  2033	             </method>
+  2034	           </interface>
+  2035	         </object>
+  2036	         <object name="/cron/daily">
+  2037	           <interface name="com.redhat.periodic_run">
+  2038	             <method name="run">
+  2039	               <helper exec="/usr/bin/run-parts /etc/cron.daily"
+  2040	                       arguments="0"/>
+  2041	             </method>
+  2042	           </interface>
+  2043	         </object>
+  2044	         <object name="/cron/weekly">
+  2045	           <interface name="com.redhat.periodic_run">
+  2046	             <method name="run">
+  2047	               <helper exec="/usr/bin/run-parts /etc/cron.weekly"
+  2048	                       arguments="0"/>
+  2049	             </method>
+  2050	           </interface>
+  2051	         </object>
+  2052	         <object name="/cron/monthly">
+  2053	           <interface name="com.redhat.periodic_run">
+  2054	             <method name="run">
+  2055	               <helper exec="/usr/bin/run-parts /etc/cron.monthly"
+  2056	                       arguments="0"/>
+  2057	             </method>
+  2058	           </interface>
+  2059	         </object>
+  2060	       </service>
+  2061	     </oddjobconfig>
+  2062	
+  2063	  -->
+  2064	
+  2065	<oddjobconfig>
+  2066	
+  2067	  <service name="com.redhat.oddjob">
+  2068	    <object name="/com/redhat/oddjob">
+  2069	      <interface name="com.redhat.oddjob">
+  2070	
+  2071	        <method name="listall">
+  2072	          <allow min_uid="0" max_uid="0"/>
+  2073	        </method>
+  2074	
+  2075	        <method name="list">
+  2076	          <allow/>
+  2077	        </method>
+  2078	
+  2079	        <method name="quit">
+  2080	          <allow user="root"/>
+  2081	        </method>
+  2082	
+  2083	        <method name="reload">
+  2084	          <allow user="root"/>
+  2085	        </method>
+  2086	
+  2087	      </interface>
+  2088	
+  2089	    </object>
+  2090	
+  2091	  </service>
+  2092	
+  2093	  <!-- Site-specific or other distributed additions. -->
+  2094	  <include ignore_missing="yes">/etc/oddjobd.conf.d/*.conf</include>
+  2095	
+  2096	  <!-- Local additions. -->
+  2097	  <include ignore_missing="yes">/etc/oddjobd-local.conf</include>
+  2098	
+  2099	</oddjobconfig>
+  2100	# Config file for hd-apm-restore hook
+  2101	
+  2102	# Devices, where the hd apm value should be restored, separated by space
+  2103	#HD_APM_DEVICES="sda"
+  2104	
+  2105	# Use this to overwrite a value for a device in case hdparm reports
+  2106	# "unknown value" for the apm level. This is ignored when hdparm
+  2107	# returns an other value.
+  2108	#savestate sda 192
+  2109	#savestate sdb 192
+  2110	#savestate sdc 192
+  2111	#savestate sdd 192
+  2112	# This config file contains a list of directories both with binaries
+  2113	# and libraries prelink should consider by default.
+  2114	# If a directory name is prefixed with `-l ', the directory hierarchy
+  2115	# will be walked as long as filesystem boundaries are not crossed.
+  2116	# If a directory name is prefixed with `-h ', symbolic links in a
+  2117	# directory hierarchy are followed.
+  2118	# Directories or files with `-b ' prefix will be blacklisted.
+  2119	# `-c ' is used to source additional config file snippets.
+  2120	-c /etc/prelink.conf.d/*.conf
+  2121	-b *.la
+  2122	-b *.png
+  2123	-b *.py
+  2124	-b *.pl
+  2125	-b *.pm
+  2126	-b *.sh
+  2127	-b *.xml
+  2128	-b *.xslt
+  2129	-b *.a
+  2130	-b *.js
+  2131	-b /lib/modules
+  2132	-b /usr/lib/locale
+  2133	-l /bin
+  2134	-l /usr/bin
+  2135	-l /sbin
+  2136	-l /usr/sbin
+  2137	-l /usr/kerberos/bin
+  2138	-l /usr/games
+  2139	-l /usr/libexec
+  2140	-l /var/ftp/bin
+  2141	-l /lib{,64}
+  2142	-l /usr/lib{,64}
+  2143	-l /var/ftp/lib{,64}
+  2144	# Readahead config file
+  2145	
+  2146	#
+  2147	# RAC -- Read-Ahead-Collector
+  2148	#
+  2149	
+  2150	# Raw audit data
+  2151	#RAC_RAWLOG="/var/log/readahead-rac.log"
+  2152	
+  2153	# Rac automatically finish after N seconds
+  2154	RAC_MAXTIME="300"
+  2155	
+  2156	# Path to init process
+  2157	RAC_INITPATH="/sbin/init"
+  2158	
+  2159	# Template of path where RAC will store final lists
+  2160	# -- %s will be replaced by "early" or "later"
+  2161	RAC_LISTSPATH="/var/lib/readahead/custom.%s"
+  2162	
+  2163	# Ignore syscalls from:
+  2164	RAC_EXECIGN="/sbin/readahead"
+  2165	
+  2166	# Exclude dirs
+  2167	RAC_EXCLUDE="/proc /sys /dev /var /home /tmp /media /selinux /mnt /usr/src /usr/include /lib/modules /usr/lib/gcc /usr/lib64/gcc  /usr/lib/locale /usr/libexec/gcc"
+  2168	
+  2169	# A first filename in the list
+  2170	# RAC_LISTBEGIN="/etc/rc.d/init.d/readahead_early"
+  2171	
+  2172	# A filename which is a separator between early and later readahead
+  2173	# RAC_LISTSEP="/etc/rc.d/init.d/readahead_later"
+  2174	
+  2175	# On/Off debug mode (see also "-d" option)
+  2176	RAC_DEBUG="off"
+  2177	
+  2178	# On debug mode all debug messages goes to this file
+  2179	RAC_DEBUGLOG="/dev/.readahead-rac.debug"
+  2180	###############################################################################
+  2181	#
+  2182	# Copyright (C) 2005 Red Hat, Inc. All Rights Reserved.
+  2183	# Written by David Howells (dhowells@redhat.com)
+  2184	#
+  2185	# This program is free software; you can redistribute it and/or
+  2186	# modify it under the terms of the GNU General Public License
+  2187	# as published by the Free Software Foundation; either version
+  2188	# 2 of the License, or (at your option) any later version.
+  2189	#
+  2190	###############################################################################
+  2191	
+  2192	
+  2193	###############################################################################
+  2194	#
+  2195	# We can run programs or scripts
+  2196	# - Macro substitutions in arguments:
+  2197	#	%%...	%...
+  2198	#	%o	operation name
+  2199	#	%k	ID of key being operated upon
+  2200	#	%t	type of key being operated upon
+  2201	#	%d	description of key being operated upon
+  2202	#	%c	callout info
+  2203	#	%u	UID of requestor
+  2204	#	%g	GID of requestor
+  2205	#	%T	thread keyring of requestor (may be 0)
+  2206	#	%P	process keyring of requestor (may be 0)
+  2207	#	%S	session keyring of requestor (may be the user's default session)
+  2208	#
+  2209	################################################################################
+  2210	
+  2211	#OP	TYPE	DESCRIPTION	CALLOUT INFO	PROGRAM ARG1 ARG2 ARG3 ...
+  2212	#======	=======	===============	===============	===============================
+  2213	create	user	debug:*		negate		/bin/keyctl negate %k 30 %S
+  2214	create	user	debug:loop:*	*		|/bin/cat
+  2215	create	user	debug:*		*		/usr/share/keyutils/request-key-debug.sh %k %d %c %S
+  2216	negate	*	*		*		/bin/keyctl negate %k 30 %S
+  2217	# Generated by NetworkManager
+  2218	nameserver 8.8.8.8
+  2219	# rsyslog v5 configuration file
+  2220	
+  2221	# For more information see /usr/share/doc/rsyslog-*/rsyslog_conf.html
+  2222	# If you experience problems, see http://www.rsyslog.com/doc/troubleshoot.html
+  2223	
+  2224	#### MODULES ####
+  2225	
+  2226	$ModLoad imuxsock # provides support for local system logging (e.g. via logger command)
+  2227	$ModLoad imklog   # provides kernel logging support (previously done by rklogd)
+  2228	#$ModLoad immark  # provides --MARK-- message capability
+  2229	
+  2230	# Provides UDP syslog reception
+  2231	#$ModLoad imudp
+  2232	#$UDPServerRun 514
+  2233	
+  2234	# Provides TCP syslog reception
+  2235	#$ModLoad imtcp
+  2236	#$InputTCPServerRun 514
+  2237	
+  2238	
+  2239	#### GLOBAL DIRECTIVES ####
+  2240	
+  2241	# Use default timestamp format
+  2242	$ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat
+  2243	
+  2244	# File syncing capability is disabled by default. This feature is usually not required,
+  2245	# not useful and an extreme performance hit
+  2246	#$ActionFileEnableSync on
+  2247	
+  2248	# Include all config files in /etc/rsyslog.d/
+  2249	$IncludeConfig /etc/rsyslog.d/*.conf
+  2250	
+  2251	
+  2252	#### RULES ####
+  2253	
+  2254	# Log all kernel messages to the console.
+  2255	# Logging much else clutters up the screen.
+  2256	#kern.*                                                 /dev/console
+  2257	
+  2258	# Log anything (except mail) of level info or higher.
+  2259	# Don't log private authentication messages!
+  2260	*.info;mail.none;authpriv.none;cron.none                /var/log/messages
+  2261	
+  2262	# The authpriv file has restricted access.
+  2263	authpriv.*                                              /var/log/secure
+  2264	
+  2265	# Log all the mail messages in one place.
+  2266	mail.*                                                  -/var/log/maillog
+  2267	
+  2268	
+  2269	# Log cron stuff
+  2270	cron.*                                                  /var/log/cron
+  2271	
+  2272	# Everybody gets emergency messages
+  2273	*.emerg                                                 *
+  2274	
+  2275	# Save news errors of level crit and higher in a special file.
+  2276	uucp,news.crit                                          /var/log/spooler
+  2277	
+  2278	# Save boot messages also to boot.log
+  2279	local7.*                                                /var/log/boot.log
+  2280	
+  2281	
+  2282	# ### begin forwarding rule ###
+  2283	# The statement between the begin ... end define a SINGLE forwarding
+  2284	# rule. They belong together, do NOT split them. If you create multiple
+  2285	# forwarding rules, duplicate the whole block!
+  2286	# Remote Logging (we use TCP for reliable delivery)
+  2287	#
+  2288	# An on-disk queue is created for this action. If the remote host is
+  2289	# down, messages are spooled to disk and sent when it is up again.
+  2290	#$WorkDirectory /var/lib/rsyslog # where to place spool files
+  2291	#$ActionQueueFileName fwdRule1 # unique name prefix for spool files
+  2292	#$ActionQueueMaxDiskSpace 1g   # 1gb space limit (use as much as possible)
+  2293	#$ActionQueueSaveOnShutdown on # save messages to disk on shutdown
+  2294	#$ActionQueueType LinkedList   # run asynchronously
+  2295	#$ActionResumeRetryCount -1    # infinite retries if host is down
+  2296	# remote host is: name/ip:port, e.g. 192.168.0.1:514, port optional
+  2297	#*.* @@remote-host:514
+  2298	# ### end of the forwarding rule ###
+  2299	[files]
+  2300	/etc/passwd
+  2301	/etc/shadow
+  2302	/bin/bash
+  2303	/bin/login
+  2304	/bin/sh
+  2305	/sbin/agetty
+  2306	/sbin/init
+  2307	/sbin/mingetty
+  2308	/usr/sbin/sshd
+  2309	/lib/libc.so.6
+  2310	/lib/ld-linux.so.2
+  2311	/lib/ld.so.1
+  2312	
+  2313	[process]
+  2314	/sbin/mingetty
+  2315	/sbin/agetty
+  2316	/usr/sbin/sshd
+  2317	# Sample configuration file for smartd.  See man smartd.conf.
+  2318	
+  2319	# Home page is: http://smartmontools.sourceforge.net
+  2320	
+  2321	# $Id: smartd.conf 3128 2010-07-27 13:08:31Z chrfranke $
+  2322	
+  2323	# smartd will re-read the configuration file if it receives a HUP
+  2324	# signal
+  2325	
+  2326	# The file gives a list of devices to monitor using smartd, with one
+  2327	# device per line. Text after a hash (#) is ignored, and you may use
+  2328	# spaces and tabs for white space. You may use '\' to continue lines.
+  2329	
+  2330	# You can usually identify which hard disks are on your system by
+  2331	# looking in /proc/ide and in /proc/scsi.
+  2332	
+  2333	# The word DEVICESCAN will cause any remaining lines in this
+  2334	# configuration file to be ignored: it tells smartd to scan for all
+  2335	# ATA and SCSI devices.  DEVICESCAN may be followed by any of the
+  2336	# Directives listed below, which will be applied to all devices that
+  2337	# are found.  Most users should comment out DEVICESCAN and explicitly
+  2338	# list the devices that they wish to monitor.
+  2339	DEVICESCAN -H -m root
+  2340	
+  2341	# Alternative setting to ignore temperature and power-on hours reports
+  2342	# in syslog.
+  2343	#DEVICESCAN -I 194 -I 231 -I 9
+  2344	
+  2345	# Alternative setting to report more useful raw temperature in syslog.
+  2346	#DEVICESCAN -R 194 -R 231 -I 9
+  2347	
+  2348	# Alternative setting to report raw temperature changes >= 5 Celsius
+  2349	# and min/max temperatures.
+  2350	#DEVICESCAN -I 194 -I 231 -I 9 -W 5
+  2351	
+  2352	# First (primary) ATA/IDE hard disk.  Monitor all attributes, enable
+  2353	# automatic online data collection, automatic Attribute autosave, and
+  2354	# start a short self-test every day between 2-3am, and a long self test
+  2355	# Saturdays between 3-4am.
+  2356	#/dev/hda -a -o on -S on -s (S/../.././02|L/../../6/03)
+  2357	
+  2358	# Monitor SMART status, ATA Error Log, Self-test log, and track
+  2359	# changes in all attributes except for attribute 194
+  2360	#/dev/hdb -H -l error -l selftest -t -I 194 
+  2361	
+  2362	# Monitor all attributes except normalized Temperature (usually 194),
+  2363	# but track Temperature changes >= 4 Celsius, report Temperatures
+  2364	# >= 45 Celsius and changes in Raw value of Reallocated_Sector_Ct (5).
+  2365	# Send mail on SMART failures or when Temperature is >= 55 Celsius.
+  2366	#/dev/hdc -a -I 194 -W 4,45,55 -R 5 -m admin@example.com
+  2367	
+  2368	# An ATA disk may appear as a SCSI device to the OS. If a SCSI to
+  2369	# ATA Translation (SAT) layer is between the OS and the device then
+  2370	# this can be flagged with the '-d sat' option. This situation may
+  2371	# become common with SATA disks in SAS and FC environments.
+  2372	# /dev/sda -a -d sat
+  2373	
+  2374	# A very silent check.  Only report SMART health status if it fails
+  2375	# But send an email in this case
+  2376	#/dev/hdc -H -C 0 -U 0 -m admin@example.com
+  2377	
+  2378	# First two SCSI disks.  This will monitor everything that smartd can
+  2379	# monitor.  Start extended self-tests Wednesdays between 6-7pm and
+  2380	# Sundays between 1-2 am
+  2381	#/dev/sda -d scsi -s L/../../3/18
+  2382	#/dev/sdb -d scsi -s L/../../7/01
+  2383	
+  2384	# Monitor 4 ATA disks connected to a 3ware 6/7/8000 controller which uses
+  2385	# the 3w-xxxx driver. Start long self-tests Sundays between 1-2, 2-3, 3-4, 
+  2386	# and 4-5 am.
+  2387	# NOTE: starting with the Linux 2.6 kernel series, the /dev/sdX interface
+  2388	# is DEPRECATED.  Use the /dev/tweN character device interface instead.
+  2389	# For example /dev/twe0, /dev/twe1, and so on.
+  2390	#/dev/sdc -d 3ware,0 -a -s L/../../7/01
+  2391	#/dev/sdc -d 3ware,1 -a -s L/../../7/02
+  2392	#/dev/sdc -d 3ware,2 -a -s L/../../7/03
+  2393	#/dev/sdc -d 3ware,3 -a -s L/../../7/04
+  2394	
+  2395	# Monitor 2 ATA disks connected to a 3ware 9000 controller which
+  2396	# uses the 3w-9xxx driver (Linux, FreeBSD). Start long self-tests Tuesdays
+  2397	# between 1-2 and 3-4 am.
+  2398	#/dev/twa0 -d 3ware,0 -a -s L/../../2/01
+  2399	#/dev/twa0 -d 3ware,1 -a -s L/../../2/03
+  2400	
+  2401	# Monitor 2 SATA (not SAS) disks connected to a 3ware 9000 controller which
+  2402	# uses the 3w-sas driver (Linux, FreeBSD). Start long self-tests Tuesdays
+  2403	# between 1-2 and 3-4 am.
+  2404	#/dev/twl0 -d 3ware,0 -a -s L/../../2/01
+  2405	#/dev/twa0 -d 3ware,1 -a -s L/../../2/03
+  2406	
+  2407	# Same as above for Windows. Option '-d 3ware,N' is not necessary,
+  2408	# disk (port) number is specified in device name.
+  2409	# NOTE: On Windows, DEVICESCAN works also for 3ware controllers.
+  2410	#/dev/hdc,0 -a -s L/../../2/01
+  2411	#/dev/hdc,1 -a -s L/../../2/03
+  2412	
+  2413	# Monitor 3 ATA disks directly connected to a HighPoint RocketRAID. Start long
+  2414	# self-tests Sundays between 1-2, 2-3, and 3-4 am. 
+  2415	#/dev/sdd -d hpt,1/1 -a -s L/../../7/01
+  2416	#/dev/sdd -d hpt,1/2 -a -s L/../../7/02
+  2417	#/dev/sdd -d hpt,1/3 -a -s L/../../7/03
+  2418	
+  2419	# Monitor 2 ATA disks connected to the same PMPort which connected to the
+  2420	# HighPoint RocketRAID. Start long self-tests Tuesdays between 1-2 and 3-4 am
+  2421	#/dev/sdd -d hpt,1/4/1 -a -s L/../../2/01
+  2422	#/dev/sdd -d hpt,1/4/2 -a -s L/../../2/03
+  2423	
+  2424	# HERE IS A LIST OF DIRECTIVES FOR THIS CONFIGURATION FILE.
+  2425	# PLEASE SEE THE smartd.conf MAN PAGE FOR DETAILS
+  2426	#
+  2427	#   -d TYPE Set the device type: ata, scsi, marvell, removable, 3ware,N, hpt,L/M/N
+  2428	#   -T TYPE set the tolerance to one of: normal, permissive
+  2429	#   -o VAL  Enable/disable automatic offline tests (on/off)
+  2430	#   -S VAL  Enable/disable attribute autosave (on/off)
+  2431	#   -n MODE No check. MODE is one of: never, sleep, standby, idle
+  2432	#   -H      Monitor SMART Health Status, report if failed
+  2433	#   -l TYPE Monitor SMART log.  Type is one of: error, selftest
+  2434	#   -f      Monitor for failure of any 'Usage' Attributes
+  2435	#   -m ADD  Send warning email to ADD for -H, -l error, -l selftest, and -f
+  2436	#   -M TYPE Modify email warning behavior (see man page)
+  2437	#   -s REGE Start self-test when type/date matches regular expression (see man page)
+  2438	#   -p      Report changes in 'Prefailure' Normalized Attributes
+  2439	#   -u      Report changes in 'Usage' Normalized Attributes
+  2440	#   -t      Equivalent to -p and -u Directives
+  2441	#   -r ID   Also report Raw values of Attribute ID with -p, -u or -t
+  2442	#   -R ID   Track changes in Attribute ID Raw value with -p, -u or -t
+  2443	#   -i ID   Ignore Attribute ID for -f Directive
+  2444	#   -I ID   Ignore Attribute ID for -p, -u or -t Directive
+  2445	#   -C ID   Report if Current Pending Sector count non-zero
+  2446	#   -U ID   Report if Offline Uncorrectable count non-zero
+  2447	#   -W D,I,C Monitor Temperature D)ifference, I)nformal limit, C)ritical limit
+  2448	#   -v N,ST Modifies labeling of Attribute N (see man page)
+  2449	#   -a      Default: equivalent to -H -f -t -l error -l selftest -C 197 -U 198
+  2450	#   -F TYPE Use firmware bug workaround. Type is one of: none, samsung
+  2451	#   -P TYPE Drive-specific presets: use, ignore, show, showall
+  2452	#    #      Comment: text after a hash sign is ignored
+  2453	#    \      Line continuation character
+  2454	# Attribute ID is a decimal integer 1 <= ID <= 255
+  2455	# except for -C and -U, where ID = 0 turns them off.
+  2456	# All but -d, -m and -M Directives are only implemented for ATA devices
+  2457	#
+  2458	# If the test string DEVICESCAN is the first uncommented text
+  2459	# then smartd will scan for devices /dev/hd[a-l] and /dev/sd[a-z]
+  2460	# DEVICESCAN may be followed by any desired Directives.
+  2461	[general]
+  2462	
+  2463	#ftp_upload_url = ftp://example.com/incoming
+  2464	#gpg_keyring = /usr/share/sos/rhsupport.pub
+  2465	#gpg_recipient = support@redhat.com
+  2466	smtp_server = None
+  2467	
+  2468	[plugins]
+  2469	
+  2470	#disable = rpm, selinux, dovecot
+  2471	
+  2472	[tunables]
+  2473	
+  2474	#rpm.rpmva = off
+  2475	#general.syslogsize = 15
+  2476	
+  2477	#
+  2478	# Default /etc/sudo.conf file
+  2479	#
+  2480	# Format:
+  2481	#   Plugin plugin_name plugin_path plugin_options ...
+  2482	#   Path askpass /path/to/askpass
+  2483	#   Path noexec /path/to/sudo_noexec.so
+  2484	#   Debug sudo /var/log/sudo_debug all@warn
+  2485	#   Set disable_coredump true
+  2486	#
+  2487	# Sudo plugins:
+  2488	#
+  2489	# The plugin_path is relative to ${prefix}/libexec unless fully qualified.
+  2490	# The plugin_name corresponds to a global symbol in the plugin
+  2491	#   that contains the plugin interface structure.
+  2492	# The plugin_options are optional.
+  2493	#
+  2494	# The sudoers plugin is used by default if no Plugin lines are present.
+  2495	Plugin sudoers_policy sudoers.so
+  2496	Plugin sudoers_io sudoers.so
+  2497	
+  2498	#
+  2499	# Sudo askpass:
+  2500	#
+  2501	# An askpass helper program may be specified to provide a graphical
+  2502	# password prompt for "sudo -A" support.  Sudo does not ship with its
+  2503	# own passpass program but can use the OpenSSH askpass.
+  2504	#
+  2505	# Use the OpenSSH askpass
+  2506	#Path askpass /usr/X11R6/bin/ssh-askpass
+  2507	#
+  2508	# Use the Gnome OpenSSH askpass
+  2509	#Path askpass /usr/libexec/openssh/gnome-ssh-askpass
+  2510	
+  2511	#
+  2512	# Sudo noexec:
+  2513	#
+  2514	# Path to a shared library containing dummy versions of the execv(),
+  2515	# execve() and fexecve() library functions that just return an error.
+  2516	# This is used to implement the "noexec" functionality on systems that
+  2517	# support C<LD_PRELOAD> or its equivalent.
+  2518	# The compiled-in value is usually sufficient and should only be changed
+  2519	# if you rename or move the sudo_noexec.so file.
+  2520	#
+  2521	#Path noexec /usr/libexec/sudo_noexec.so
+  2522	
+  2523	#
+  2524	# Core dumps:
+  2525	#
+  2526	# By default, sudo disables core dumps while it is executing (they
+  2527	# are re-enabled for the command that is run).
+  2528	# To aid in debugging sudo problems, you may wish to enable core
+  2529	# dumps by setting "disable_coredump" to false.
+  2530	#
+  2531	# Set to false here so as not to interfere with /proc/sys/fs/suid_dumpable
+  2532	#
+  2533	Set disable_coredump false
+  2534	## BINDDN DN
+  2535	##  The BINDDN parameter specifies the identity, in the form of a Dis‐
+  2536	##  tinguished Name (DN), to use when performing LDAP operations.  If
+  2537	##  not specified, LDAP operations are performed with an anonymous
+  2538	##  identity.  By default, most LDAP servers will allow anonymous
+  2539	##  access.
+  2540	##
+  2541	#binddn uid=sudo,cn=sysaccounts,cn=etc,dc=example,dc=com
+  2542	
+  2543	## BINDPW secret
+  2544	##  The BINDPW parameter specifies the password to use when performing
+  2545	##  LDAP operations.  This is typically used in conjunction with the
+  2546	##  BINDDN parameter.
+  2547	##
+  2548	#bindpw secret
+  2549	
+  2550	## SSL start_tls
+  2551	##  If the SSL parameter is set to start_tls, the LDAP server connec‐
+  2552	##  tion is initiated normally and TLS encryption is begun before the
+  2553	##  bind credentials are sent.  This has the advantage of not requiring
+  2554	##  a dedicated port for encrypted communications.  This parameter is
+  2555	##  only supported by LDAP servers that honor the start_tls extension,
+  2556	##  such as the OpenLDAP and Tivoli Directory servers.
+  2557	##
+  2558	#ssl start_tls
+  2559	
+  2560	## TLS_CACERTFILE file name
+  2561	##  The path to a certificate authority bundle which contains the cer‐
+  2562	##  tificates for all the Certificate Authorities the client knows to
+  2563	##  be valid, e.g. /etc/ssl/ca-bundle.pem.  This option is only sup‐
+  2564	##  ported by the OpenLDAP libraries.  Netscape-derived LDAP libraries
+  2565	##  use the same certificate database for CA and client certificates
+  2566	##  (see TLS_CERT).
+  2567	##
+  2568	#tls_cacertfile /path/to/CA.crt
+  2569	
+  2570	## TLS_CHECKPEER on/true/yes/off/false/no
+  2571	##  If enabled, TLS_CHECKPEER will cause the LDAP server's TLS certifi‐
+  2572	##  cated to be verified.  If the server's TLS certificate cannot be
+  2573	##  verified (usually because it is signed by an unknown certificate
+  2574	##  authority), sudo will be unable to connect to it.  If TLS_CHECKPEER
+  2575	##  is disabled, no check is made.  Note that disabling the check cre‐
+  2576	##  ates an opportunity for man-in-the-middle attacks since the
+  2577	##  server's identity will not be authenticated.  If possible, the CA's
+  2578	##  certificate should be installed locally so it can be verified.
+  2579	##  This option is not supported by the Tivoli Directory Server LDAP
+  2580	##  libraries.
+  2581	#tls_checkpeer yes
+  2582	
+  2583	##
+  2584	## URI ldap[s]://[hostname[:port]] ...
+  2585	##  Specifies a whitespace-delimited list of one or more
+  2586	##  URIs describing the LDAP server(s) to connect to. 
+  2587	##
+  2588	#uri ldap://ldapserver
+  2589	
+  2590	##
+  2591	## SUDOERS_BASE base
+  2592	##  The base DN to use when performing sudo LDAP queries.
+  2593	##  Multiple SUDOERS_BASE lines may be specified, in which
+  2594	##  case they are queried in the order specified.
+  2595	##
+  2596	#sudoers_base ou=SUDOers,dc=example,dc=com
+  2597	
+  2598	##
+  2599	## BIND_TIMELIMIT seconds
+  2600	##  The BIND_TIMELIMIT parameter specifies the amount of
+  2601	##  time to wait while trying to connect to an LDAP server.
+  2602	##
+  2603	#bind_timelimit 30
+  2604	
+  2605	##
+  2606	## TIMELIMIT seconds
+  2607	##  The TIMELIMIT parameter specifies the amount of time
+  2608	##  to wait for a response to an LDAP query.
+  2609	##
+  2610	#timelimit 30
+  2611	
+  2612	##
+  2613	## SUDOERS_DEBUG debug_level
+  2614	##  This sets the debug level for sudo LDAP queries. Debugging
+  2615	##  information is printed to the standard error. A value of 1
+  2616	##  results in a moderate amount of debugging information.
+  2617	##  A value of 2 shows the results of the matches themselves.
+  2618	##
+  2619	#sudoers_debug 1
+  2620	# Kernel sysctl configuration file for Red Hat Linux
+  2621	#
+  2622	# For binary values, 0 is disabled, 1 is enabled.  See sysctl(8) and
+  2623	# sysctl.conf(5) for more details.
+  2624	#
+  2625	# Use '/sbin/sysctl -a' to list all possible parameters.
+  2626	
+  2627	# Controls IP packet forwarding
+  2628	net.ipv4.ip_forward = 0
+  2629	
+  2630	# Controls source route verification
+  2631	net.ipv4.conf.default.rp_filter = 1
+  2632	
+  2633	# Do not accept source routing
+  2634	net.ipv4.conf.default.accept_source_route = 0
+  2635	
+  2636	# Controls the System Request debugging functionality of the kernel
+  2637	kernel.sysrq = 0
+  2638	
+  2639	# Controls whether core dumps will append the PID to the core filename.
+  2640	# Useful for debugging multi-threaded applications.
+  2641	kernel.core_uses_pid = 1
+  2642	
+  2643	# Controls the use of TCP syncookies
+  2644	net.ipv4.tcp_syncookies = 1
+  2645	
+  2646	# Controls the default maxmimum size of a mesage queue
+  2647	kernel.msgmnb = 65536
+  2648	
+  2649	# Controls the maximum size of a message, in bytes
+  2650	kernel.msgmax = 65536
+  2651	
+  2652	# Controls the maximum shared segment size, in bytes
+  2653	kernel.shmmax = 68719476736
+  2654	
+  2655	# Controls the maximum number of shared memory segments, in pages
+  2656	kernel.shmall = 4294967296
+  2657	[Qt]
+  2658	font="Sans Serif,10,-1,5,50,0,0,0,0,0"
+  2659	
+  2660	PRUNE_BIND_MOUNTS = "yes"
+  2661	PRUNEFS = "9p afs anon_inodefs auto autofs bdev binfmt_misc cgroup cifs coda configfs cpuset debugfs devpts ecryptfs exofs fuse fusectl gfs gfs2 gpfs hugetlbfs inotifyfs iso9660 jffs2 lustre mqueue ncpfs nfs nfs4 nfsd pipefs proc ramfs rootfs rpc_pipefs securityfs selinuxfs sfs sockfs sysfs tmpfs ubifs udf usbfs"
+  2662	PRUNENAMES = ".git .hg .svn"
+  2663	PRUNEPATHS = "/afs /media /net /sfs /tmp /udev /var/cache/ccache /var/spool/cups /var/spool/squid /var/tmp"
+  2664	# this is an example warnquota.conf
+  2665	#
+  2666	; ; and # type comments are allowed
+  2667	# and even blank lines
+  2668	
+  2669	# values can be quoted:
+  2670	MAIL_CMD 	= "/usr/sbin/sendmail -t"
+  2671	FROM 		=  root@example.com
+  2672	# but they don't have to be:
+  2673	SUBJECT 	= NOTE: You are exceeding your allocated disk space limits
+  2674	CC_TO 		= "root@example.com"
+  2675	# If you set this variable CC will be used only when user has less than
+  2676	# specified grace time left (examples of possible times: 5 seconds, 1 minute,
+  2677	# 12 hours, 5 days)
+  2678	# CC_BEFORE = 2 days
+  2679	SUPPORT 	= "root@example.com"
+  2680	PHONE 		= "(123) 456-1111 or (222) 333-4444"
+  2681	# Text in the beginning of the mail (if not specified, default text is used)
+  2682	# This way text can be split to more lines
+  2683	# Line breaks are done by '|' character
+  2684	# The expressions %i, %h, %d, and %% are substituted for user/group name,
+  2685	# host name, domain name, and '%' respectively. For backward compatibility
+  2686	# %s behaves as %i but is deprecated.
+  2687	MESSAGE         = Your disk usage has exceeded the agreed limits\
+  2688	 on this server|Please delete any unnecessary files on following filesystems:|
+  2689	# Text in the end of the mail (if not specified, default text using SUPPORT and PHONE
+  2690	# is created)
+  2691	SIGNATURE	= root@example.com
+  2692	# Following text is used for mails about group exceeding quotas
+  2693	GROUP_MESSAGE  = Hello,|\
+  2694	your group %i is using too much disk space at %h.|\
+  2695	I suggest you to clean up group files on the following filesystems:|
+  2696	# Text in the end of the mail to the group (if not specified, default text using SUPPORT
+  2697	# and PHONE is created).
+  2698	GROUP_SIGNATURE	= See you!|			Your admin|
+  2699	#
+  2700	#If you are running warnquota on a mail server, and don't want bounces
+  2701	#because clients cannot receive mail setting this to "any" will cause
+  2702	#warnquota to not send them mail for all devices.  If you set this to the
+  2703	#device name (for example /dev/hdb1) then they will not be sent mail if they
+  2704	#are overquota on that device only, and will be sent mail for all other
+  2705	#devices.
+  2706	#MAILDEV        =
+  2707	#
+  2708	#Here you can set a charset for emails sent by warnquota (e.g. UTF-8)
+  2709	#CHARSET	= 
+  2710	# If you are using LDAP mail lookups.
+  2711	# host, port, tls, binddn, and bindpw are straight forward.
+  2712	# LDAP_BASEDN is your search base dn
+  2713	# LDAP_SEARCH_ATTRIBUTE is the attr for the value you are looking for
+  2714	# LDAP_MAIL_ATTRIBUTE is the attribute you want used for the mail address
+  2715	# LDAP_DEFAULT_MAIL_DOMAIN is the default domain
+  2716	#    if the attribute isn't found
+  2717	# if binddn and bindpw are blank or left out, an anonymous bind is used
+  2718	# 
+  2719	# LDAP_MAIL = false # or true if you want to use it
+  2720	# If you have at least LDAP 2.3 installed, you should use LDAP_URI
+  2721	# LDAP_URI = ldaps://my.server:389
+  2722	# Otherwise you should specify LDAP_HOST and LDAP_PORT
+  2723	# LDAP_HOST = ldap
+  2724	# LDAP_PORT = 389
+  2725	# LDAP_BINDDN = uid=ReadOnlyUser,o=YourOrg
+  2726	# LDAP_BINDPW = YourReadOnlyUserPassword
+  2727	# LDAP_BASEDN = YourSearchBase
+  2728	# LDAP_SEARCH_ATTRIBUTE = uid
+  2729	# LDAP_MAIL_ATTRIBUTE = mailLocalAddress
+  2730	# LDAP_DEFAULT_MAIL_DOMAIN = YourDefaultMailDomain.com
+  2731	#
+  2732	# end of example warnquota.conf file
+  2733	#
+  2734	# /etc/yp.conf - ypbind configuration file
+  2735	# Valid entries are
+  2736	#
+  2737	# domain NISDOMAIN server HOSTNAME
+  2738	#	Use server HOSTNAME for the domain NISDOMAIN.
+  2739	#
+  2740	# domain NISDOMAIN broadcast
+  2741	#	Use  broadcast  on  the local net for domain NISDOMAIN
+  2742	#
+  2743	# domain NISDOMAIN slp
+  2744	#	Query local SLP server for ypserver supporting NISDOMAIN
+  2745	#
+  2746	# ypserver HOSTNAME
+  2747	#	Use server HOSTNAME for the  local  domain.  The
+  2748	#	IP-address of server must be listed in /etc/hosts.
+  2749	#
+  2750	# broadcast
+  2751	#	If no server for the default domain is specified or
+  2752	#	none of them is rechable, try a broadcast call to
+  2753	#	find a server.
+  2754	#
+  2755	[main]
+  2756	cachedir=/var/cache/yum/$basearch/$releasever
+  2757	keepcache=0
+  2758	debuglevel=2
+  2759	logfile=/var/log/yum.log
+  2760	exactarch=1
+  2761	obsoletes=1
+  2762	gpgcheck=1
+  2763	plugins=1
+  2764	installonly_limit=5
+  2765	bugtracker_url=http://bugs.centos.org/set_project.php?project_id=19&ref=http://bugs.centos.org/bug_report_page.php?category=yum
+  2766	distroverpkg=centos-release
+  2767	
+  2768	#  This is the default, if you make this bigger yum won't see if the metadata
+  2769	# is newer on the remote and so you'll "gain" the bandwidth of not having to
+  2770	# download the new metadata and "pay" for it by yum not having correct
+  2771	# information.
+  2772	#  It is esp. important, to have correct metadata, for distributions like
+  2773	# Fedora which don't keep old packages around. If you don't like this checking
+  2774	# interupting your command line usage, it's much better to have something
+  2775	# manually check the metadata once an hour (yum-updatesd will do this).
+  2776	# metadata_expire=90m
+  2777	
+  2778	# PUT YOUR REPOS HERE OR IN separate files named file.repo
+  2779	# in /etc/yum.repos.d

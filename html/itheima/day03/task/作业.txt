@@ -1,0 +1,6 @@
+1.练习window、location对象的常用方法
+2.轮播图案例
+3.隔行换色
+4.全选全不选
+5.练习内置对象(String  Array  Math  RegExp)‘
+6.表单校验案例

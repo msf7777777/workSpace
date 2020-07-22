@@ -1,0 +1,20 @@
+package Diary0625;
+
+import java.util.Scanner;
+
+public class day0714_03_ChuanCan_02_04_03_02 {
+	public static void f(int a,int b,int c) {
+		c = a + b;
+		
+	}
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		System.out.println("°Ì  ‰»Î_a °Ì");
+		int a = s.nextInt();
+		int b = s.nextInt();
+		int C = c;
+		f(a,b,c);
+		System.out.println(f(5,6,c));
+		System.out.println("f(55)");
+	}
+}

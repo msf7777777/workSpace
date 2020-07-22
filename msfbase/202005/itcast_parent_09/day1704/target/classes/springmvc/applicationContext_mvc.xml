@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!--1 配置 映射处理器 和 映射适配器(可选的)-->
+    <!--因为 默认的映射处理器 和 映射适配器 过期了, 所以 配置更高版本的 映射处理器 和 映射适配器-->
+    <mvc:annotation-driven/>
+
+    <!--2 通知spring识别 @Controller注解, 开启组件扫描包-->
+    <context:component-scan base-package="cn.itcast.controller"/>
+
+    <!--3 配置映射处理器
+        解决: 通过视图名称 和 前缀 和 后缀 找到对应的视图 jsp
+        how: 前缀 + 视图名称 + 后缀 ===== /WEB-INF/views/hello.jsp
+    -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--前缀-->
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <!--后缀-->
+        <property name="suffix" value=".jsp"/>
+    </bean>
+</beans>

@@ -1,0 +1,9 @@
+package Diary0627;
+
+public class day0715_01_LeiAndDuiXiang {
+	//10是数据，int是数据类型
+	int a = 10;
+	
+	//'c'是数据，char是数据类型
+	char c = 'c';
+}

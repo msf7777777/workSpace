@@ -1,0 +1,35 @@
+package diary0620;
+
+import java.util.Scanner;
+
+public class day0620_09_LianXi_03_ZuoYe {
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		System.out.println("请输入_身高（CM）");
+		int high = s.nextInt();
+		System.out.println("请输入_金钱（WRMB）");
+		int money = s.nextInt();
+		System.out.println("请输入_脸蛋（0-100分）");
+		int face = s.nextInt();
+		
+		if(high >= 180 && high <= 200){
+			if(money >= 100000000 && money <= 999999999){
+				if(face >= 80){
+					System.out.println("我一定要嫁给它");
+				}else{
+					System.out.println("出家吧，比上不足，比下有余");
+				}
+			}else(money > 999999999){
+				System.out.println("b别吹牛逼");
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+}

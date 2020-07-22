@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>标题</title>
+		<!-- document访问DOM树：
+		  1、获取到DOM树中的某个HTML元素或某一组HTML元素
+		     getElementById(“id”)：通过id名称(必须是唯一的)，获取DOM树中的一个HTML元素对象
+			                       返回值是获取到的一个HTML元素对象
+								   
+		     getElementsByName(“name”) 通过name名称，获取DOM树中所有相关的HTML元素对象
+			                           返回值是获取到的一组HTML元素对象
+			 
+		     getElementsByTagName(“标签名”) 通过标签名称(HTML标签),获取DOM树中所有相关的HTML元素对象
+										   返回值是获取到的一组HTML元素对象
+											
+		     getElementsByClassName("类名") 通过class名称(css中的类样式名称)，获取DOM树中所有相关的HTML元素对象
+											返回值是获取到的一组HTML元素对象
+			 
+			 
+		  2、在获取到DOM树中的元素后，对元素进行操作：innerHTML
+		     元素对象.innerHTML = "" //设置元素对象中的HTML内容
+			 var content =  元素对象.innerHTML  //获取到元素对象中的HTML内容
+			 
+			 扩展：innerText
+			 元素对象.innerText = "" //设置元素对象中的文本内容（不能设置HTML标签）
+			 var content =  元素对象.innerText  //获取元素对象中的文本内容
+ 		 
+		     <a href="">
+			   <b>链接</b>
+			 </a>
+		     a标签对象.innerHTML  :    <b>链接</b>
+			 a标签对象.innerText  :    链接
+		 -->
+	</head>
+	<body>
+		<a class="one" href="#">链接</a>
+		<h1 class="one">H1标题</h1>
+	</body>
+</html>

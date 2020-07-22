@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--将dao交给spring管理-->
+    <!--
+        bean 指java对象
+            id属性    给java对象起个别名, 要求唯一
+            class属性 将那个java类交给spring管理,
+                实现类? 因为只有实现类才可以new
+    -->
+    <bean id="userDao" class="cn.itcast.a_quickstart.UserDaoImpl"/>
+    <bean id="userDao2" class="cn.itcast.a_quickstart.UserDaoImpl"/>
+
+    <!--将业务类 交给spring管理-->
+    <bean id="userService" class="cn.itcast.a_quickstart.UserServiceImpl">
+        <!--
+            问题: spring容器被new了两回
+            解决: 在spring容器中将dao交给业务类
+        -->
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+    <!--2 实例化bean的三种方式-->
+    <!--2.1默认无参数构造器-->
+    <bean id="bean1" class="cn.itcast.b_definition.Bean1"/>
+
+    <!--2.2 静态工厂方法-->
+    <bean id="bean2" class="cn.itcast.b_definition.Bean2Factory" factory-method="getBean2"/>
+
+    <!--2.3 实例工厂方法实例化
+        bean3Factory = new Bean3Factory();
+        bean3 = bean3Factory.getBean3();
+    -->
+    <bean id="bean3Factory" class="cn.itcast.b_definition.Bean3Factory"/>
+    <bean id="bean3" factory-bean="bean3Factory" factory-method="getBean3"/>
+
+    <!--2.4 扩展: 通过实现spring提供的工厂接口 来获取bean3-->
+    <bean id="bean3_2" class="cn.itcast.b_definition.MyBean3Factory"/>
+
+
+    <!--3 Bean的作用域
+        scope="singleton" 当从spring容器中获取当前对象时, 获取的是同一个
+    -->
+    <bean id="singletonBean" class="cn.itcast.c_scope.SingletonBean" scope="singleton"/>
+    <!--
+       scope="prototype"    每次从spring容器中获取当前bean, 都会new新的
+    -->
+    <bean id="prototypeBean" class="cn.itcast.c_scope.PrototypeBean" scope="prototype"/>
+
+    <!--4 Bean的生命周期 -->
+    <bean id="lifecycleBean"
+          class="cn.itcast.d_lifecycle.LifecycleBean"
+            init-method="init"
+            destroy-method="destory"
+    />
+
+    <!--5 依赖注入-->
+    <!--5.1 通过有参数的构造方法 设置属性-->
+    <bean id="car" class="cn.itcast.e_di.Car">
+        <!--
+            constructor-arg 构造方法参数对象
+                    name="price"    指定构造方法的参数名
+                    value="xxxx"    指定构造方法的参数对应的值
+                    index="0"       根据参数的下标指定, 0 代表第一个参数, 1 代表第二个参数
+        -->
+        <constructor-arg index="0" value="宝马X15"/>
+        <constructor-arg index="1" value="6666666"/>
+    </bean>
+
+    <!--5.2 通过setXXX方法 设置属性-->
+    <bean id="employee" class="cn.itcast.e_di.Employee">
+        <!--通过setXXX方法 设置属性-->
+        <property name="name" value="王思聪"/>
+        <property name="car" ref="car"/>
+    </bean>
+
+    <!--5.3 通过p名称空间来设置-->
+    <bean id="employee2" class="cn.itcast.e_di.Employee"
+            p:name="黄晓明" p:car-ref="car"
+    />
+
+    <!--5.4 给类的属性集合 设置值-->
+    <bean id="collectionBean" class="cn.itcast.e_di.CollectionBean">
+        <!--设置属性的值-->
+        <property name="list1">
+            <list>
+                <value>111</value>
+                <value>333</value>
+                <value>444</value>
+            </list>
+        </property>
+
+        <property name="set1">
+            <set>
+                <value>aaa</value>
+                <value>ccc</value>
+                <value>eee</value>
+            </set>
+        </property>
+
+        <property name="map1">
+            <map>
+                <entry key="aaa" value="111"/>
+                <entry key="ccc" value="333"/>
+                <entry key="eee" value="555"/>
+            </map>
+        </property>
+
+        <property name="props1">
+            <props>
+                <prop key="username">liuyan</prop>
+                <prop key="password">123456</prop>
+            </props>
+        </property>
+
+    </bean>
+</beans>

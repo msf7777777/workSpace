@@ -1,0 +1,21 @@
+package Diary0623;
+
+public class day09_05_ZuoYe_01_01 {
+	public static void f1(int m,int n,String str) {
+		System.out.println("ÄãºÃ£¡");
+		for (int i = 0; i <= m; i++) {
+			for (int j = 0; j <= n; j++) {
+				System.out.print(str);
+			}
+			System.out.println();
+		}
+		
+		
+		
+	}
+	public static void main(String[] args) {
+		f1(4,3,"*");
+		System.out.println("ÄãºÃ£¡");
+		f1(5,4,".");
+	}
+}

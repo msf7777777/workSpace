@@ -1,0 +1,37 @@
+package Diary0620;
+
+public class day07_05_if_else {
+	public static void main(String[] args) {
+		//没有块的if
+		int number = 5;
+		if(number < 0){
+			number = number + 10;
+			number++;
+		}
+		System.out.println("正能量");
+		
+		
+		if(number < 0)
+			number = number + 10;//if后面不带块（“{}”），所以只是不执行这一条，下面“number++”继续执行
+			number++;
+		
+		System.out.println(number);
+		
+		
+		if(number > 5){
+			System.out.println("因为我很6");
+		}
+		System.out.println(number);
+		
+		
+		
+		if(number == 6){
+			System.out.println("我很6");
+		}else if(number > 5){
+			System.out.println("我还666666");
+		}else{
+			System.out.println(666);
+		}
+		
+	}
+}

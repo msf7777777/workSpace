@@ -1,0 +1,840 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/day04/src/cn/itcast" />
+    <bookmark url="file://$PROJECT_DIR$/day04/src/cn/itcast/code/array/ArrayDome6.java" line="15" />
+    <bookmark url="file://$PROJECT_DIR$/day11/src/cn/itcast/practice/boyFriendAndGirlFriend/BoyFriend.java" line="7" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ec186b00-4ae1-490a-88b3-8707b8f8d25a" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="FxmlFile" />
+        <option value="Interface" />
+        <option value="Arquillian JUnit Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No_03_sleep/MyRunnable_sleep.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No04_匿名内部类/Test.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No04_匿名内部类/Test02_Thread.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No05_/Ticket.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No05_模拟买票/Test01.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No05_模拟买票/Ticket.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No05_线程安全_案例买票系统/Ticket.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No05_线程安全_案例买票系统/No01_同步代码块/Test01.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No05_线程安全_案例买票系统/No01_同步代码块/Ticket.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No05_线程安全_案例买票系统/No02_同步方法/Test01.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No05_线程安全_案例买票系统/No02_同步方法/Test02.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/code/tcp/ClientTCP.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/code/tcp/ClientTCP2.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/code/tcp/ServerTCP.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/code/tcp/ServerTCP2.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No05_线程安全_案例买票系统/No01_同步代码块/Ticket01.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/code/th/tic/Ticket.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/code/th/tic/Test1.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/code/th/tic/Ticket2.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No05_线程安全_案例买票系统/No02_同步方法/Ticket02.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No05_线程安全_案例买票系统/No03_同步锁/Server.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No05_线程安全_案例买票系统/No03_同步锁/Client.java" />
+        <option value="$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No05_线程安全_案例买票系统/No03_同步锁/Client_客户端.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/demo1/MyRunnable.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/demo1/ThreadDemo1.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/demo1/TestThread.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/demo1/TestRunnable.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/demo2/ServerDemo1.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/demo2/ClientDemo1.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/demo3/Test.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/demo4/Person.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/demo4/TestClass.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/demo5/TestApi2.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/demo5/TestApi.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/demo5/Student.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/homework/work02/PrintNumber.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/homework/work04/Test.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/homework/work04/DemoThread.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/homework/work05/WuGui.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/homework/work05/TuZi.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/homework/work05/Test.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/junit/JunitDemo2.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/code/junit/JunitDemo1.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/practice/No01_juint/JuintDemo1.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/practice/No01_juint/JuintDemo2.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/practice/No02_反射/Person.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/practice/No02_反射/TestForPerson.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/practice/No02_反射/No01_获取Class对象/TestForPerson.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/practice/No02_反射/No02_获取Class对象的信息/TestForStudent.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/practice/No02_反射/No02_获取Class对象的信息/Student.java" />
+        <option value="$PROJECT_DIR$/day19/src/cn/itcast/practice/No02_反射/No02_获取Class对象的信息/TestForStudent2.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="408" />
+    <option name="width" value="1519" />
+    <option name="height" value="1047" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <hideEmptyPackages ProjectPane="false" />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="javabase" type="58d84e3e:PackageViewProjectNode" />
+              <item name="day19_Junit_反射" type="616d4139:PackageViewModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="ProjectPane" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="javabase" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="javabase" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="day18_线程" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="javabase" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="day18_线程" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="javabase" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="day18_线程" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="cn" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="javabase" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="day18_线程" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="cn" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="itcast" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1587314512298" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Arquillian JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/day99" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="cn.itcast.practice.No_03_sleep" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\workSpace\javabase\day17_employment" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="cn.itcast.code.tcp" />
+      <recent name="cn.itcast.code.th" />
+      <recent name="cn.itcast.practice.No05_线程安全_案例买票系统.No01_同步代码块" />
+      <recent name="cn.itcast.practice.No_02_Runnable类方式" />
+      <recent name="cn.itcast.practice.No_01_Thread类方式" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.itcast.practice.No05_线程安全_案例买票系统.No02_同步方法" />
+      <recent name="cn.itcast.practice.No_03_sleep" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\workSpace\javabase\day19\lib" />
+      <recent name="F:\workSpace\javabase\day11\src\cn\itcast\task\task08_new" />
+      <recent name="F:\workSpace\javabase\day09\src\cn\itcast\task\task03_new" />
+      <recent name="F:\workSpace\javabase\day08\src\cn\itcast" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.TestForStudent2.testFun05">
+    <configuration name="TestForStudent2.testFun01" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day19_Junit_反射" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.itcast.practice.No02_反射.No02_获取Class对象的信息.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.itcast.practice.No02_反射.No02_获取Class对象的信息" />
+      <option name="MAIN_CLASS_NAME" value="cn.itcast.practice.No02_反射.No02_获取Class对象的信息.TestForStudent2" />
+      <option name="METHOD_NAME" value="testFun01" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestForStudent2.testFun02" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day19_Junit_反射" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.itcast.practice.No02_反射.No02_获取Class对象的信息.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.itcast.practice.No02_反射.No02_获取Class对象的信息" />
+      <option name="MAIN_CLASS_NAME" value="cn.itcast.practice.No02_反射.No02_获取Class对象的信息.TestForStudent2" />
+      <option name="METHOD_NAME" value="testFun02" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestForStudent2.testFun03" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day19_Junit_反射" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.itcast.practice.No02_反射.No02_获取Class对象的信息.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.itcast.practice.No02_反射.No02_获取Class对象的信息" />
+      <option name="MAIN_CLASS_NAME" value="cn.itcast.practice.No02_反射.No02_获取Class对象的信息.TestForStudent2" />
+      <option name="METHOD_NAME" value="testFun03" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestForStudent2.testFun04" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day19_Junit_反射" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.itcast.practice.No02_反射.No02_获取Class对象的信息.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.itcast.practice.No02_反射.No02_获取Class对象的信息" />
+      <option name="MAIN_CLASS_NAME" value="cn.itcast.practice.No02_反射.No02_获取Class对象的信息.TestForStudent2" />
+      <option name="METHOD_NAME" value="testFun04" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestForStudent2.testFun05" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day19_Junit_反射" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.itcast.practice.No02_反射.No02_获取Class对象的信息.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.itcast.practice.No02_反射.No02_获取Class对象的信息" />
+      <option name="MAIN_CLASS_NAME" value="cn.itcast.practice.No02_反射.No02_获取Class对象的信息.TestForStudent2" />
+      <option name="METHOD_NAME" value="testFun05" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestForStudent2.testFun05" />
+        <item itemvalue="JUnit.TestForStudent2.testFun04" />
+        <item itemvalue="JUnit.TestForStudent2.testFun03" />
+        <item itemvalue="JUnit.TestForStudent2.testFun02" />
+        <item itemvalue="JUnit.TestForStudent2.testFun01" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ec186b00-4ae1-490a-88b3-8707b8f8d25a" name="Default Changelist" comment="" />
+      <created>1584672510772</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584672510772</updated>
+      <workItem from="1584672511972" duration="6691000" />
+      <workItem from="1584681317003" duration="24976000" />
+      <workItem from="1584714238287" duration="15302000" />
+      <workItem from="1584765272830" duration="3487000" />
+      <workItem from="1584839846168" duration="132000" />
+      <workItem from="1584840075144" duration="86000" />
+      <workItem from="1584840210966" duration="41738000" />
+      <workItem from="1584891861096" duration="1393000" />
+      <workItem from="1584894955437" duration="214000" />
+      <workItem from="1584927269019" duration="4381000" />
+      <workItem from="1584931706545" duration="377000" />
+      <workItem from="1584932145308" duration="42491000" />
+      <workItem from="1585029288440" duration="8820000" />
+      <workItem from="1585103079409" duration="4257000" />
+      <workItem from="1585116045629" duration="9865000" />
+      <workItem from="1585136400879" duration="21705000" />
+      <workItem from="1585160282018" duration="1528000" />
+      <workItem from="1585183603078" duration="7660000" />
+      <workItem from="1585282240042" duration="22987000" />
+      <workItem from="1585321165592" duration="672000" />
+      <workItem from="1585358009208" duration="40365000" />
+      <workItem from="1585443506653" duration="25766000" />
+      <workItem from="1585530115763" duration="35778000" />
+      <workItem from="1585579439372" duration="2306000" />
+      <workItem from="1585706585313" duration="26650000" />
+      <workItem from="1585789439194" duration="18325000" />
+      <workItem from="1585848824212" duration="865000" />
+      <workItem from="1585875285072" duration="800000" />
+      <workItem from="1585911820149" duration="7181000" />
+      <workItem from="1586048728661" duration="3853000" />
+      <workItem from="1586066550338" duration="598000" />
+      <workItem from="1586136903893" duration="6337000" />
+      <workItem from="1586221848924" duration="6318000" />
+      <workItem from="1586481723439" duration="4721000" />
+      <workItem from="1586513429087" duration="9000" />
+      <workItem from="1586513448667" duration="42000" />
+      <workItem from="1586513560578" duration="146000" />
+      <workItem from="1586513971635" duration="21000" />
+      <workItem from="1586514072490" duration="61000" />
+      <workItem from="1586695911431" duration="4212000" />
+      <workItem from="1586702882725" duration="921000" />
+      <workItem from="1586999607988" duration="618000" />
+      <workItem from="1587008770082" duration="17617000" />
+      <workItem from="1587113262863" duration="1910000" />
+      <workItem from="1587171222422" duration="10761000" />
+      <workItem from="1587258118777" duration="22095000" />
+      <workItem from="1587606528436" duration="1038000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="TestForStudent2_testFun03 - 2020.04.20 at 00h 12m 04s.xml">
+      <configuration name="TestForStudent2.testFun03" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestForStudent2_testFun03 - 2020.04.20 at 00h 12m 19s.xml">
+      <configuration name="TestForStudent2.testFun03" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestForStudent2_testFun03 - 2020.04.20 at 00h 13m 11s.xml">
+      <configuration name="TestForStudent2.testFun03" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestForStudent2_testFun03 - 2020.04.20 at 00h 13m 22s.xml">
+      <configuration name="TestForStudent2.testFun03" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestForStudent2_testFun03 - 2020.04.20 at 00h 13m 34s.xml">
+      <configuration name="TestForStudent2.testFun03" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestForStudent2_testFun03 - 2020.04.20 at 00h 14m 13s.xml">
+      <configuration name="TestForStudent2.testFun03" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestForStudent2_testFun03 - 2020.04.20 at 00h 14m 51s.xml">
+      <configuration name="TestForStudent2.testFun03" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestForStudent2_testFun03 - 2020.04.20 at 00h 16m 17s.xml">
+      <configuration name="TestForStudent2.testFun03" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestForStudent2_testFun04 - 2020.04.20 at 00h 33m 37s.xml">
+      <configuration name="TestForStudent2.testFun04" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestForStudent2_testFun05 - 2020.04.20 at 00h 39m 47s.xml">
+      <configuration name="TestForStudent2.testFun05" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="458076000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="408" y="0" width="1519" height="1047" extended-state="0" />
+    <layout>
+      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="1" />
+      <window_info id="Designer" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.2131597" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32502708" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.44967178" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.2560175" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32930845" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32932165" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32713348" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Maven" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="1" />
+      <window_info id="Designer" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.30123457" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32502708" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.42778993" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.2560175" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32930845" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32932165" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32713348" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Maven" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No05_线程安全_案例买票系统/No02_同步方法/Ticket02.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No05_线程安全_案例买票系统/No02_同步方法/Test02.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No05_线程安全_案例买票系统/No01_同步代码块/Ticket01.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="545">
+          <caret line="29" column="17" lean-forward="true" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No05_线程安全_案例买票系统/No01_同步代码块/Test01.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No04_匿名内部类/Test01_Runnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No04_匿名内部类/Test02_Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/code/th/impl/MyRunnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/code/th/impl/Test1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="638">
+          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/code/th/impl/Test2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="18" column="14" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/code/th/tic/Ticket2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/code/th/tic/Ticket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="706">
+          <caret line="29" column="23" lean-forward="true" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/code/th/tic/Test1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/develop/jdk/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1202">
+          <caret line="956" column="18" selection-start-line="956" selection-start-column="18" selection-end-line="956" selection-end-column="18" />
+          <folding>
+            <element signature="e#36393#36394#0" expanded="true" />
+            <element signature="e#36459#36460#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/code/tcp/ClientTCP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/code/tcp/ServerTCP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/code/tcp/ServerTCP2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/code/tcp/ClientTCP2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="2" column="27" lean-forward="true" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No05_线程安全_案例买票系统/No03_同步锁/Client_客户端.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/practice/No05_线程安全_案例买票系统/No03_同步锁/Server_服务端.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/code/th/MyThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="638">
+          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/code/th/Test1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/code/th/MyThread2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day18_线程/src/cn/itcast/code/th/Test2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="638">
+          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/demo1/MyRunnable.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/demo1/TestRunnable.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/demo1/TestThread.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/demo1/ThreadDemo1.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/demo2/ClientDemo1.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/demo2/ServerDemo1.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/demo3/Test.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/demo4/Person.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/demo4/TestClass.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/demo5/Student.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/demo5/TestApi.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/demo5/TestApi2.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/homework/work02/PrintNumber.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/homework/work04/DemoThread.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/homework/work04/Test.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/homework/work05/Test.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/homework/work05/TuZi.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/homework/work05/WuGui.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/junit/JunitDemo2.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/code/junit/JunitDemo1.java" />
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/practice/No01_juint/JuintDemo2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#169#170#0" expanded="true" />
+            <element signature="e#194#195#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/practice/No01_juint/JuintDemo1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/practice/No02_反射/No01_获取Class对象/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="e#80#81#0" expanded="true" />
+            <element signature="e#116#117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/practice/No02_反射/No01_获取Class对象/TestForPerson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/develop/jdk/src.zip!/java/lang/reflect/Field.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="62" column="6" selection-start-line="62" selection-start-column="6" selection-end-line="62" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/practice/No02_反射/No02_获取Class对象的信息/TestForStudent2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="65" column="52" lean-forward="true" selection-start-line="65" selection-start-column="52" selection-end-line="65" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/practice/No02_反射/No02_获取Class对象的信息/TestForStudent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="6" column="25" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/day19/src/cn/itcast/practice/No02_反射/No02_获取Class对象的信息/Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
+          <folding>
+            <element signature="n#!!block;n#Student#2;n#Student#0" />
+            <element signature="e#432#433#0" expanded="true" />
+            <element signature="n#!!block;n#study#0;n#Student#0" />
+            <element signature="e#523#524#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="Copyright.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>0_导航_0</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>junit-4.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

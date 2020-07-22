@@ -1,0 +1,1000 @@
+  1001	#include "stdlib.conf"
+  1002	
+  1003	/* /usr/include/string.h */
+  1004	#include "string.conf"
+  1005	
+  1006	/* /usr/include/ctype.h */
+  1007	#include "ctype.conf"
+  1008	
+  1009	/* /usr/include/ncurses.h */
+  1010	#include "ncurses.conf"
+  1011	
+  1012	/* /usr/include/stdio.h */
+  1013	#include "stdio.conf"
+  1014	
+  1015	/* /usr/include/dirent.h */
+  1016	#include "dirent.conf"
+  1017	
+  1018	/* /usr/include/unistd.h */
+  1019	#include "unistd.conf"
+  1020	
+  1021	/* /usr/include/libintl.h */
+  1022	#include "libintl.conf"
+  1023	
+  1024	/* /usr/include/dlfcn.h */
+  1025	#include "dlfcn.conf"
+  1026	
+  1027	/* /usr/include/fcntl.h */
+  1028	#include "fcntl.conf"
+  1029	
+  1030	/* /usr/include/getopt.h */
+  1031	#include "getopt.conf"
+  1032	
+  1033	/* /usr/include/signal.h */
+  1034	#include "signal.conf"
+  1035	
+  1036	/* /usr/include/sys/ioctl.h */
+  1037	#include "ioctl.conf"
+  1038	
+  1039	/* /usr/include/sys/socket.h */
+  1040	#include "socket.conf"
+  1041	
+  1042	/* /usr/include/netdb.h */
+  1043	#include "netdb.conf"
+  1044	
+  1045	/* /usr/include/sys/stat.h */
+  1046	#include "stat.conf"
+  1047	
+  1048	/* /usr/include/sys/wait.h */
+  1049	#include "wait.conf"
+  1050	
+  1051	/* /usr/include/utmp.h */
+  1052	#include "utmp.conf"
+  1053	
+  1054	/* /usr/include/time.h */
+  1055	#include "time.conf"
+  1056	
+  1057	/* /usr/include/termios.h */
+  1058	#include "termios.conf"
+  1059	
+  1060	/* /usr/include/term.h */
+  1061	#include "term.conf"
+  1062	
+  1063	/* /usr/include/sys/syslog.h */
+  1064	#include "syslog.conf"
+  1065	
+  1066	/* /usr/include/pwd.h */
+  1067	#include "pwd.conf"
+  1068	
+  1069	/* /usr/include/libio.h */
+  1070	#include "libio.conf"
+  1071	
+  1072	/* /usr/include/locale.h */
+  1073	#include "locale.conf"
+  1074	
+  1075	/* /usr/include/pthread.h */
+  1076	#include "pthread.conf"
+  1077	
+  1078	/* /usr/include/sys/resource.h */
+  1079	#include "resource.conf"
+  1080	
+  1081	/* /etc/latrace.d/mman.conf */
+  1082	#include "mman.conf"
+  1083	
+  1084	include ld.so.conf.d/*.conf
+  1085	# This is the configuration file for libaudit tunables.
+  1086	# It is currently only used for the failure_action tunable.
+  1087	
+  1088	# failure_action can be: log, ignore, terminate
+  1089	failure_action = ignore
+  1090	
+  1091	
+  1092	# See libuser.conf(5) for more information.
+  1093	
+  1094	# Do not modify the default module list if you care about unattended calls
+  1095	# to programs (i.e., scripts) working!
+  1096	
+  1097	[import]
+  1098	# Data from these files is used when libuser.conf does not define a value.
+  1099	# The mapping is documented in the man page.
+  1100	login_defs = /etc/login.defs
+  1101	default_useradd = /etc/default/useradd
+  1102	
+  1103	[defaults]
+  1104	# The default (/usr/lib*/libuser) is usually correct
+  1105	# moduledir = /your/custom/directory
+  1106	
+  1107	# The following variables are usually imported:
+  1108	# skeleton = /etc/skel
+  1109	# mailspooldir = /var/mail
+  1110	
+  1111	crypt_style = sha512
+  1112	modules = files shadow
+  1113	create_modules = files shadow
+  1114	# modules = files shadow ldap
+  1115	# create_modules = ldap
+  1116	
+  1117	[userdefaults]
+  1118	LU_USERNAME = %n
+  1119	# LU_UIDNUMBER = 500
+  1120	LU_GIDNUMBER = %u
+  1121	# LU_USERPASSWORD = !!
+  1122	# LU_GECOS = %n
+  1123	# LU_HOMEDIRECTORY = /home/%n
+  1124	# LU_LOGINSHELL = /bin/bash
+  1125	
+  1126	# LU_SHADOWNAME = %n
+  1127	# LU_SHADOWPASSWORD = !!
+  1128	# LU_SHADOWLASTCHANGE = %d
+  1129	# LU_SHADOWMIN = 0
+  1130	# LU_SHADOWMAX = 99999
+  1131	# LU_SHADOWWARNING = 7
+  1132	# LU_SHADOWINACTIVE = -1
+  1133	# LU_SHADOWEXPIRE = -1
+  1134	# LU_SHADOWFLAG = -1
+  1135	
+  1136	[groupdefaults]
+  1137	LU_GROUPNAME = %n
+  1138	# LU_GIDNUMBER = 500
+  1139	# LU_GROUPPASSWORD = !!
+  1140	# LU_MEMBERUID =
+  1141	# LU_ADMINISTRATORUID =
+  1142	
+  1143	[files]
+  1144	# This is useful for the case where some master files are used to
+  1145	# populate a different NSS mechanism which this workstation uses.
+  1146	# directory = /etc
+  1147	
+  1148	[shadow]
+  1149	# This is useful for the case where some master files are used to
+  1150	# populate a different NSS mechanism which this workstation uses.
+  1151	# directory = /etc
+  1152	
+  1153	[ldap]
+  1154	# Setting these is always necessary.
+  1155	# server = ldap
+  1156	# basedn = dc=example,dc=com
+  1157	
+  1158	# Setting these is rarely necessary, since it's usually correct.
+  1159	# userBranch = ou=People
+  1160	# groupBranch = ou=Group
+  1161	
+  1162	# Set only if your administrative user uses simple bind operations to
+  1163	# connect to the server.
+  1164	# binddn = cn=Manager,dc=example,dc=com
+  1165	
+  1166	# Set this only if the default user (as determined by SASL) is incorrect
+  1167	# for SASL bind operations.  Usually, it's correct, so you'll rarely need
+  1168	# to set these.
+  1169	# user = Manager
+  1170	# authuser = Manager
+  1171	
+  1172	[sasl]
+  1173	# Set these only if your sasldb is only used by a particular application, and
+  1174	# in a particular domain.  The default (all applications, all domains) is
+  1175	# probably correct for most installations.
+  1176	# appname = imap
+  1177	# domain = EXAMPLE.COM
+  1178	# see "man logrotate" for details
+  1179	# rotate log files weekly
+  1180	weekly
+  1181	
+  1182	# keep 4 weeks worth of backlogs
+  1183	rotate 4
+  1184	
+  1185	# create new (empty) log files after rotating old ones
+  1186	create
+  1187	
+  1188	# use date as a suffix of the rotated file
+  1189	dateext
+  1190	
+  1191	# uncomment this if you want your log files compressed
+  1192	#compress
+  1193	
+  1194	# RPM packages drop log rotation information into this directory
+  1195	include /etc/logrotate.d
+  1196	
+  1197	# no packages own wtmp and btmp -- we'll rotate them here
+  1198	/var/log/wtmp {
+  1199	    monthly
+  1200	    create 0664 root utmp
+  1201		minsize 1M
+  1202	    rotate 1
+  1203	}
+  1204	
+  1205	/var/log/btmp {
+  1206	    missingok
+  1207	    monthly
+  1208	    create 0600 root utmp
+  1209	    rotate 1
+  1210	}
+  1211	
+  1212	# system-specific logs may be also be configured here.
+  1213	; ltrace.conf
+  1214	
+  1215	; Argument types:
+  1216	; +		== May vary (ie, is a returned value) (prefix)
+  1217	; void
+  1218	; int
+  1219	; uint		== (unsigned int)
+  1220	; long
+  1221	; ulong		== (unsigned long)
+  1222	; octal		== (unsigned)			[written in octal]
+  1223	; char
+  1224	; addr		== (void *)			[unsigned, written in hexa]
+  1225	; file		== (FILE *)						[TODO]
+  1226	; format	== ((const char *), ...)	[printf() like]		[TODO]
+  1227	; string	== (char *)
+  1228	; stringN	== (char *)		[N>=0]	[show only up to (arg N) bytes]
+  1229	
+  1230	; arpa/inet.h
+  1231	int inet_aton(string,addr);
+  1232	string inet_ntoa(addr);			; It isn't a ADDR but an hexa number...
+  1233	addr inet_addr(string);
+  1234	
+  1235	; bfd.h
+  1236	void bfd_init(void);
+  1237	int bfd_set_default_target(string);
+  1238	addr bfd_scan_vma(string, addr, int);
+  1239	addr bfd_openr(string,string);
+  1240	int bfd_check_format(addr,int);
+  1241	
+  1242	; ctype.h
+  1243	char tolower(char);
+  1244	char toupper(char);
+  1245	addr __ctype_b_loc(void);
+  1246	addr __ctype_tolower_loc(void);
+  1247	addr __ctype_toupper_loc(void);
+  1248	
+  1249	; curses.h
+  1250	int waddch(addr, char);
+  1251	int mvprintw(int, int, format);
+  1252	int wmove(addr, int, int);
+  1253	int waddnstr(addr, string, int);
+  1254	string tgoto(string, int, int);
+  1255	
+  1256	; dirent.h
+  1257	int closedir(addr);
+  1258	addr opendir(string);
+  1259	addr readdir(addr);
+  1260	addr readdir64(addr);
+  1261	
+  1262	; dlfcn.h
+  1263	addr  dlopen(string, int);
+  1264	string dlerror(void);
+  1265	addr  dlsym(addr, string);
+  1266	int dlclose(addr);
+  1267	
+  1268	; errno.h
+  1269	addr __errno_location(void);
+  1270	
+  1271	; fcntl.h
+  1272	int open(string,int,octal);		; WARNING: 3rd argument may not be there
+  1273	int open64(string,int,octal);		; WARNING: 3rd argument may not be there
+  1274	
+  1275	; fnmatch.h
+  1276	int fnmatch(string, string, int);
+  1277	
+  1278	; getopt.h
+  1279	int getopt_long(int,addr,string,addr,addr);
+  1280	int getopt_long_only(int,addr,string,addr,addr);
+  1281	
+  1282	; grp.h
+  1283	void endgrent(void);
+  1284	addr getgrnam(string);
+  1285	void setgrent(void);
+  1286	addr getgrent(void);
+  1287	
+  1288	; libintl.h
+  1289	string __dcgettext(string,string,int);
+  1290	string bindtextdomain(string, string);
+  1291	string textdomain(string);
+  1292	
+  1293	; libio.h
+  1294	char _IO_getc(file);
+  1295	int _IO_putc(char,file);
+  1296	
+  1297	; locale.h
+  1298	string setlocale(int, string);
+  1299	
+  1300	; mcheck.h
+  1301	void mtrace(void);
+  1302	void muntrace(void);
+  1303	
+  1304	; mntent.h
+  1305	int endmntent(file);
+  1306	file setmntent(string,string);
+  1307	addr getmntent(addr);
+  1308	
+  1309	; mqueue.h
+  1310	int mq_open(string, int, octal, addr);  ; WARNING: 3rd and 4th arguments may not be there
+  1311	int mq_close(int);
+  1312	int mq_unlink(string);
+  1313	int mq_getattr(int, addr);
+  1314	int mq_setattr(int, addr, addr);
+  1315	int mq_notify(int, addr);
+  1316	int mq_send(int, string3, ulong, uint);
+  1317	int mq_timedsend(int, string3, ulong, uint, addr);
+  1318	long mq_receive(int, +string0, ulong, addr);
+  1319	long mq_timedreceive(int, +string0, ulong, addr, addr);
+  1320	
+  1321	; netdb.h
+  1322	void endhostent(void);
+  1323	void endnetent(void);
+  1324	void endnetgrent(void);
+  1325	void endprotoent(void);
+  1326	void endservent(void);
+  1327	void freeaddrinfo(addr);
+  1328	string gai_strerror(int);
+  1329	int getaddrinfo(string, string, addr, addr);
+  1330	addr gethostbyaddr(string, uint, int);
+  1331	addr gethostbyname(string);
+  1332	addr gethostent(void);
+  1333	int getnameinfo(addr, uint, string, uint, string, uint, uint);
+  1334	addr getnetbyaddr(uint, int);
+  1335	addr getnetbyname(string);
+  1336	addr getnetent(void);
+  1337	int getnetgrent(addr, addr, addr);
+  1338	addr getprotobyname(string);
+  1339	addr getprotobynumber(int);
+  1340	addr getprotoent(void);
+  1341	addr getservbyname(string, string);
+  1342	addr getservbyport(int, string);
+  1343	addr getservent(void);
+  1344	void herror(string);
+  1345	string hstrerror(int);
+  1346	;int rcmd(addr, ushort, string, string, string, addr); FIXME implement ushort
+  1347	;int rcmd_af(addr, ushort, string, string, string, addr, int); FIXME implement ushort
+  1348	int rexec(addr, int, string, string, string, addr);
+  1349	int rexec_af(addr, int, string, string, string, addr, int);
+  1350	int rresvport (addr);
+  1351	int rresvport_af (addr, int);
+  1352	int ruserok(string, int, string, string);
+  1353	int ruserok_af(string, int, string, string, int);
+  1354	void sethostent(int);
+  1355	void setnetent(int);
+  1356	int setnetgrent(string);
+  1357	void setprotoent(int);
+  1358	void setservent(int);
+  1359	
+  1360	; netinet/in.h
+  1361	uint ntohs(uint);
+  1362	
+  1363	; pcap.h
+  1364	string pcap_lookupdev(addr);
+  1365	addr pcap_open_live(string, int, int, int, addr);
+  1366	int pcap_snapshot(addr);
+  1367	int pcap_lookupnet(string, addr, addr, addr);
+  1368	int pcap_compile(addr, addr, string, int, addr);
+  1369	
+  1370	; pwd.h
+  1371	string getpass(string);
+  1372	void endpwent(void);
+  1373	addr getpwnam(string);
+  1374	void setpwent(void);
+  1375	
+  1376	; readline/readline.h
+  1377	string readline(string);
+  1378	
+  1379	; signal.h
+  1380	int kill(int,int);
+  1381	addr signal(int,addr);
+  1382	int sigemptyset(addr);
+  1383	int sigfillset(addr);
+  1384	int sigaddset(addr, int);
+  1385	int sigdelset(addr, int);
+  1386	int sigismember(addr, int);
+  1387	int sigaction(int, addr, addr);
+  1388	int sigprocmask(int, addr, addr);
+  1389	int sigpending(addr);
+  1390	int sigsuspend(addr);
+  1391	
+  1392	; stdio.h
+  1393	int fclose(file);
+  1394	int feof(file);
+  1395	int ferror(file);
+  1396	int fflush(file);
+  1397	char fgetc(file);
+  1398	addr fgets(+string, int, file);
+  1399	int fileno(file);
+  1400	file fopen(string,string);
+  1401	file fopen64(string,string);
+  1402	int fprintf(file,format);
+  1403	int fputc(char,file);
+  1404	int fputs(string,file);
+  1405	ulong fread(addr,ulong,ulong,file);
+  1406	ulong fread_unlocked(addr,ulong,ulong,file);
+  1407	ulong fwrite(string,ulong,ulong,file);
+  1408	ulong fwrite_unlocked(string,ulong,ulong,file);
+  1409	int pclose(addr);
+  1410	void perror(string);
+  1411	addr popen(string, string);
+  1412	int printf(format);
+  1413	int puts(string);
+  1414	int remove(string);
+  1415	int snprintf(+string2,ulong,format);
+  1416	int sprintf(+string,format);
+  1417	string tempnam(string,string);
+  1418	int vfprintf(file,string,addr);
+  1419	int vsnprintf(+string2,ulong,string,addr);
+  1420	int setvbuf(file,addr,int,ulong);
+  1421	void setbuf(file,addr);
+  1422	void setbuffer(file,addr,ulong);
+  1423	void setlinebuf(file);
+  1424	int rename(string,string);
+  1425	
+  1426	; stdlib.h
+  1427	long __strtol_internal(string,addr,int);
+  1428	ulong __strtoul_internal(string,addr,int);
+  1429	int atexit(addr);
+  1430	addr bsearch(string, addr, ulong, ulong, addr);
+  1431	addr calloc(ulong, ulong);
+  1432	void exit(int);
+  1433	void free(addr);
+  1434	string getenv(string);
+  1435	int putenv(string);
+  1436	int setenv(string,string,int);
+  1437	void unsetenv(string);
+  1438	addr malloc(ulong);
+  1439	void qsort(addr,ulong,ulong,addr);
+  1440	int random(void);
+  1441	addr realloc(addr,ulong);
+  1442	void srandom(uint);
+  1443	int system(string);
+  1444	
+  1445	; string.h
+  1446	void bcopy(addr,addr,ulong);
+  1447	void bzero(addr,ulong);
+  1448	string basename(string);
+  1449	string index(string,char);
+  1450	addr memchr(string,char,ulong);
+  1451	addr memcpy(addr,string3,ulong);
+  1452	addr memset(addr,char,long);
+  1453	string rindex(string,char);
+  1454	addr stpcpy(addr,string);
+  1455	int strcasecmp(string, string);
+  1456	string strcat(string, string);
+  1457	string strchr(string,char);
+  1458	int strcoll(string,string);
+  1459	ulong strlen(string);
+  1460	int strcmp(string,string);
+  1461	addr strcpy(addr,string);
+  1462	addr strdup(string);
+  1463	string strerror(int);
+  1464	int strncmp(string,string,ulong);
+  1465	addr strncpy(addr,string3,ulong);
+  1466	string strrchr(string,char);
+  1467	string strsep(addr,string);
+  1468	ulong strspn(string,string);
+  1469	ulong strcspn(string,string);
+  1470	string strstr(string,string);
+  1471	string strtok(string, string);
+  1472	
+  1473	; sys/ioctl.h
+  1474	int ioctl(int, int, addr);
+  1475	
+  1476	; sys/socket.h
+  1477	int socket(int,int,int);
+  1478	
+  1479	; sys/stat.h
+  1480	int __fxstat(int,int,addr);
+  1481	int __xstat(int,string,addr);
+  1482	int __lxstat(int,string,addr);
+  1483	int __fxstat64(int,int,addr);
+  1484	int __xstat64(int,string,addr);
+  1485	int __lxstat64(int,string,addr);
+  1486	int chmod(string,octal);
+  1487	int fchmod(int,octal);
+  1488	int mkfifo(string,octal);
+  1489	octal umask(octal);
+  1490	
+  1491	; sys/utsname.h
+  1492	int uname(addr);
+  1493	
+  1494	; sys/vfs.h
+  1495	int statfs(string,addr);
+  1496	
+  1497	; syslog.h
+  1498	void closelog(void);
+  1499	void openlog(string,int,int);
+  1500	void syslog(int,format);
+  1501	
+  1502	; term.h
+  1503	int tputs(string, int, addr);
+  1504	
+  1505	; termios.h
+  1506	int tcgetattr(int,addr);
+  1507	int tcsetattr(int,int,addr);
+  1508	
+  1509	; time.h
+  1510	string ctime(addr);
+  1511	int gettimeofday(addr, addr);
+  1512	addr gmtime(addr);
+  1513	addr localtime(addr);
+  1514	ulong strftime(+string2,ulong,string,addr);
+  1515	long time(addr);
+  1516	
+  1517	; unistd.h
+  1518	void _exit(int);
+  1519	int access(string, int);
+  1520	uint alarm(uint);
+  1521	int chdir(string);
+  1522	int chown(string,int,int);
+  1523	int close(int);
+  1524	string crypt(string,string);
+  1525	int dup2(int,int);
+  1526	int execlp(string,string,addr,addr,addr);
+  1527	int execv(string,addr);
+  1528	int fchdir(int);
+  1529	int fork(void);
+  1530	int ftruncate(int,ulong);
+  1531	string2 getcwd(addr,ulong);
+  1532	int getdomainname(+string2,ulong);
+  1533	int geteuid(void);
+  1534	int getegid(void);
+  1535	int getgid(void);
+  1536	int gethostname(+string2,ulong);
+  1537	string getlogin(void);
+  1538	int getopt(int,addr,string);
+  1539	int getpid(void);
+  1540	int getppid(void);
+  1541	int getuid(void);
+  1542	int getpgrp(void);
+  1543	int setpgrp(void);
+  1544	int getpgid(int);
+  1545	int isatty(int);
+  1546	int link(string,string);
+  1547	int mkdir(string,octal);
+  1548	long read(int, +string0, ulong);
+  1549	int rmdir(string);
+  1550	int seteuid(uint);
+  1551	int setgid(int);
+  1552	int sethostname(+string2,ulong);
+  1553	int setpgid(int,int);
+  1554	int setreuid(uint, uint);
+  1555	int setuid(int);
+  1556	uint sleep(uint);
+  1557	int symlink(string,string);
+  1558	int sync(void);
+  1559	int truncate(string,ulong);
+  1560	string ttyname(int);
+  1561	int unlink(string);
+  1562	void usleep(uint);
+  1563	long write(int, string3, ulong);
+  1564	addr sbrk(long);
+  1565	int getpagesize(void);
+  1566	long lseek(int,long,int);
+  1567	int pipe(addr);
+  1568	
+  1569	; utmp.h
+  1570	void endutent(void);
+  1571	addr getutent(void);
+  1572	void setutent(void);
+  1573	
+  1574	; wchar.h
+  1575	int fwide(addr, int);
+  1576	
+  1577	; sys/wait.h
+  1578	int wait(addr);
+  1579	int waitpid(int,addr,int);
+  1580	
+  1581	; X11/Xlib.h
+  1582	void XCloseDisplay(addr);
+  1583	int XMapWindow(addr,addr);
+  1584	addr XOpenDisplay(string);
+  1585	
+  1586	; sys/acl.h
+  1587	int acl_add_perm(addr,uint);
+  1588	int acl_calc_mask(addr);
+  1589	int acl_clear_perms(addr);
+  1590	int acl_copy_entry(addr,addr);
+  1591	int acl_copy_ext(addr,addr,int);
+  1592	addr acl_copy_int(addr);
+  1593	int acl_create_entry(addr,addr);
+  1594	int acl_delete_def_file(string);
+  1595	int acl_delete_entry(addr,addr);
+  1596	int acl_delete_perm(addr,uint);
+  1597	addr acl_dup(addr);
+  1598	int acl_free(addr);
+  1599	addr acl_from_text(string);
+  1600	int acl_get_entry(addr,int,addr);
+  1601	addr acl_get_fd(int);
+  1602	addr acl_get_file(string,int);
+  1603	int acl_get_permset(addr,addr);
+  1604	addr acl_get_qualifier(addr);
+  1605	int acl_get_tag_type(addr,addr);
+  1606	addr acl_init(int);
+  1607	int acl_set_fd(int,addr);
+  1608	int acl_set_file(string,int,addr);
+  1609	int acl_set_permset(addr,addr);
+  1610	int acl_set_qualifier(addr,addr);
+  1611	int acl_set_tag_type(addr,int);
+  1612	int acl_size(addr);
+  1613	string acl_to_text(addr,addr);
+  1614	itn acl_valid(addr);
+  1615	
+  1616	; acl/libacl.h
+  1617	int acl_check(addr,addr);
+  1618	int acl_cmp(addr,addr);
+  1619	int acl_entries(addr);
+  1620	int acl_equiv_mode(addr,addr);
+  1621	string acl_error(int);
+  1622	int acl_extended_fd(int);
+  1623	int acl_extended_file(string);
+  1624	addr acl_from_mode(octal);
+  1625	int acl_get_perm(addr,uint);
+  1626	string acl_to_any_text(addr,string,char,int);
+  1627	
+  1628	; SYSCALLS
+  1629	addr  SYS_brk(addr);
+  1630	int   SYS_close(int);
+  1631	int   SYS_execve(string,addr,addr);
+  1632	void  SYS_exit(int);
+  1633	void  SYS_exit_group(int);
+  1634	int   SYS_fork(void);
+  1635	int   SYS_getcwd(+string2,ulong);
+  1636	int   SYS_getpid(void);
+  1637	;addr SYS_mmap(addr,ulong,int,int,int,long);
+  1638	int   SYS_munmap(addr,ulong);
+  1639	int   SYS_open(string,int,octal);
+  1640	int   SYS_personality(uint);
+  1641	long  SYS_read(int,+string0,ulong);
+  1642	int   SYS_stat(string,addr);
+  1643	octal SYS_umask(octal);
+  1644	int   SYS_uname(addr);
+  1645	long  SYS_write(int,string3,ulong);
+  1646	int   SYS_sync(void);
+  1647	int   SYS_setxattr(string,string,addr,uint,int);
+  1648	int   SYS_lsetxattr(string,string,addr,uint,int);
+  1649	int   SYS_fsetxattr(int,string,addr,uint,int);
+  1650	int   SYS_getxattr(string,string,addr,uint);
+  1651	int   SYS_lgetxattr(string,string,addr,uint);
+  1652	int   SYS_fgetxattr(int,string,addr,uint);
+  1653	int   SYS_listxattr(string,addr,uint);
+  1654	int   SYS_llistxattr(string,addr,uint);
+  1655	int   SYS_flistxattr(int,addr,uint);
+  1656	int   SYS_removexattr(string,string);
+  1657	int   SYS_lremovexattr(string,string);
+  1658	int   SYS_fremovexattr(int,string);
+  1659	[defaults]
+  1660		base_features = sparse_super,filetype,resize_inode,dir_index,ext_attr
+  1661		enable_periodic_fsck = 1
+  1662		blocksize = 4096
+  1663		inode_size = 256
+  1664		inode_ratio = 16384
+  1665	
+  1666	[fs_types]
+  1667		ext3 = {
+  1668			features = has_journal
+  1669		}
+  1670		ext4 = {
+  1671			features = has_journal,extent,huge_file,flex_bg,uninit_bg,dir_nlink,extra_isize
+  1672			inode_size = 256
+  1673		}
+  1674		ext4dev = {
+  1675			features = has_journal,extent,huge_file,flex_bg,uninit_bg,dir_nlink,extra_isize
+  1676			inode_size = 256
+  1677			options = test_fs=1
+  1678		}
+  1679		small = {
+  1680			blocksize = 1024
+  1681			inode_size = 128
+  1682			inode_ratio = 4096
+  1683		}
+  1684		floppy = {
+  1685			blocksize = 1024
+  1686			inode_size = 128
+  1687			inode_ratio = 8192
+  1688		}
+  1689		news = {
+  1690			inode_ratio = 4096
+  1691		}
+  1692		largefile = {
+  1693			inode_ratio = 1048576
+  1694			blocksize = -1
+  1695		}
+  1696		largefile4 = {
+  1697			inode_ratio = 4194304
+  1698			blocksize = -1
+  1699		}
+  1700		hurd = {
+  1701		     blocksize = 4096
+  1702		     inode_size = 128
+  1703		}
+  1704	#
+  1705	# /etc/nfsmount.conf - see nfsmount.conf(5) for details
+  1706	#
+  1707	# This is an NFS mount configuration file. This file can be broken
+  1708	# up into three different sections: Mount, Server and Global
+  1709	# 
+  1710	# [ MountPoint "Mount_point" ] 
+  1711	# This section defines all the mount options that
+  1712	# should be used on a particular mount point. The '<Mount_Point>'
+  1713	# string need to be an exact match of the path in the mount 
+  1714	# command. Example:
+  1715	#     [ MountPoint "/export/home" ]
+  1716	#       background=True
+  1717	# Would cause all mount to /export/home would be done in
+  1718	# the background
+  1719	#
+  1720	# [ Server "Server_Name" ]
+  1721	# This section defines all the mount options that
+  1722	# should be used on mounts to a particular NFS server. 
+  1723	# Example:
+  1724	#     [ Server "nfsserver.foo.com" ]
+  1725	#       rsize=32k
+  1726	#       wsize=32k
+  1727	# All reads and writes to the 'nfsserver.foo.com' server 
+  1728	# will be done with 32k (32768 bytes) block sizes.
+  1729	#
+  1730	[ NFSMount_Global_Options ]
+  1731	# This statically named section defines global mount 
+  1732	# options that can be applied on all NFS mount.
+  1733	#
+  1734	# Protocol Version [2,3,4]
+  1735	# This defines the default protocol version which will
+  1736	# be used to start the negotiation with the server.
+  1737	# Defaultvers=4
+  1738	#
+  1739	# Setting this option makes it mandatory the server supports the
+  1740	# given version. The mount will fail if the given version is 
+  1741	# not support by the server. 
+  1742	# Nfsvers=4
+  1743	#
+  1744	# Network Protocol [udp,tcp,rdma] (Note: values are case sensitive)
+  1745	# This defines the default network protocol which will
+  1746	# be used to start the negotiation with the server.
+  1747	# Defaultproto=tcp
+  1748	#
+  1749	# Setting this option makes it mandatory the server supports the
+  1750	# given network protocol. The mount will fail if the given network
+  1751	# protocol is not supported by the server.
+  1752	# Proto=tcp
+  1753	#
+  1754	# The number of times a request will be retired before 
+  1755	# generating a timeout 
+  1756	# Retrans=2
+  1757	#
+  1758	# The number of minutes that will retry mount
+  1759	# Retry=2
+  1760	#
+  1761	# The minimum time (in seconds) file attributes are cached
+  1762	# acregmin=30
+  1763	#
+  1764	# The Maximum time (in seconds) file attributes are cached
+  1765	# acregmin=60
+  1766	#
+  1767	# The minimum time (in seconds) directory attributes are cached
+  1768	# acregmin=30
+  1769	#
+  1770	# The Maximum time (in seconds) directory attributes are cached
+  1771	# acregmin=60
+  1772	#
+  1773	# Enable Access  Control  Lists
+  1774	# Acl=False
+  1775	#
+  1776	# Enable Attribute Caching
+  1777	# Ac=True
+  1778	#
+  1779	# Do mounts in background (i.e. asynchronously)
+  1780	# Background=False
+  1781	#
+  1782	# Close-To-Open cache coherence
+  1783	# Cto=True
+  1784	#
+  1785	# Do mounts in foreground (i.e. synchronously)
+  1786	# Foreground=True
+  1787	#
+  1788	# How to handle times out from servers (Hard is STRONGLY suggested)
+  1789	# Hard=True
+  1790	# Soft=False
+  1791	#
+  1792	# Enable File Locking
+  1793	# Lock=True
+  1794	#
+  1795	# Enable READDIRPLUS on NFS version 3 mounts
+  1796	# Rdirplus=True
+  1797	#
+  1798	# Maximum Read Size (in Bytes)
+  1799	# Rsize=8k
+  1800	#
+  1801	# Maximum Write Size (in Bytes)
+  1802	# Wsize=8k
+  1803	#
+  1804	# Maximum Server Block Size (in Bytes)
+  1805	# Bsize=8k
+  1806	#
+  1807	# Ignore unknown mount options
+  1808	# Sloppy=False
+  1809	#
+  1810	# Share Data and Attribute Caches
+  1811	# Sharecache=True
+  1812	#
+  1813	# The amount of time, in tenths of a seconds, the client
+  1814	# will wait for a response from the server before retransmitting
+  1815	# the request.
+  1816	# Timeo=600
+  1817	#
+  1818	# Sets all attributes times to the same time (in seconds)
+  1819	# actimeo=30
+  1820	#
+  1821	# Server Mountd port mountport
+  1822	# mountport=4001
+  1823	#
+  1824	# Server Mountd Protocol
+  1825	# mountproto=tcp
+  1826	#
+  1827	# Server Mountd Version
+  1828	# mounvers=3
+  1829	#
+  1830	# Server Mountd Host
+  1831	# mounthost=hostname
+  1832	#
+  1833	# Server Port
+  1834	# Port=2049
+  1835	#
+  1836	# RPCGSS security flavors 
+  1837	# [none, sys, krb5, krb5i, krb5p ]
+  1838	# Sec=sys
+  1839	#
+  1840	# Allow Signals to interrupt file operations
+  1841	# Intr=True
+  1842	#
+  1843	# Specifies  how the kernel manages its cache of directory
+  1844	# Lookupcache=all|none|pos|positive
+  1845	#
+  1846	# Turn of the caching of that access time
+  1847	# noatime=True
+  1848	#
+  1849	# /etc/nsswitch.conf
+  1850	#
+  1851	# An example Name Service Switch config file. This file should be
+  1852	# sorted with the most-used services at the beginning.
+  1853	#
+  1854	# The entry '[NOTFOUND=return]' means that the search for an
+  1855	# entry should stop if the search in the previous entry turned
+  1856	# up nothing. Note that if the search failed due to some other reason
+  1857	# (like no NIS server responding) then the search continues with the
+  1858	# next entry.
+  1859	#
+  1860	# Valid entries include:
+  1861	#
+  1862	#	nisplus			Use NIS+ (NIS version 3)
+  1863	#	nis			Use NIS (NIS version 2), also called YP
+  1864	#	dns			Use DNS (Domain Name Service)
+  1865	#	files			Use the local files
+  1866	#	db			Use the local database (.db) files
+  1867	#	compat			Use NIS on compat mode
+  1868	#	hesiod			Use Hesiod for user lookups
+  1869	#	[NOTFOUND=return]	Stop searching if not found so far
+  1870	#
+  1871	
+  1872	# To use db, put the "db" in front of "files" for entries you want to be
+  1873	# looked up first in the databases
+  1874	#
+  1875	# Example:
+  1876	#passwd:    db files nisplus nis
+  1877	#shadow:    db files nisplus nis
+  1878	#group:     db files nisplus nis
+  1879	
+  1880	passwd:     files
+  1881	shadow:     files
+  1882	group:      files
+  1883	
+  1884	#hosts:     db files nisplus nis dns
+  1885	hosts:      files dns
+  1886	
+  1887	# Example - obey only what nisplus tells us...
+  1888	#services:   nisplus [NOTFOUND=return] files
+  1889	#networks:   nisplus [NOTFOUND=return] files
+  1890	#protocols:  nisplus [NOTFOUND=return] files
+  1891	#rpc:        nisplus [NOTFOUND=return] files
+  1892	#ethers:     nisplus [NOTFOUND=return] files
+  1893	#netmasks:   nisplus [NOTFOUND=return] files     
+  1894	
+  1895	bootparams: nisplus [NOTFOUND=return] files
+  1896	
+  1897	ethers:     files
+  1898	netmasks:   files
+  1899	networks:   files
+  1900	protocols:  files
+  1901	rpc:        files
+  1902	services:   files
+  1903	
+  1904	netgroup:   nisplus
+  1905	
+  1906	publickey:  nisplus
+  1907	
+  1908	automount:  files nisplus
+  1909	aliases:    files nisplus
+  1910	
+  1911	# For more information about this file, see the man pages
+  1912	# ntp.conf(5), ntp_acc(5), ntp_auth(5), ntp_clock(5), ntp_misc(5), ntp_mon(5).
+  1913	
+  1914	driftfile /var/lib/ntp/drift
+  1915	
+  1916	# Permit time synchronization with our time source, but do not
+  1917	# permit the source to query or modify the service on this system.
+  1918	restrict default kod nomodify notrap nopeer noquery
+  1919	restrict -6 default kod nomodify notrap nopeer noquery
+  1920	
+  1921	# Permit all access over the loopback interface.  This could
+  1922	# be tightened as well, but to do so would effect some of
+  1923	# the administrative functions.
+  1924	restrict 127.0.0.1 
+  1925	restrict -6 ::1
+  1926	
+  1927	# Hosts on local network are less restricted.
+  1928	#restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap
+  1929	
+  1930	# Use public servers from the pool.ntp.org project.
+  1931	# Please consider joining the pool (http://www.pool.ntp.org/join.html).
+  1932	server 0.centos.pool.ntp.org iburst
+  1933	server 1.centos.pool.ntp.org iburst
+  1934	server 2.centos.pool.ntp.org iburst
+  1935	server 3.centos.pool.ntp.org iburst
+  1936	
+  1937	#broadcast 192.168.1.255 autokey	# broadcast server
+  1938	#broadcastclient			# broadcast client
+  1939	#broadcast 224.0.1.1 autokey		# multicast server
+  1940	#multicastclient 224.0.1.1		# multicast client
+  1941	#manycastserver 239.255.254.254		# manycast server
+  1942	#manycastclient 239.255.254.254 autokey # manycast client
+  1943	
+  1944	# Enable public key cryptography.
+  1945	#crypto
+  1946	
+  1947	includefile /etc/ntp/crypto/pw
+  1948	
+  1949	# Key file containing the keys and key identifiers used when operating
+  1950	# with symmetric key cryptography. 
+  1951	keys /etc/ntp/keys
+  1952	
+  1953	# Specify the key identifiers which are trusted.
+  1954	#trustedkey 4 8 42
+  1955	
+  1956	# Specify the key identifier to use with the ntpdc utility.
+  1957	#requestkey 8
+  1958	
+  1959	# Specify the key identifier to use with the ntpq utility.
+  1960	#controlkey 8
+  1961	
+  1962	# Enable writing of statistics records.
+  1963	#statistics clockstats cryptostats loopstats peerstats
+  1964	# Config file for numad
+  1965	#
+  1966	# Default INTERVAL is 15
+  1967	# modify below to change it
+  1968	INTERVAL=15
+  1969	<?xml version="1.0"?>
+  1970	
+  1971	<!-- This configuration file controls the oddjob daemon.  It controls
+  1972	     which requests the daemon will recognize, and whether or not it
+  1973	     will attempt to fulfill them on the behalf of particular users.
+  1974	
+  1975	     Each <oddjobconfig> contains a mixture of <service> and <include> nodes.
+  1976	 
+  1977	     Each <service> element corresponds to a well-known D-Bus address (given
+  1978	     in the "name" attribute) which the oddjobd daemon will answer to.  It
+  1979	     may contain one or more <object> elements which each describe an object
+  1980	     path.  Each <object>, in turn, is named by its "name" attribute.
+  1981	
+  1982	     Each <object> element must also contain zero or more <interface>
+  1983	     elements, which are named by their "name" attributes and correspond to
+  1984	     names of interfaces which the object implements.
+  1985	
+  1986	     Each <interface> element must contain zero or more <method>
+  1987	     elements, which are named by their "name" attributes.  Each
+  1988	     <method> node corresponds to a D-Bus method implemented by the
+  1989	     object as part of the interface.
+  1990	
+  1991	     Each method must include an access-control list which contains at
+  1992	     least one rule, or the daemon will ignore any attempts to call the
+  1993	     method.
+  1994	
+  1995	     When checking if a client is allowed to use a method, all deny
+  1996	     rules are processed, then all allow rules.  The first rule which
+  1997	     matches the user decides whether access is allowed or denied.
+  1998	
+  1999	     Access rules can specify either a user (using the "user"
+  2000	     attribute), or a range of UIDs (using the "min_uid" and "max_uid"

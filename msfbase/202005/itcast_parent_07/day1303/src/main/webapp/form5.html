@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script>
+        // 页面加载完成后执行
+        $(function () {
+            // 需求:校验用户名必须是 4~12位字母数字的组合
+            // 1 给用户名输入框绑定键盘弹起事件
+            $("#username").keyup(function() {
+                // 2 获取用户填写的用户名
+                var usernameVal = $("#username").val();
+                // 3 校验用户名必须是 4~12位字母数字的组合
+                var reg = new RegExp("^[a-zA-Z][a-zA-Z0-9]{3,11}$")
+                if(reg.test(usernameVal)) {
+                    // 合法: 用户名必须是 4~12位字母数字的组合
+                    $("#usernameMsg").html("");
+
+
+                    // 3.1 校验用户名是否被占用, 向服务器发送异步请求(query的ajax)
+                    // $.post 发送post方式的请求
+                    // 第一个参数: 请求的路径
+                    // 第二个参数: 携带的参数
+                    // 第三个参数: 处理响应数据的函数
+                    // 第四个参数: 浏览器告诉服务器它想要什么格式的数据
+                    $.post("CheckUsernameServlet", { username : usernameVal },
+                        function(data){
+                            // data 是服务器返回的数据
+                            // 判断
+                            if(data == 1) {
+                                // 被占用
+                                // document.getElementById("usernameMsg").innerHTML = "<font color='red'>用户名被占用,请更换!</font>"; // js写法
+                                $("#usernameMsg").html("用户名被占用,请更换!").css("color", "red"); // jquery写法
+                            }else {
+                                // 可以使用
+                                // document.getElementById("usernameMsg").innerHTML = "<font color='green'>用户名可以使用!</font>";
+                                $("#usernameMsg").html("用户名可以使用!").css("color", "green");
+                            }
+                        }, "html");
+
+                } else {
+                    // 不合法
+                    //alert("不合法")
+                    $("#usernameMsg").html("用户名必须是 4~12位字母数字的组合!").css("color", "red");
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+
+<h1>jquery的ajax操作: get请求</h1>
+<form action="/RegisterServlet" method="post">
+    <table>
+        <tr>
+            <td>用户名</td>
+            <td><input type="text" name="username" id="username"/></td>
+            <td id="usernameMsg"></td>
+        </tr>
+        <tr>
+            <td>昵称</td>
+            <td><input type="text" name="nickname"/></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="注册"/></td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

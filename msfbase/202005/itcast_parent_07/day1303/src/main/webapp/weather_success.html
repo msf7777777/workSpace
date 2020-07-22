@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>天知道</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+
+  <body>
+    <div class="wrap" id="app">
+      <div class="search_form">
+        <div class="logo"><img src="img/logo.png" alt="logo" /></div>
+        <div class="form_group">
+          <input id="word"
+            type="text"
+            class="input_txt"
+            placeholder="请输入查询的天气"
+          />
+          <button class="input_sub">
+            搜 索
+          </button>
+        </div>
+        <div class="hotkey">
+          <a href="javascript:;">北京</a>
+          <a href="javascript:;">上海</a>
+          <a href="javascript:;">广州</a>
+          <a href="javascript:;">深圳</a>
+        </div>
+      </div>
+      <ul class="weather_list">
+        <li>
+          <div class="info_type"><span class="iconfont">小雨</span></div>
+          <div class="info_temp">
+            <b>低温 2℃</b>
+            ~
+            <b>高温 19℃</b>
+          </div>
+          <div class="info_date"><span>24日星期天</span></div>
+        </li>
+      </ul>
+    </div>
+    <!--导入jquery的包-->
+    <script src="js/jquery-2.1.0.js"></script>
+    <!--自定义js-->
+    <script>
+        function getWeather(cityVal) {
+            // 发送ajax请求, 获取城市对应的天气信息
+            $.ajax({
+                type: "get",
+                url: "http://wthrcdn.etouch.cn/weather_mini",
+                data: {city : cityVal},
+                success: function(data){
+                    console.log(data.data.forecast);
+                    // 获取天气数据
+                    var weatherArr = data.data.forecast;
+                    // 组装天气的字符串
+                    var str;
+                    for(let weather of weatherArr) {
+                        str += "<li>" +
+                            "          <div class=\"info_type\"><span class=\"iconfont\">" + weather.type + "</span></div>" +
+                            "          <div class=\"info_temp\">" +
+                            "            <b>" + weather.low + "</b>" +
+                            "            <b>" + weather.high + "</b>" +
+                            "          </div>\n" +
+                            "          <div class=\"info_date\"><span>" + weather.date + "</span></div>" +
+                            "        </li>";
+                    }
+                    // 将字符串放到对应的ul中
+                    $(".weather_list").html(str);
+                },
+                dataType : "json"
+            });
+        }
+
+        $(function(){
+            // 给输入框绑定键
+            $("#word").keyup(function (event) {
+                // 如果用户点击了回车键
+                if(event.keyCode == 13) {
+                    // 获取用户输入的城市
+                    var cityVal = this.value;
+                    // 根据城市 获取天气信息
+                    getWeather(cityVal);
+                }
+            });
+
+            // 给热点城市查询天气信息
+            $(".hotkey>a").click(function () {
+                console.info(this.innerText);
+                var cityVal = this.innerText;
+                // 将热点城市放到输入框中
+                $("#word").val(cityVal);
+                // 搜索天气信息 且 显示
+                getWeather(cityVal);
+            });
+
+            // 点击搜索按钮 查询天气信息
+            $(".input_sub").click(function () {
+                var cityVal = $("#word").val();
+                // 根据城市 获取天气信息
+                getWeather(cityVal);
+            });
+        })
+    </script>
+
+  </body>
+</html>

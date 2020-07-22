@@ -1,0 +1,779 @@
+  2001	     attributes).
+  2002	
+  2003	     If SELinux support was compiled in, then a rule can also specify
+  2004	     whether or not it applies if the SELinux policy is being enforced
+  2005	     ("selinux_enforcing"), or what the caller's SELinux context
+  2006	     ("selinux_context"), user ("selinux_user"), role ("selinux_role"),
+  2007	     or type ("selinux_type") must be for that rule to apply.
+  2008	
+  2009	     A method may, as part of its definition, specify an external
+  2010	     program which is to be run when the method is invoked, by including
+  2011	     a <helper> node.  The <helper> node should include an "exec"
+  2012	     attribute naming the external program which will be launched to
+  2013	     accomplish the given task.  Depending on the value of its
+  2014	     "argument_passing_method" attribute, it will receive its arguments
+  2015	     either over stdin, one argument per line, or on the command line.
+  2016	     Depending on the value of the "prepend_user_name" attribute, the
+  2017	     argument list may or may not begin with the calling user's name.
+  2018	     The helper will be run with superuser privileges.
+  2019	 
+  2020	     Here's what an example /etc/oddjobd.conf.d/crontabs.conf might
+  2021	     look like, allowing either users with either UID=0 or the staff_r role to
+  2022	     run the regularly scheduled cron jobs at will:
+  2023	
+  2024	     <oddjobconfig>
+  2025	       <service name="com.redhat.periodic_cron">
+  2026	         <allow user="root"/>
+  2027	         <allow selinux_enforcing="yes" selinux_role="staff_r"/>
+  2028	         <object name="/cron/hourly">
+  2029	           <interface name="com.redhat.periodic_run">
+  2030	             <method name="run">
+  2031	               <helper exec="/usr/bin/run-parts /etc/cron.hourly"
+  2032	                       arguments="0"/>
+  2033	             </method>
+  2034	           </interface>
+  2035	         </object>
+  2036	         <object name="/cron/daily">
+  2037	           <interface name="com.redhat.periodic_run">
+  2038	             <method name="run">
+  2039	               <helper exec="/usr/bin/run-parts /etc/cron.daily"
+  2040	                       arguments="0"/>
+  2041	             </method>
+  2042	           </interface>
+  2043	         </object>
+  2044	         <object name="/cron/weekly">
+  2045	           <interface name="com.redhat.periodic_run">
+  2046	             <method name="run">
+  2047	               <helper exec="/usr/bin/run-parts /etc/cron.weekly"
+  2048	                       arguments="0"/>
+  2049	             </method>
+  2050	           </interface>
+  2051	         </object>
+  2052	         <object name="/cron/monthly">
+  2053	           <interface name="com.redhat.periodic_run">
+  2054	             <method name="run">
+  2055	               <helper exec="/usr/bin/run-parts /etc/cron.monthly"
+  2056	                       arguments="0"/>
+  2057	             </method>
+  2058	           </interface>
+  2059	         </object>
+  2060	       </service>
+  2061	     </oddjobconfig>
+  2062	
+  2063	  -->
+  2064	
+  2065	<oddjobconfig>
+  2066	
+  2067	  <service name="com.redhat.oddjob">
+  2068	    <object name="/com/redhat/oddjob">
+  2069	      <interface name="com.redhat.oddjob">
+  2070	
+  2071	        <method name="listall">
+  2072	          <allow min_uid="0" max_uid="0"/>
+  2073	        </method>
+  2074	
+  2075	        <method name="list">
+  2076	          <allow/>
+  2077	        </method>
+  2078	
+  2079	        <method name="quit">
+  2080	          <allow user="root"/>
+  2081	        </method>
+  2082	
+  2083	        <method name="reload">
+  2084	          <allow user="root"/>
+  2085	        </method>
+  2086	
+  2087	      </interface>
+  2088	
+  2089	    </object>
+  2090	
+  2091	  </service>
+  2092	
+  2093	  <!-- Site-specific or other distributed additions. -->
+  2094	  <include ignore_missing="yes">/etc/oddjobd.conf.d/*.conf</include>
+  2095	
+  2096	  <!-- Local additions. -->
+  2097	  <include ignore_missing="yes">/etc/oddjobd-local.conf</include>
+  2098	
+  2099	</oddjobconfig>
+  2100	# Config file for hd-apm-restore hook
+  2101	
+  2102	# Devices, where the hd apm value should be restored, separated by space
+  2103	#HD_APM_DEVICES="sda"
+  2104	
+  2105	# Use this to overwrite a value for a device in case hdparm reports
+  2106	# "unknown value" for the apm level. This is ignored when hdparm
+  2107	# returns an other value.
+  2108	#savestate sda 192
+  2109	#savestate sdb 192
+  2110	#savestate sdc 192
+  2111	#savestate sdd 192
+  2112	# This config file contains a list of directories both with binaries
+  2113	# and libraries prelink should consider by default.
+  2114	# If a directory name is prefixed with `-l ', the directory hierarchy
+  2115	# will be walked as long as filesystem boundaries are not crossed.
+  2116	# If a directory name is prefixed with `-h ', symbolic links in a
+  2117	# directory hierarchy are followed.
+  2118	# Directories or files with `-b ' prefix will be blacklisted.
+  2119	# `-c ' is used to source additional config file snippets.
+  2120	-c /etc/prelink.conf.d/*.conf
+  2121	-b *.la
+  2122	-b *.png
+  2123	-b *.py
+  2124	-b *.pl
+  2125	-b *.pm
+  2126	-b *.sh
+  2127	-b *.xml
+  2128	-b *.xslt
+  2129	-b *.a
+  2130	-b *.js
+  2131	-b /lib/modules
+  2132	-b /usr/lib/locale
+  2133	-l /bin
+  2134	-l /usr/bin
+  2135	-l /sbin
+  2136	-l /usr/sbin
+  2137	-l /usr/kerberos/bin
+  2138	-l /usr/games
+  2139	-l /usr/libexec
+  2140	-l /var/ftp/bin
+  2141	-l /lib{,64}
+  2142	-l /usr/lib{,64}
+  2143	-l /var/ftp/lib{,64}
+  2144	# Readahead config file
+  2145	
+  2146	#
+  2147	# RAC -- Read-Ahead-Collector
+  2148	#
+  2149	
+  2150	# Raw audit data
+  2151	#RAC_RAWLOG="/var/log/readahead-rac.log"
+  2152	
+  2153	# Rac automatically finish after N seconds
+  2154	RAC_MAXTIME="300"
+  2155	
+  2156	# Path to init process
+  2157	RAC_INITPATH="/sbin/init"
+  2158	
+  2159	# Template of path where RAC will store final lists
+  2160	# -- %s will be replaced by "early" or "later"
+  2161	RAC_LISTSPATH="/var/lib/readahead/custom.%s"
+  2162	
+  2163	# Ignore syscalls from:
+  2164	RAC_EXECIGN="/sbin/readahead"
+  2165	
+  2166	# Exclude dirs
+  2167	RAC_EXCLUDE="/proc /sys /dev /var /home /tmp /media /selinux /mnt /usr/src /usr/include /lib/modules /usr/lib/gcc /usr/lib64/gcc  /usr/lib/locale /usr/libexec/gcc"
+  2168	
+  2169	# A first filename in the list
+  2170	# RAC_LISTBEGIN="/etc/rc.d/init.d/readahead_early"
+  2171	
+  2172	# A filename which is a separator between early and later readahead
+  2173	# RAC_LISTSEP="/etc/rc.d/init.d/readahead_later"
+  2174	
+  2175	# On/Off debug mode (see also "-d" option)
+  2176	RAC_DEBUG="off"
+  2177	
+  2178	# On debug mode all debug messages goes to this file
+  2179	RAC_DEBUGLOG="/dev/.readahead-rac.debug"
+  2180	###############################################################################
+  2181	#
+  2182	# Copyright (C) 2005 Red Hat, Inc. All Rights Reserved.
+  2183	# Written by David Howells (dhowells@redhat.com)
+  2184	#
+  2185	# This program is free software; you can redistribute it and/or
+  2186	# modify it under the terms of the GNU General Public License
+  2187	# as published by the Free Software Foundation; either version
+  2188	# 2 of the License, or (at your option) any later version.
+  2189	#
+  2190	###############################################################################
+  2191	
+  2192	
+  2193	###############################################################################
+  2194	#
+  2195	# We can run programs or scripts
+  2196	# - Macro substitutions in arguments:
+  2197	#	%%...	%...
+  2198	#	%o	operation name
+  2199	#	%k	ID of key being operated upon
+  2200	#	%t	type of key being operated upon
+  2201	#	%d	description of key being operated upon
+  2202	#	%c	callout info
+  2203	#	%u	UID of requestor
+  2204	#	%g	GID of requestor
+  2205	#	%T	thread keyring of requestor (may be 0)
+  2206	#	%P	process keyring of requestor (may be 0)
+  2207	#	%S	session keyring of requestor (may be the user's default session)
+  2208	#
+  2209	################################################################################
+  2210	
+  2211	#OP	TYPE	DESCRIPTION	CALLOUT INFO	PROGRAM ARG1 ARG2 ARG3 ...
+  2212	#======	=======	===============	===============	===============================
+  2213	create	user	debug:*		negate		/bin/keyctl negate %k 30 %S
+  2214	create	user	debug:loop:*	*		|/bin/cat
+  2215	create	user	debug:*		*		/usr/share/keyutils/request-key-debug.sh %k %d %c %S
+  2216	negate	*	*		*		/bin/keyctl negate %k 30 %S
+  2217	# Generated by NetworkManager
+  2218	nameserver 8.8.8.8
+  2219	# rsyslog v5 configuration file
+  2220	
+  2221	# For more information see /usr/share/doc/rsyslog-*/rsyslog_conf.html
+  2222	# If you experience problems, see http://www.rsyslog.com/doc/troubleshoot.html
+  2223	
+  2224	#### MODULES ####
+  2225	
+  2226	$ModLoad imuxsock # provides support for local system logging (e.g. via logger command)
+  2227	$ModLoad imklog   # provides kernel logging support (previously done by rklogd)
+  2228	#$ModLoad immark  # provides --MARK-- message capability
+  2229	
+  2230	# Provides UDP syslog reception
+  2231	#$ModLoad imudp
+  2232	#$UDPServerRun 514
+  2233	
+  2234	# Provides TCP syslog reception
+  2235	#$ModLoad imtcp
+  2236	#$InputTCPServerRun 514
+  2237	
+  2238	
+  2239	#### GLOBAL DIRECTIVES ####
+  2240	
+  2241	# Use default timestamp format
+  2242	$ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat
+  2243	
+  2244	# File syncing capability is disabled by default. This feature is usually not required,
+  2245	# not useful and an extreme performance hit
+  2246	#$ActionFileEnableSync on
+  2247	
+  2248	# Include all config files in /etc/rsyslog.d/
+  2249	$IncludeConfig /etc/rsyslog.d/*.conf
+  2250	
+  2251	
+  2252	#### RULES ####
+  2253	
+  2254	# Log all kernel messages to the console.
+  2255	# Logging much else clutters up the screen.
+  2256	#kern.*                                                 /dev/console
+  2257	
+  2258	# Log anything (except mail) of level info or higher.
+  2259	# Don't log private authentication messages!
+  2260	*.info;mail.none;authpriv.none;cron.none                /var/log/messages
+  2261	
+  2262	# The authpriv file has restricted access.
+  2263	authpriv.*                                              /var/log/secure
+  2264	
+  2265	# Log all the mail messages in one place.
+  2266	mail.*                                                  -/var/log/maillog
+  2267	
+  2268	
+  2269	# Log cron stuff
+  2270	cron.*                                                  /var/log/cron
+  2271	
+  2272	# Everybody gets emergency messages
+  2273	*.emerg                                                 *
+  2274	
+  2275	# Save news errors of level crit and higher in a special file.
+  2276	uucp,news.crit                                          /var/log/spooler
+  2277	
+  2278	# Save boot messages also to boot.log
+  2279	local7.*                                                /var/log/boot.log
+  2280	
+  2281	
+  2282	# ### begin forwarding rule ###
+  2283	# The statement between the begin ... end define a SINGLE forwarding
+  2284	# rule. They belong together, do NOT split them. If you create multiple
+  2285	# forwarding rules, duplicate the whole block!
+  2286	# Remote Logging (we use TCP for reliable delivery)
+  2287	#
+  2288	# An on-disk queue is created for this action. If the remote host is
+  2289	# down, messages are spooled to disk and sent when it is up again.
+  2290	#$WorkDirectory /var/lib/rsyslog # where to place spool files
+  2291	#$ActionQueueFileName fwdRule1 # unique name prefix for spool files
+  2292	#$ActionQueueMaxDiskSpace 1g   # 1gb space limit (use as much as possible)
+  2293	#$ActionQueueSaveOnShutdown on # save messages to disk on shutdown
+  2294	#$ActionQueueType LinkedList   # run asynchronously
+  2295	#$ActionResumeRetryCount -1    # infinite retries if host is down
+  2296	# remote host is: name/ip:port, e.g. 192.168.0.1:514, port optional
+  2297	#*.* @@remote-host:514
+  2298	# ### end of the forwarding rule ###
+  2299	[files]
+  2300	/etc/passwd
+  2301	/etc/shadow
+  2302	/bin/bash
+  2303	/bin/login
+  2304	/bin/sh
+  2305	/sbin/agetty
+  2306	/sbin/init
+  2307	/sbin/mingetty
+  2308	/usr/sbin/sshd
+  2309	/lib/libc.so.6
+  2310	/lib/ld-linux.so.2
+  2311	/lib/ld.so.1
+  2312	
+  2313	[process]
+  2314	/sbin/mingetty
+  2315	/sbin/agetty
+  2316	/usr/sbin/sshd
+  2317	# Sample configuration file for smartd.  See man smartd.conf.
+  2318	
+  2319	# Home page is: http://smartmontools.sourceforge.net
+  2320	
+  2321	# $Id: smartd.conf 3128 2010-07-27 13:08:31Z chrfranke $
+  2322	
+  2323	# smartd will re-read the configuration file if it receives a HUP
+  2324	# signal
+  2325	
+  2326	# The file gives a list of devices to monitor using smartd, with one
+  2327	# device per line. Text after a hash (#) is ignored, and you may use
+  2328	# spaces and tabs for white space. You may use '\' to continue lines.
+  2329	
+  2330	# You can usually identify which hard disks are on your system by
+  2331	# looking in /proc/ide and in /proc/scsi.
+  2332	
+  2333	# The word DEVICESCAN will cause any remaining lines in this
+  2334	# configuration file to be ignored: it tells smartd to scan for all
+  2335	# ATA and SCSI devices.  DEVICESCAN may be followed by any of the
+  2336	# Directives listed below, which will be applied to all devices that
+  2337	# are found.  Most users should comment out DEVICESCAN and explicitly
+  2338	# list the devices that they wish to monitor.
+  2339	DEVICESCAN -H -m root
+  2340	
+  2341	# Alternative setting to ignore temperature and power-on hours reports
+  2342	# in syslog.
+  2343	#DEVICESCAN -I 194 -I 231 -I 9
+  2344	
+  2345	# Alternative setting to report more useful raw temperature in syslog.
+  2346	#DEVICESCAN -R 194 -R 231 -I 9
+  2347	
+  2348	# Alternative setting to report raw temperature changes >= 5 Celsius
+  2349	# and min/max temperatures.
+  2350	#DEVICESCAN -I 194 -I 231 -I 9 -W 5
+  2351	
+  2352	# First (primary) ATA/IDE hard disk.  Monitor all attributes, enable
+  2353	# automatic online data collection, automatic Attribute autosave, and
+  2354	# start a short self-test every day between 2-3am, and a long self test
+  2355	# Saturdays between 3-4am.
+  2356	#/dev/hda -a -o on -S on -s (S/../.././02|L/../../6/03)
+  2357	
+  2358	# Monitor SMART status, ATA Error Log, Self-test log, and track
+  2359	# changes in all attributes except for attribute 194
+  2360	#/dev/hdb -H -l error -l selftest -t -I 194 
+  2361	
+  2362	# Monitor all attributes except normalized Temperature (usually 194),
+  2363	# but track Temperature changes >= 4 Celsius, report Temperatures
+  2364	# >= 45 Celsius and changes in Raw value of Reallocated_Sector_Ct (5).
+  2365	# Send mail on SMART failures or when Temperature is >= 55 Celsius.
+  2366	#/dev/hdc -a -I 194 -W 4,45,55 -R 5 -m admin@example.com
+  2367	
+  2368	# An ATA disk may appear as a SCSI device to the OS. If a SCSI to
+  2369	# ATA Translation (SAT) layer is between the OS and the device then
+  2370	# this can be flagged with the '-d sat' option. This situation may
+  2371	# become common with SATA disks in SAS and FC environments.
+  2372	# /dev/sda -a -d sat
+  2373	
+  2374	# A very silent check.  Only report SMART health status if it fails
+  2375	# But send an email in this case
+  2376	#/dev/hdc -H -C 0 -U 0 -m admin@example.com
+  2377	
+  2378	# First two SCSI disks.  This will monitor everything that smartd can
+  2379	# monitor.  Start extended self-tests Wednesdays between 6-7pm and
+  2380	# Sundays between 1-2 am
+  2381	#/dev/sda -d scsi -s L/../../3/18
+  2382	#/dev/sdb -d scsi -s L/../../7/01
+  2383	
+  2384	# Monitor 4 ATA disks connected to a 3ware 6/7/8000 controller which uses
+  2385	# the 3w-xxxx driver. Start long self-tests Sundays between 1-2, 2-3, 3-4, 
+  2386	# and 4-5 am.
+  2387	# NOTE: starting with the Linux 2.6 kernel series, the /dev/sdX interface
+  2388	# is DEPRECATED.  Use the /dev/tweN character device interface instead.
+  2389	# For example /dev/twe0, /dev/twe1, and so on.
+  2390	#/dev/sdc -d 3ware,0 -a -s L/../../7/01
+  2391	#/dev/sdc -d 3ware,1 -a -s L/../../7/02
+  2392	#/dev/sdc -d 3ware,2 -a -s L/../../7/03
+  2393	#/dev/sdc -d 3ware,3 -a -s L/../../7/04
+  2394	
+  2395	# Monitor 2 ATA disks connected to a 3ware 9000 controller which
+  2396	# uses the 3w-9xxx driver (Linux, FreeBSD). Start long self-tests Tuesdays
+  2397	# between 1-2 and 3-4 am.
+  2398	#/dev/twa0 -d 3ware,0 -a -s L/../../2/01
+  2399	#/dev/twa0 -d 3ware,1 -a -s L/../../2/03
+  2400	
+  2401	# Monitor 2 SATA (not SAS) disks connected to a 3ware 9000 controller which
+  2402	# uses the 3w-sas driver (Linux, FreeBSD). Start long self-tests Tuesdays
+  2403	# between 1-2 and 3-4 am.
+  2404	#/dev/twl0 -d 3ware,0 -a -s L/../../2/01
+  2405	#/dev/twa0 -d 3ware,1 -a -s L/../../2/03
+  2406	
+  2407	# Same as above for Windows. Option '-d 3ware,N' is not necessary,
+  2408	# disk (port) number is specified in device name.
+  2409	# NOTE: On Windows, DEVICESCAN works also for 3ware controllers.
+  2410	#/dev/hdc,0 -a -s L/../../2/01
+  2411	#/dev/hdc,1 -a -s L/../../2/03
+  2412	
+  2413	# Monitor 3 ATA disks directly connected to a HighPoint RocketRAID. Start long
+  2414	# self-tests Sundays between 1-2, 2-3, and 3-4 am. 
+  2415	#/dev/sdd -d hpt,1/1 -a -s L/../../7/01
+  2416	#/dev/sdd -d hpt,1/2 -a -s L/../../7/02
+  2417	#/dev/sdd -d hpt,1/3 -a -s L/../../7/03
+  2418	
+  2419	# Monitor 2 ATA disks connected to the same PMPort which connected to the
+  2420	# HighPoint RocketRAID. Start long self-tests Tuesdays between 1-2 and 3-4 am
+  2421	#/dev/sdd -d hpt,1/4/1 -a -s L/../../2/01
+  2422	#/dev/sdd -d hpt,1/4/2 -a -s L/../../2/03
+  2423	
+  2424	# HERE IS A LIST OF DIRECTIVES FOR THIS CONFIGURATION FILE.
+  2425	# PLEASE SEE THE smartd.conf MAN PAGE FOR DETAILS
+  2426	#
+  2427	#   -d TYPE Set the device type: ata, scsi, marvell, removable, 3ware,N, hpt,L/M/N
+  2428	#   -T TYPE set the tolerance to one of: normal, permissive
+  2429	#   -o VAL  Enable/disable automatic offline tests (on/off)
+  2430	#   -S VAL  Enable/disable attribute autosave (on/off)
+  2431	#   -n MODE No check. MODE is one of: never, sleep, standby, idle
+  2432	#   -H      Monitor SMART Health Status, report if failed
+  2433	#   -l TYPE Monitor SMART log.  Type is one of: error, selftest
+  2434	#   -f      Monitor for failure of any 'Usage' Attributes
+  2435	#   -m ADD  Send warning email to ADD for -H, -l error, -l selftest, and -f
+  2436	#   -M TYPE Modify email warning behavior (see man page)
+  2437	#   -s REGE Start self-test when type/date matches regular expression (see man page)
+  2438	#   -p      Report changes in 'Prefailure' Normalized Attributes
+  2439	#   -u      Report changes in 'Usage' Normalized Attributes
+  2440	#   -t      Equivalent to -p and -u Directives
+  2441	#   -r ID   Also report Raw values of Attribute ID with -p, -u or -t
+  2442	#   -R ID   Track changes in Attribute ID Raw value with -p, -u or -t
+  2443	#   -i ID   Ignore Attribute ID for -f Directive
+  2444	#   -I ID   Ignore Attribute ID for -p, -u or -t Directive
+  2445	#   -C ID   Report if Current Pending Sector count non-zero
+  2446	#   -U ID   Report if Offline Uncorrectable count non-zero
+  2447	#   -W D,I,C Monitor Temperature D)ifference, I)nformal limit, C)ritical limit
+  2448	#   -v N,ST Modifies labeling of Attribute N (see man page)
+  2449	#   -a      Default: equivalent to -H -f -t -l error -l selftest -C 197 -U 198
+  2450	#   -F TYPE Use firmware bug workaround. Type is one of: none, samsung
+  2451	#   -P TYPE Drive-specific presets: use, ignore, show, showall
+  2452	#    #      Comment: text after a hash sign is ignored
+  2453	#    \      Line continuation character
+  2454	# Attribute ID is a decimal integer 1 <= ID <= 255
+  2455	# except for -C and -U, where ID = 0 turns them off.
+  2456	# All but -d, -m and -M Directives are only implemented for ATA devices
+  2457	#
+  2458	# If the test string DEVICESCAN is the first uncommented text
+  2459	# then smartd will scan for devices /dev/hd[a-l] and /dev/sd[a-z]
+  2460	# DEVICESCAN may be followed by any desired Directives.
+  2461	[general]
+  2462	
+  2463	#ftp_upload_url = ftp://example.com/incoming
+  2464	#gpg_keyring = /usr/share/sos/rhsupport.pub
+  2465	#gpg_recipient = support@redhat.com
+  2466	smtp_server = None
+  2467	
+  2468	[plugins]
+  2469	
+  2470	#disable = rpm, selinux, dovecot
+  2471	
+  2472	[tunables]
+  2473	
+  2474	#rpm.rpmva = off
+  2475	#general.syslogsize = 15
+  2476	
+  2477	#
+  2478	# Default /etc/sudo.conf file
+  2479	#
+  2480	# Format:
+  2481	#   Plugin plugin_name plugin_path plugin_options ...
+  2482	#   Path askpass /path/to/askpass
+  2483	#   Path noexec /path/to/sudo_noexec.so
+  2484	#   Debug sudo /var/log/sudo_debug all@warn
+  2485	#   Set disable_coredump true
+  2486	#
+  2487	# Sudo plugins:
+  2488	#
+  2489	# The plugin_path is relative to ${prefix}/libexec unless fully qualified.
+  2490	# The plugin_name corresponds to a global symbol in the plugin
+  2491	#   that contains the plugin interface structure.
+  2492	# The plugin_options are optional.
+  2493	#
+  2494	# The sudoers plugin is used by default if no Plugin lines are present.
+  2495	Plugin sudoers_policy sudoers.so
+  2496	Plugin sudoers_io sudoers.so
+  2497	
+  2498	#
+  2499	# Sudo askpass:
+  2500	#
+  2501	# An askpass helper program may be specified to provide a graphical
+  2502	# password prompt for "sudo -A" support.  Sudo does not ship with its
+  2503	# own passpass program but can use the OpenSSH askpass.
+  2504	#
+  2505	# Use the OpenSSH askpass
+  2506	#Path askpass /usr/X11R6/bin/ssh-askpass
+  2507	#
+  2508	# Use the Gnome OpenSSH askpass
+  2509	#Path askpass /usr/libexec/openssh/gnome-ssh-askpass
+  2510	
+  2511	#
+  2512	# Sudo noexec:
+  2513	#
+  2514	# Path to a shared library containing dummy versions of the execv(),
+  2515	# execve() and fexecve() library functions that just return an error.
+  2516	# This is used to implement the "noexec" functionality on systems that
+  2517	# support C<LD_PRELOAD> or its equivalent.
+  2518	# The compiled-in value is usually sufficient and should only be changed
+  2519	# if you rename or move the sudo_noexec.so file.
+  2520	#
+  2521	#Path noexec /usr/libexec/sudo_noexec.so
+  2522	
+  2523	#
+  2524	# Core dumps:
+  2525	#
+  2526	# By default, sudo disables core dumps while it is executing (they
+  2527	# are re-enabled for the command that is run).
+  2528	# To aid in debugging sudo problems, you may wish to enable core
+  2529	# dumps by setting "disable_coredump" to false.
+  2530	#
+  2531	# Set to false here so as not to interfere with /proc/sys/fs/suid_dumpable
+  2532	#
+  2533	Set disable_coredump false
+  2534	## BINDDN DN
+  2535	##  The BINDDN parameter specifies the identity, in the form of a Dis‐
+  2536	##  tinguished Name (DN), to use when performing LDAP operations.  If
+  2537	##  not specified, LDAP operations are performed with an anonymous
+  2538	##  identity.  By default, most LDAP servers will allow anonymous
+  2539	##  access.
+  2540	##
+  2541	#binddn uid=sudo,cn=sysaccounts,cn=etc,dc=example,dc=com
+  2542	
+  2543	## BINDPW secret
+  2544	##  The BINDPW parameter specifies the password to use when performing
+  2545	##  LDAP operations.  This is typically used in conjunction with the
+  2546	##  BINDDN parameter.
+  2547	##
+  2548	#bindpw secret
+  2549	
+  2550	## SSL start_tls
+  2551	##  If the SSL parameter is set to start_tls, the LDAP server connec‐
+  2552	##  tion is initiated normally and TLS encryption is begun before the
+  2553	##  bind credentials are sent.  This has the advantage of not requiring
+  2554	##  a dedicated port for encrypted communications.  This parameter is
+  2555	##  only supported by LDAP servers that honor the start_tls extension,
+  2556	##  such as the OpenLDAP and Tivoli Directory servers.
+  2557	##
+  2558	#ssl start_tls
+  2559	
+  2560	## TLS_CACERTFILE file name
+  2561	##  The path to a certificate authority bundle which contains the cer‐
+  2562	##  tificates for all the Certificate Authorities the client knows to
+  2563	##  be valid, e.g. /etc/ssl/ca-bundle.pem.  This option is only sup‐
+  2564	##  ported by the OpenLDAP libraries.  Netscape-derived LDAP libraries
+  2565	##  use the same certificate database for CA and client certificates
+  2566	##  (see TLS_CERT).
+  2567	##
+  2568	#tls_cacertfile /path/to/CA.crt
+  2569	
+  2570	## TLS_CHECKPEER on/true/yes/off/false/no
+  2571	##  If enabled, TLS_CHECKPEER will cause the LDAP server's TLS certifi‐
+  2572	##  cated to be verified.  If the server's TLS certificate cannot be
+  2573	##  verified (usually because it is signed by an unknown certificate
+  2574	##  authority), sudo will be unable to connect to it.  If TLS_CHECKPEER
+  2575	##  is disabled, no check is made.  Note that disabling the check cre‐
+  2576	##  ates an opportunity for man-in-the-middle attacks since the
+  2577	##  server's identity will not be authenticated.  If possible, the CA's
+  2578	##  certificate should be installed locally so it can be verified.
+  2579	##  This option is not supported by the Tivoli Directory Server LDAP
+  2580	##  libraries.
+  2581	#tls_checkpeer yes
+  2582	
+  2583	##
+  2584	## URI ldap[s]://[hostname[:port]] ...
+  2585	##  Specifies a whitespace-delimited list of one or more
+  2586	##  URIs describing the LDAP server(s) to connect to. 
+  2587	##
+  2588	#uri ldap://ldapserver
+  2589	
+  2590	##
+  2591	## SUDOERS_BASE base
+  2592	##  The base DN to use when performing sudo LDAP queries.
+  2593	##  Multiple SUDOERS_BASE lines may be specified, in which
+  2594	##  case they are queried in the order specified.
+  2595	##
+  2596	#sudoers_base ou=SUDOers,dc=example,dc=com
+  2597	
+  2598	##
+  2599	## BIND_TIMELIMIT seconds
+  2600	##  The BIND_TIMELIMIT parameter specifies the amount of
+  2601	##  time to wait while trying to connect to an LDAP server.
+  2602	##
+  2603	#bind_timelimit 30
+  2604	
+  2605	##
+  2606	## TIMELIMIT seconds
+  2607	##  The TIMELIMIT parameter specifies the amount of time
+  2608	##  to wait for a response to an LDAP query.
+  2609	##
+  2610	#timelimit 30
+  2611	
+  2612	##
+  2613	## SUDOERS_DEBUG debug_level
+  2614	##  This sets the debug level for sudo LDAP queries. Debugging
+  2615	##  information is printed to the standard error. A value of 1
+  2616	##  results in a moderate amount of debugging information.
+  2617	##  A value of 2 shows the results of the matches themselves.
+  2618	##
+  2619	#sudoers_debug 1
+  2620	# Kernel sysctl configuration file for Red Hat Linux
+  2621	#
+  2622	# For binary values, 0 is disabled, 1 is enabled.  See sysctl(8) and
+  2623	# sysctl.conf(5) for more details.
+  2624	#
+  2625	# Use '/sbin/sysctl -a' to list all possible parameters.
+  2626	
+  2627	# Controls IP packet forwarding
+  2628	net.ipv4.ip_forward = 0
+  2629	
+  2630	# Controls source route verification
+  2631	net.ipv4.conf.default.rp_filter = 1
+  2632	
+  2633	# Do not accept source routing
+  2634	net.ipv4.conf.default.accept_source_route = 0
+  2635	
+  2636	# Controls the System Request debugging functionality of the kernel
+  2637	kernel.sysrq = 0
+  2638	
+  2639	# Controls whether core dumps will append the PID to the core filename.
+  2640	# Useful for debugging multi-threaded applications.
+  2641	kernel.core_uses_pid = 1
+  2642	
+  2643	# Controls the use of TCP syncookies
+  2644	net.ipv4.tcp_syncookies = 1
+  2645	
+  2646	# Controls the default maxmimum size of a mesage queue
+  2647	kernel.msgmnb = 65536
+  2648	
+  2649	# Controls the maximum size of a message, in bytes
+  2650	kernel.msgmax = 65536
+  2651	
+  2652	# Controls the maximum shared segment size, in bytes
+  2653	kernel.shmmax = 68719476736
+  2654	
+  2655	# Controls the maximum number of shared memory segments, in pages
+  2656	kernel.shmall = 4294967296
+  2657	[Qt]
+  2658	font="Sans Serif,10,-1,5,50,0,0,0,0,0"
+  2659	
+  2660	PRUNE_BIND_MOUNTS = "yes"
+  2661	PRUNEFS = "9p afs anon_inodefs auto autofs bdev binfmt_misc cgroup cifs coda configfs cpuset debugfs devpts ecryptfs exofs fuse fusectl gfs gfs2 gpfs hugetlbfs inotifyfs iso9660 jffs2 lustre mqueue ncpfs nfs nfs4 nfsd pipefs proc ramfs rootfs rpc_pipefs securityfs selinuxfs sfs sockfs sysfs tmpfs ubifs udf usbfs"
+  2662	PRUNENAMES = ".git .hg .svn"
+  2663	PRUNEPATHS = "/afs /media /net /sfs /tmp /udev /var/cache/ccache /var/spool/cups /var/spool/squid /var/tmp"
+  2664	# this is an example warnquota.conf
+  2665	#
+  2666	; ; and # type comments are allowed
+  2667	# and even blank lines
+  2668	
+  2669	# values can be quoted:
+  2670	MAIL_CMD 	= "/usr/sbin/sendmail -t"
+  2671	FROM 		=  root@example.com
+  2672	# but they don't have to be:
+  2673	SUBJECT 	= NOTE: You are exceeding your allocated disk space limits
+  2674	CC_TO 		= "root@example.com"
+  2675	# If you set this variable CC will be used only when user has less than
+  2676	# specified grace time left (examples of possible times: 5 seconds, 1 minute,
+  2677	# 12 hours, 5 days)
+  2678	# CC_BEFORE = 2 days
+  2679	SUPPORT 	= "root@example.com"
+  2680	PHONE 		= "(123) 456-1111 or (222) 333-4444"
+  2681	# Text in the beginning of the mail (if not specified, default text is used)
+  2682	# This way text can be split to more lines
+  2683	# Line breaks are done by '|' character
+  2684	# The expressions %i, %h, %d, and %% are substituted for user/group name,
+  2685	# host name, domain name, and '%' respectively. For backward compatibility
+  2686	# %s behaves as %i but is deprecated.
+  2687	MESSAGE         = Your disk usage has exceeded the agreed limits\
+  2688	 on this server|Please delete any unnecessary files on following filesystems:|
+  2689	# Text in the end of the mail (if not specified, default text using SUPPORT and PHONE
+  2690	# is created)
+  2691	SIGNATURE	= root@example.com
+  2692	# Following text is used for mails about group exceeding quotas
+  2693	GROUP_MESSAGE  = Hello,|\
+  2694	your group %i is using too much disk space at %h.|\
+  2695	I suggest you to clean up group files on the following filesystems:|
+  2696	# Text in the end of the mail to the group (if not specified, default text using SUPPORT
+  2697	# and PHONE is created).
+  2698	GROUP_SIGNATURE	= See you!|			Your admin|
+  2699	#
+  2700	#If you are running warnquota on a mail server, and don't want bounces
+  2701	#because clients cannot receive mail setting this to "any" will cause
+  2702	#warnquota to not send them mail for all devices.  If you set this to the
+  2703	#device name (for example /dev/hdb1) then they will not be sent mail if they
+  2704	#are overquota on that device only, and will be sent mail for all other
+  2705	#devices.
+  2706	#MAILDEV        =
+  2707	#
+  2708	#Here you can set a charset for emails sent by warnquota (e.g. UTF-8)
+  2709	#CHARSET	= 
+  2710	# If you are using LDAP mail lookups.
+  2711	# host, port, tls, binddn, and bindpw are straight forward.
+  2712	# LDAP_BASEDN is your search base dn
+  2713	# LDAP_SEARCH_ATTRIBUTE is the attr for the value you are looking for
+  2714	# LDAP_MAIL_ATTRIBUTE is the attribute you want used for the mail address
+  2715	# LDAP_DEFAULT_MAIL_DOMAIN is the default domain
+  2716	#    if the attribute isn't found
+  2717	# if binddn and bindpw are blank or left out, an anonymous bind is used
+  2718	# 
+  2719	# LDAP_MAIL = false # or true if you want to use it
+  2720	# If you have at least LDAP 2.3 installed, you should use LDAP_URI
+  2721	# LDAP_URI = ldaps://my.server:389
+  2722	# Otherwise you should specify LDAP_HOST and LDAP_PORT
+  2723	# LDAP_HOST = ldap
+  2724	# LDAP_PORT = 389
+  2725	# LDAP_BINDDN = uid=ReadOnlyUser,o=YourOrg
+  2726	# LDAP_BINDPW = YourReadOnlyUserPassword
+  2727	# LDAP_BASEDN = YourSearchBase
+  2728	# LDAP_SEARCH_ATTRIBUTE = uid
+  2729	# LDAP_MAIL_ATTRIBUTE = mailLocalAddress
+  2730	# LDAP_DEFAULT_MAIL_DOMAIN = YourDefaultMailDomain.com
+  2731	#
+  2732	# end of example warnquota.conf file
+  2733	#
+  2734	# /etc/yp.conf - ypbind configuration file
+  2735	# Valid entries are
+  2736	#
+  2737	# domain NISDOMAIN server HOSTNAME
+  2738	#	Use server HOSTNAME for the domain NISDOMAIN.
+  2739	#
+  2740	# domain NISDOMAIN broadcast
+  2741	#	Use  broadcast  on  the local net for domain NISDOMAIN
+  2742	#
+  2743	# domain NISDOMAIN slp
+  2744	#	Query local SLP server for ypserver supporting NISDOMAIN
+  2745	#
+  2746	# ypserver HOSTNAME
+  2747	#	Use server HOSTNAME for the  local  domain.  The
+  2748	#	IP-address of server must be listed in /etc/hosts.
+  2749	#
+  2750	# broadcast
+  2751	#	If no server for the default domain is specified or
+  2752	#	none of them is rechable, try a broadcast call to
+  2753	#	find a server.
+  2754	#
+  2755	[main]
+  2756	cachedir=/var/cache/yum/$basearch/$releasever
+  2757	keepcache=0
+  2758	debuglevel=2
+  2759	logfile=/var/log/yum.log
+  2760	exactarch=1
+  2761	obsoletes=1
+  2762	gpgcheck=1
+  2763	plugins=1
+  2764	installonly_limit=5
+  2765	bugtracker_url=http://bugs.centos.org/set_project.php?project_id=19&ref=http://bugs.centos.org/bug_report_page.php?category=yum
+  2766	distroverpkg=centos-release
+  2767	
+  2768	#  This is the default, if you make this bigger yum won't see if the metadata
+  2769	# is newer on the remote and so you'll "gain" the bandwidth of not having to
+  2770	# download the new metadata and "pay" for it by yum not having correct
+  2771	# information.
+  2772	#  It is esp. important, to have correct metadata, for distributions like
+  2773	# Fedora which don't keep old packages around. If you don't like this checking
+  2774	# interupting your command line usage, it's much better to have something
+  2775	# manually check the metadata once an hour (yum-updatesd will do this).
+  2776	# metadata_expire=90m
+  2777	
+  2778	# PUT YOUR REPOS HERE OR IN separate files named file.repo
+  2779	# in /etc/yum.repos.d

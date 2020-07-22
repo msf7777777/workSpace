@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>echarts_msf_异步数据图</title>
+    <!-- 1. 引入 ECharts 文件 -->
+    <script src="js/echarts.js"></script>
+    <!-- 2. 引入JQuery -->
+    <script src="js/jquery-1.11.0.js"></script>
+    <!-- 4. 编写js -->
+    <script>
+        $(function () {
+            // 准备echarts对象
+            var myChart = echarts.init(document.getElementById('main'));
+            // Ajax 再准备options
+            $.get("data.json").done(function (data) {
+                var options = {
+                    xAxis: {
+                        type: 'category',
+                            data: data.xData
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [{
+                        data: data.seriesData,
+                        type: data.type
+                    }]
+                }
+                // 绑定
+                myChart.setOption(options)
+            })
+            // 绑定
+        })
+    </script>
+</head>
+
+<body>
+    <!-- 3. 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+</body>
+
+</html>

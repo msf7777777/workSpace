@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+</head>
+<body>
+
+    <!--此处这个action: 就是点击登录后跳转的路径, 这个路径是一个servlet的路径
+        请求路径格式:  /项目虚拟名/访问路径
+    -->
+    <form   method="post" action="/day08_web_login/LoginServlet">
+        用户名: <input type="text" name="username" />
+        密&nbsp;&nbsp;码: <input type="password" name="password" />
+
+        <input type="submit" value="登  录" />
+
+    </form>
+
+</body>
+</html>

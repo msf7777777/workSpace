@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body{
+				font-size: 18px;
+			}
+			p{
+				font-size: 12px;
+				color: #0000FF;
+			}
+			.p5{
+				color: #FF0000;
+			}
+			#id_p6{
+				color: #008000;
+			}
+			
+			.div1{
+				width: 300px;
+				height: 300px;
+				border: 1px solid #FF0000;
+				background-color: #FFFF00;
+			}
+			#div1_1{
+				width: 280px;
+				height: 120px;
+				border: 1px solid;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!-- 如果页面中所有的p元素都使用同一个字体时，就考虑使用：元素选择器 -->
+		<p>段落1</p>
+		<p>段落2</p>
+		<p>段落3</p>
+		<p>段落4</p>
+		<!-- 当页面中的某个p元素使用其他样式时，就考虑使用：id选择器、类选择器 -->
+		<p class="p5">段落5</p>
+		<p id="id_p6">段落6</p>
+		<p>段落7</p>
+		<p>段落8</p>
+		<div class="div1">
+			<div id="div1_1">
+				test
+			</div>
+			<!-- id选择器和class选择器的使用：
+			 通常在开发中，建议使用：class选择器
+			 id选择器通常是针对唯一性的元素进行设置：
+			 #id_span{
+				 color="red";
+			 }
+			 例： <span id="id_span">红色字体</span>
+			     <span id="id_span">红色字体</span>
+				 <span id="id_span">红色字体</span>
+				 
+		     注意：通常id是会结合javascript一起使用的，而在javascript中：
+			 document.getElementById("id名称"); //去当前的网页中查找id名称的html元素对象
+				                                     只找第一个出现的id名称
+			 -->
+			 
+			 <!-- 
+			 单从css角度来讲，id选择器和class选择器，没有太多区别，都可以针对某个元素进行样式
+			 结合了js后，id选择器就会有弊端，所以在开发中建议使用：class选择器
+			 
+			 一个标准的网站：html+css+javascript
+			 
+			 -->
+		</div>
+		
+	</body>
+</html>

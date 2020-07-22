@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：命名空间，用于隔离sql -->
+<mapper namespace="test">
+
+
+    <!-- 实现根据id查询用户
+        id: 代表语句的唯一名称
+        parameterType : 传入的参数的类型
+        resultType : 返回的结果对应的JavaBean类型
+        #{id}: 类似JDBC中的占位符
+    -->
+    <select id="findById" parameterType="int" resultType="com.itheima.pojo.User">
+        select * from user where id=#{id}
+    </select>
+
+    <!--实现根据用户名模糊查询用户
+        #号代表是占位符,不能写在单引号里边
+    -->
+    <select id="findByName" parameterType="String" resultType="com.itheima.pojo.User">
+        select * from user where username like #{username}
+    </select>
+
+    <!--添加用户,并返回ID-->
+    <insert id="addUser" parameterType="com.itheima.pojo.User">
+        <selectKey order="AFTER" resultType="int" keyColumn="id" keyProperty="id">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into user(username,birthday,sex,address) values(#{username},#{birthday},#{sex},#{address});
+        --      insert into user(username,birthday,sex,address) values('周庆长','1996-12-23','1','四川自贡');
+    </insert>
+
+</mapper>

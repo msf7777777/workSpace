@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * 格式一: {key1:val1, key2:val2, key3:val3}
+         */
+        var jsonObj = {name:"张三", age:18};
+        document.write("name = " + jsonObj.name + "<br/>")
+        document.write("age = " + jsonObj.age);
+
+        document.write("<hr/>")
+        /**
+         * 格式二: var jsonArr = [{}, {}, {}]
+         */
+        var jsonArr = [
+            {name:"张三", age:18},
+            {name:"李四", age:28},
+            {name:"王五", age:50}
+        ];
+        for (var i = 0; i < jsonArr.length ; i++) {
+            let personJson = jsonArr[i];
+            document.write("name = " + personJson.name + ", age = " + personJson.age + "<br/>")
+        }
+
+        document.write("<hr/>")
+
+        /**
+         * 格式三: json = {key : jsonArr};
+         */
+        var jsonObj = {
+            "girls" : [
+                            {name:"张三", age:18},
+                            {name:"李四", age:28},
+                            {name:"王五", age:50}
+                        ]
+        }
+        var jsonArr = jsonObj.girls;
+        for (let i = 0; i < jsonArr.length ; i++) {
+            let personJson = jsonArr[i];
+            document.write("name = " + personJson.name + ", age = " + personJson.age + "<br/>")
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

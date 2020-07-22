@@ -1,0 +1,1000 @@
+     1	#
+     2	# Place your global alsa-lib configuration here...
+     3	#
+     4	
+     5	@hooks [
+     6		{
+     7			func load
+     8			files [
+     9				"/etc/alsa/pulse-default.conf"
+    10			]
+    11			errors false
+    12		}
+    13	]
+    14	#
+    15	# Define default options for autofs.
+    16	#
+    17	[ autofs ]
+    18	#
+    19	# master_map_name - default map name for the master map.
+    20	#
+    21	#master_map_name = auto.master
+    22	#
+    23	# timeout - set the default mount timeout in secons. The internal
+    24	#	    program default is 10 minutes, but the default installed
+    25	#	    configuration overrides this and sets the timeout to 5
+    26	#	    minutes to be consistent with earlier autofs releases.
+    27	#
+    28	timeout = 300
+    29	#
+    30	# master_wait - set the default maximum time to wait for the
+    31	# 		master map to become available if it cannot
+    32	# 		be read at program start (default 10, wait
+    33	# 		for 10 seconds then continue).
+    34	#
+    35	#master_wait = 10
+    36	#
+    37	# negative_timeout - set the default negative timeout for
+    38	# 		     failed mount attempts (default 60).
+    39	#
+    40	#negative_timeout = 60
+    41	#
+    42	# mount_wait - time to wait for a response from mount(8).
+    43	# 	       Setting this timeout can cause problems when
+    44	# 	       mount would otherwise wait for a server that
+    45	# 	       is temporarily unavailable, such as when it's
+    46	# 	       restarting. The default setting (-1) of waiting
+    47	# 	       for mount(8) usually results in a wait of around
+    48	# 	       3 minutes.
+    49	#
+    50	#mount_wait = -1
+    51	#
+    52	# umount_wait - time to wait for a response from umount(8).
+    53	#
+    54	#umount_wait = 12
+    55	#
+    56	# browse_mode - maps are browsable by default.
+    57	#
+    58	browse_mode = no
+    59	#
+    60	# mount_nfs_default_protocol - specify the default protocol used by
+    61	# 			       mount.nfs(8). Since we can't identify
+    62	# 			       the default automatically we need to
+    63	# 			       set it in our configuration.
+    64	#
+    65	#mount_nfs_default_protocol = 3
+    66	mount_nfs_default_protocol = 4
+    67	#
+    68	# append_options - append to global options instead of replace.
+    69	#
+    70	#append_options = yes
+    71	#
+    72	# logging - set default log level "none", "verbose" or "debug"
+    73	#
+    74	#logging = none
+    75	#
+    76	# force_standard_program_map_env - disable the use of the "AUTOFS_"
+    77	#			prefix for standard environemt variables when
+    78	#			executing a program map. Since program maps
+    79	#			are run as the privileded user this opens
+    80	#			automount(8) to potential user privilege
+    81	#			escalation when the program map is written
+    82	#			in a language that  can load components from,
+    83	#			for example, a user home directory.
+    84	#
+    85	# force_standard_program_map_env = no
+    86	#
+    87	# Define base dn for map dn lookup.
+    88	#
+    89	# Define server URIs
+    90	#
+    91	# ldap_uri - space seperated list of server uris of the form
+    92	# 	     <proto>://<server>[/] where <proto> can be ldap
+    93	# 	     or ldaps. The option can be given multiple times.
+    94	# 	     Map entries that include a server name override
+    95	# 	     this option.
+    96	#
+    97	#	     This configuration option can also be used to
+    98	#	     request autofs lookup SRV RRs for a domain of
+    99	#	     the form <proto>:///[<domain dn>]. Note that a
+   100	#	     trailing "/" is not allowed when using this form.
+   101	#	     If the domain dn is not specified the dns domain
+   102	#	     name (if any) is used to construct the domain dn
+   103	#	     for the SRV RR lookup. The server list returned
+   104	#	     from an SRV RR lookup is refreshed according to
+   105	#	     the minimum ttl found in the SRV RR records or
+   106	#	     after one hour, whichever is less.
+   107	#
+   108	#ldap_uri = ""
+   109	#
+   110	# ldap_timeout - timeout value for the synchronous API  calls
+   111	#		  (default is LDAP library default).
+   112	#
+   113	#ldap_timeout = -1
+   114	#
+   115	# ldap_network_timeout - set the network response timeout (default 8).
+   116	#
+   117	#ldap_network_timeout = 8
+   118	#
+   119	# search_base - base dn to use for searching for map search dn.
+   120	# 		Multiple entries can be given and they are checked
+   121	# 		in the order they occur here.
+   122	#
+   123	#search_base = ""
+   124	#
+   125	# Define the LDAP schema to used for lookups
+   126	#
+   127	# If no schema is set autofs will check each of the schemas
+   128	# below in the order given to try and locate an appropriate
+   129	# basdn for lookups. If you want to minimize the number of
+   130	# queries to the server set the values here.
+   131	#
+   132	#map_object_class = nisMap
+   133	#entry_object_class = nisObject
+   134	#map_attribute = nisMapName
+   135	#entry_attribute = cn
+   136	#value_attribute= nisMapEntry
+   137	#
+   138	# Other common LDAP nameing
+   139	#
+   140	#map_object_class = automountMap
+   141	#entry_object_class = automount
+   142	#map_attribute = ou
+   143	#entry_attribute = cn
+   144	#value_attribute= automountInformation
+   145	#
+   146	#map_object_class = automountMap
+   147	#entry_object_class = automount
+   148	#map_attribute = automountMapName
+   149	#entry_attribute = automountKey
+   150	#value_attribute= automountInformation
+   151	#
+   152	# auth_conf_file - set the default location for the SASL
+   153	#		   authentication configuration file.
+   154	#
+   155	#auth_conf_file = /etc/autofs_ldap_auth.conf
+   156	#
+   157	# map_hash_table_size - set the map cache hash table size.
+   158	# 			Should be a power of 2 with a ratio of
+   159	# 			close to 1:8 for acceptable performance
+   160	# 			with maps up to around 8000 entries.
+   161	# 			See autofs.conf(5) for more details.
+   162	#
+   163	#map_hash_table_size = 1024
+   164	#
+   165	# use_hostname_for_mounts - nfs mounts where the host name resolves
+   166	# 			 to more than one IP address normally need
+   167	# 			 to use the IP address to esure a mount to
+   168	# 			 a host that isn't responding isn't done.
+   169	# 			 If that behaviour is not wanted then set
+   170	#			 ths to "yes", default is "no".
+   171	#
+   172	#use_hostname_for_mounts = "no"
+   173	#
+   174	# sss_master_map_wait - When sssd is starting up it can sometimes return
+   175	# 			"no such entry" for a short time until it has read
+   176	# 			in the LDAP map information. Internal default is 0
+   177	# 			seconds, don't wait but if there is a problem with
+   178	# 			autofs not finding the master map at startup (when
+   179	# 			it should) then try setting this to 10 to work
+   180	# 			around it.
+   181	#
+   182	#sss_master_map_wait = 0
+   183	#
+   184	# Otions for the amd parser within autofs.
+   185	#
+   186	# amd configuration options that are aren't used, haven't been
+   187	# implemented or have different behaviour within autofs.
+   188	#
+   189	# A number of the amd configuration options are not used by autofs,
+   190	# some because they are not relevant within autofs, some because
+   191	# they are done differently in autofs and others that are not yet
+   192	# implemented.
+   193	#
+   194	# Since "mount_type" is always autofs (because there's no user space
+   195	# NFS server) the configuration entries relating to that aren't used.
+   196	# Also, server availability is done differently within autofs so the
+   197	# options that relate to the amd server monitoring sub-system are
+   198	# also not used.
+   199	#
+   200	# These options are mount_type, auto_attrcache, portmap_program,
+   201	# nfs_vers_ping, nfs_allow_any_interface, nfs_allow_insecure_port,
+   202	# nfs_proto, nfs_retransmit_counter, nfs_retransmit_counter_udp,
+   203	# nfs_retransmit_counter_tcp, nfs_retransmit_counter_toplvl,
+   204	# nfs_retry_interval, nfs_retry_interval_udp, nfs_retry_interval_tcp,
+   205	# nfs_retry_interval_toplvl and nfs_vers.
+   206	#
+   207	#
+   208	# Other options that are not used within the autofs implementation:
+   209	#
+   210	# log_file, truncate_log - autofs used either stderr when running in
+   211	#	the foreground or sends its output to syslog so an alternate
+   212	#	log file (or truncating the log) can't be used.
+   213	#
+   214	# print_pid - there's no corresponding option for this within autofs.
+   215	#
+   216	# use_tcpwrappers, show_statfs_entries - there's no user space NFS
+   217	#	server to control access to so this option isn't relevant.
+   218	#	The show_statfs_entries can't be implemented for the same
+   219	#	reason.
+   220	#
+   221	# debug_mtab_file - there's no user space NFS server and autofs
+   222	#	avoids using file based mtab whenever possible.
+   223	#
+   224	# sun_map_syntax - obviously, are provided by autofs itself.
+   225	#
+   226	# plock, show_statfs_entries, preferred_amq_port - not supported.
+   227	#
+   228	# ldap_cache_maxmem, ldap_cache_seconds - external ldap caching
+   229	#	is not used by autofs.
+   230	#
+   231	# ldap_proto_version - autofs always attempts to use the highest
+   232	#	available ldap protocol version.
+   233	#
+   234	# cache_duration, map_reload_interval, map_options - the map
+   235	#	entry cache is continually updated and stale entries
+   236	#	cleaned on re-load, which is done when map changes are
+   237	#	detected so these configuration entries are not used
+   238	#	by autofs.
+   239	#
+   240	# localhost_address - is not used within autofs. This
+   241	#	configuration option was only used in the amd user
+   242	#	space server code and is not relevant within autofs.
+   243	#
+   244	#
+   245	# Options that are handled differently within autofs:
+   246	#
+   247	# pid_file - must be given as a command line option on startup.
+   248	#
+   249	# print_version - program version and feature information is obtained
+   250	#	by using the automount command line option "-V".
+   251	#
+   252	# debug_options, log_options - autofs has somewhat more limited
+   253	#	logging and debug logging options. When the log_options
+   254	#	options is encountered it is converted to the nearest
+   255	#	matching autofs logging option. Since the configuration
+   256	#	option debug_options would be handled the same way it
+   257	#	is ignored.
+   258	#
+   259	# restart_mounts - has no sensible meaning within autofs because autofs
+   260	#	always tries to re-connect to existing mounts. While this
+   261	#	has its own set of problems not re-connecting to existing
+   262	#	mounts always results in a non-functional automount tree if
+   263	#	mounts were busy at the last shutdown (as is also the case
+   264	#	with amd when using mount_type autofs).
+   265	#
+   266	# forced_unmounts - detaching mounts often causes serious problems
+   267	#	for users of existing mounts. It is used by autofs in some
+   268	#	cases, either at the explicit request of the user (with a
+   269	#	command line or init option) and in some special cases during
+   270	#	program operation but is avoided whenever possible.
+   271	#
+   272	#
+   273	# A number of configuration options are not yet implemented:
+   274	#
+   275	# fully_qualified_hosts - not yet implemented.
+   276	#
+   277	# unmount_on_exit - since autofs always tries to re-connect
+   278	#	to mounts left mounted from a previous shutdown this
+   279	#	is a sensible option to implement and that will be
+   280	#	done.
+   281	#
+   282	# browsable_dirs - not yet implemented.
+   283	#
+   284	# exec_map_timeout - a timeout is not currently used for
+   285	#	for program maps, might be implemented.
+   286	#
+   287	# tag - the tag option is not implemented within autofs.
+   288	#
+   289	#
+   290	# Supported options:
+   291	#
+   292	# arch, karch, os, osver - these options default to what is returned
+   293	#	from uname(2) and can be overridden if required.
+   294	#
+   295	# full_os - has no default and must be set in the configuration
+   296	#	if used in maps.
+   297	#
+   298	# cluster - if not set defaults to the host domain name. This option
+   299	#	corresponds to the HP_UX cluster name (according to the amd
+   300	#	source) and is probably not used in Linux but is set anyway.
+   301	#
+   302	# vendor - has a default value of "unknown", it must be set in the
+   303	#	configuration if used in maps.
+   304	#
+   305	# auto_dir - is the base name of the mount tree used for external
+   306	#	mounts that are sometimes needed by amd maps. Its default
+   307	#	value is "/a".
+   308	#
+   309	# map_type - specifies the autofs map source, such as file, nis,
+   310	#	ldap etc. and has no default value set.
+   311	#
+   312	# map_defaults - is used to override /defaults entries within maps
+   313	#	and can be used to provide different defaults on specific
+   314	#	machines without having to modify centrally managed maps.
+   315	#	It is empty by default.
+   316	#
+   317	# search_path - colon seperated paths to search for maps that
+   318	#	are not specified as a full path.
+   319	#
+   320	# dismount_interval - is equivalent to the autofs timeout option. It
+   321	#	is only possible to use this with type "auto" mounts due
+   322	#	to the way the autofs kernel module performs expiry. It
+   323	#	takes its default value from the autofs internal default
+   324	#	of 600 seconds.
+   325	#
+   326	# autofs_use_lofs - if set to "yes" autofs will attempt to use bind
+   327	#	mounts for type "auto" when possible.
+   328	#
+   329	# nis_domain - allows setting of a domain name other than the system
+   330	#	default.
+   331	#
+   332	# local_domain - is used to override (or set) the host domain name.
+   333	#
+   334	# normalize_hostnames - if set to "yes" then the contents of ${rhost}
+   335	#	is translated in its official host name.
+   336	#
+   337	# domain_strip - if set to "yes" the domain name part of the host
+   338	# 	is strippped when normalizing hostnames. This can be useful
+   339	#	when using of the same maps in a multiple domain environment.
+   340	#
+   341	# normalize_slashes - is set to "yes" by default and will collapse
+   342	#	multiple unescaped occurrences of "/" to a single "/".
+   343	#
+   344	# selectors_in_defaults, selectors_on_default - has a default value
+   345	#	of "no". If set to "yes" then any defaults entry will be
+   346	#	checked for selectors to determine the values to be used.
+   347	#	selectors_in_defaults is the preferred option to use.
+   348	#
+   349	# ldap_base - has no default value. It must be set to the base dn
+   350	#	that is used for queries if ldap is to be used as a map
+   351	#	source.
+   352	#
+   353	# ldap_hostports - has no default value set. It must be set to
+   354	#	the URI of the LDAP server to be used for lookups when
+   355	#	ldap is used a map source. It may contain a comma or
+   356	#	space seperated list of LDAP URIs.
+   357	#
+   358	# hesiod_base - the base name used for hesiod map sources.
+   359	#
+   360	# Additional configuration options added:
+   361	#
+   362	# linux_ufs_mount_type - set the default system filesystem type that's
+   363	#	used for mount type ufs. There's no simple way to determine
+   364	#	what the system default filesystem is and am-utils needs to
+   365	#	be continually updated to do this and can easily get it wrong
+   366	#	anyway.
+   367	#
+   368	#
+   369	# Define global options for the amd parser within autofs.
+   370	#
+   371	[ amd ]
+   372	#
+   373	# Override the internal default with the same timeout that
+   374	# is used by the override in the autofs configuration, sanity
+   375	# only change.
+   376	#
+   377	dismount_interval = 300
+   378	#
+   379	# map_type = file
+   380	#
+   381	# Overriding this can cause autofs to use less resources because
+   382	# it will use symlinks instead of bind mounts in certain cases.
+   383	# You should ensure that the autofs kernel module your using
+   384	# supports expration of symlinks for best results (although this
+   385	# appears to work reasonably well most of the time without the
+   386	# update).
+   387	#
+   388	# autofs_use_lofs = yes
+   389	#
+   390	# Several configuration options can be set per mount point.
+   391	# In particulr map_type, map_name, map_defaults, search_path,
+   392	# browsable_dirs, dismount_interval and selectors_in_defaults
+   393	# (not all of which are currently implemented, see above).
+   394	#
+   395	# Also, if a section for an amd mount point is defined here
+   396	# it isn't necessary to specify the format in the corresponding
+   397	# master map entry and the format will be inherited for type
+   398	# "auto" mounts.
+   399	#
+   400	# [ /expamle/mount ]
+   401	# dismount_interval = 60
+   402	# map_type = nis
+   403	<?xml version="1.0" ?>
+   404	<!--
+   405	This files contains a single entry with multiple attributes tied to it.
+   406	See autofs_ldap_auth.conf(5) for more information.
+   407	-->
+   408	
+   409	<autofs_ldap_sasl_conf
+   410		usetls="no"
+   411		tlsrequired="no"
+   412		authrequired="no"
+   413	/>
+   414	# cas configuration file
+   415	# 
+   416	# Things to remember:
+   417	#
+   418	# Acceptable boolean values
+   419	# to enable: "1", "yes", "true", and "on"
+   420	# to disable: "0", "no", "false", and "off"
+   421	#
+   422	# Required settings to be defined:
+   423	# kernels, rpmFilter, debugs, workDirectory, database
+   424	
+   425	[settings]
+   426	# Set the user you wish to run cas as.
+   427	casuser=root
+   428	
+   429	# Set keytype for user authentication
+   430	# Options: RSA/DSS
+   431	sshkey=dss
+   432	
+   433	# Where kernel-debuginfo packages are stored
+   434	# NOTE: this _can_ include symlinked directories, just be careful they are
+   435	# indefinately recursive
+   436	kernels=/mnt/kernels
+   437	
+   438	# Compose emacs regular expression for determing what
+   439	# kernel debug rpms you wish to search for
+   440	rpmFilter=.*kerne.+-debuginfo-[0-9].*\.rpm
+   441	
+   442	# Define where to store necessary debug information
+   443	# NOTE: This is a temporary storage area for when
+   444	# cpio is run against an rpm and extract the debug kernel
+   445	# for a small amount of time. This could be something like
+   446	# /tmp if space permitted
+   447	debugs=/tmp
+   448	
+   449	# debug level (DEBUG, INFO)
+   450	debugLevel=DEBUG
+   451	
+   452	# define work directory
+   453	workDirectory=/cores
+   454	
+   455	# Mail server, e.g. mail.example.com
+   456	# Provides job results via email
+   457	stmphost=mail.example.com
+   458	
+   459	# database connection info
+   460	database=/var/db/cas/cas.db
+   461	
+   462	[maintenance]
+   463	# Time in days to keep jobs and its associated files
+   464	purgeLimit=90
+   465	
+   466	# Enable if want to automatically check and purge data
+   467	# whenever cas-admin is run
+   468	autoPurge=no
+   469	
+   470	[advanced]
+   471	# if running a x86_64 system and wish to analyze 32bit
+   472	# cores, define the location of 32bit crash binary
+   473	# EXAMPLE USAGE:
+   474	# rpm --relocate /usr/bin=/usr/local/i386 -ivh crash*i386.rpm
+   475	
+   476	# crash_32=/usr/local/i386/crash
+   477	
+   478	# Define a buffersize to be set when reading a core file
+   479	# Valid options are {number, None, or blank}
+   480	# If set to None or blank default will be ~515M
+   481	# buffersize=None
+   482	#
+   483	#  Copyright IBM Corporation. 2007
+   484	#
+   485	#  Authors:	Balbir Singh <balbir@linux.vnet.ibm.com>
+   486	#  This program is free software; you can redistribute it and/or modify it
+   487	#  under the terms of version 2.1 of the GNU Lesser General Public License
+   488	#  as published by the Free Software Foundation.
+   489	#
+   490	#  This program is distributed in the hope that it would be useful, but
+   491	#  WITHOUT ANY WARRANTY; without even the implied warranty of
+   492	#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+   493	#
+   494	# See man cgconfig.conf for further details.
+   495	#
+   496	# By default, mount all controllers to /cgroup/<controller>
+   497	
+   498	mount {
+   499		cpuset	= /cgroup/cpuset;
+   500		cpu	= /cgroup/cpu;
+   501		cpuacct	= /cgroup/cpuacct;
+   502		memory	= /cgroup/memory;
+   503		devices	= /cgroup/devices;
+   504		freezer	= /cgroup/freezer;
+   505		net_cls	= /cgroup/net_cls;
+   506		blkio	= /cgroup/blkio;
+   507	}
+   508	
+   509	# /etc/cgrules.conf
+   510	#The format of this file is described in cgrules.conf(5)
+   511	#manual page.
+   512	#
+   513	# Example:
+   514	#<user>		<controllers>	<destination>
+   515	#@student	cpu,memory	usergroup/student/
+   516	#peter		cpu		test1/
+   517	#%		memory		test2/
+   518	# End of file
+   519	#cgsnapshot tool configuration file
+   520	
+   521	#memory
+   522	memory.oom_control
+   523	
+   524	#cpu
+   525	
+   526	#cpuacct
+   527	
+   528	#devices
+   529	
+   530	#cpuset
+   531	
+   532	#ns
+   533	
+   534	#freezer
+   535	
+   536	#net_cls
+   537	
+   538	#blkio# Sample dracut config file
+   539	
+   540	# Specific list of dracut modules to use
+   541	#dracutmodules+=""
+   542	
+   543	# Dracut modules to omit
+   544	#omit_dracutmodules+=""
+   545	
+   546	# Dracut modules to add to the default
+   547	#add_dracutmodules+=""
+   548	
+   549	# additional kernel modules to the default
+   550	#add_drivers+=""
+   551	
+   552	# list of kernel filesystem modules to be included in the generic initramfs
+   553	#filesystems+=""
+   554	
+   555	# build initrd only to boot current hardware
+   556	#hostonly="yes"
+   557	#
+   558	
+   559	# install local /etc/mdadm.conf
+   560	mdadmconf="yes"
+   561	
+   562	# install local /etc/lvm/lvm.conf
+   563	lvmconf="yes"
+   564	## ELinks 0.12pre3 configuration file
+   565	
+   566	## This is ELinks global configuration file. You can keep global ELinks
+   567	## configuration here. Each user can also save its own ELinks configuration
+   568	## to ~/.elinks/elinks.conf. The per user configuration file can be edited
+   569	## by ELinks when you save options through UI.
+   570	
+   571	## connection
+   572	#  Connection options.
+   573	
+   574	  ## connection.ssl
+   575	  #  SSL options.
+   576	
+   577	    ## connection.ssl.cert_verify [0|1]
+   578	    #  Verify the peer's SSL certificate.
+   579	    set connection.ssl.cert_verify = 1
+   580	
+   581	    ## connection.ssl.trusted_ca_file <str>
+   582	    #  The location of a file containing certificates of trusted certification
+   583	    #  authorities in PEM format. ELinks then trusts certificates issued by
+   584	    #  these CAs.
+   585	    #
+   586	    #  If you set this option to an empty string, default NSS root certificates
+   587	    #  are loaded.
+   588	    #
+   589	    #  If you change this option or the file, you must restart ELinks for the
+   590	    #  changes to take effect. This option affects GnuTLS and nss_compat_ossl
+   591	    #  but not OpenSSL.
+   592	    set connection.ssl.trusted_ca_file = "/etc/pki/tls/certs/ca-bundle.crt"
+   593	[storage]
+   594	type=file
+   595	# grub.conf generated by anaconda
+   596	#
+   597	# Note that you do not have to rerun grub after making changes to this file
+   598	# NOTICE:  You have a /boot partition.  This means that
+   599	#          all kernel and initrd paths are relative to /boot/, eg.
+   600	#          root (hd0,0)
+   601	#          kernel /vmlinuz-version ro root=/dev/mapper/vg_node01-lv_root
+   602	#          initrd /initrd-[generic-]version.img
+   603	#boot=/dev/sda
+   604	default=0
+   605	timeout=5
+   606	splashimage=(hd0,0)/grub/splash.xpm.gz
+   607	hiddenmenu
+   608	title CentOS 6 (2.6.32-696.el6.x86_64)
+   609		root (hd0,0)
+   610		kernel /vmlinuz-2.6.32-696.el6.x86_64 ro root=/dev/mapper/vg_node01-lv_root rd_NO_LUKS LANG=en_US.UTF-8 rd_LVM_LV=vg_node01/lv_root rd_NO_MD rd_LVM_LV=vg_node01/lv_swap SYSFONT=latarcyrheb-sun16 crashkernel=auto  KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM rhgb quiet
+   611		initrd /initramfs-2.6.32-696.el6.x86_64.img
+   612	# Example /etc/gssapi_mech.conf file
+   613	#
+   614	# GSSAPI Mechanism Definitions
+   615	#
+   616	# This configuration file determines which GSS-API mechanisms
+   617	# the gssd code should use
+   618	#
+   619	# NOTE:
+   620	# The initiaiization function "mechglue_internal_krb5_init"
+   621	# is used for the MIT krb5 gssapi mechanism.  This special
+   622	# function name indicates that an internal function should
+   623	# be used to determine the entry points for the MIT gssapi
+   624	# mechanism funtions.
+   625	#
+   626	# library                               initialization function
+   627	# ================================	==========================
+   628	# The MIT K5 gssapi library, use special function for initialization.
+   629	libgssapi_krb5.so.2		mechglue_internal_krb5_init
+   630	#
+   631	# The SPKM3 gssapi library function.  Use the function spkm3_gss_initialize.
+   632	# libgssapi_spkm3.so    spkm3_gss_initialize
+   633	multi on
+   634	[General]
+   635	#Verbosity = 0
+   636	# The following should be set to the local NFSv4 domain name
+   637	# The default is the host's DNS domain name.
+   638	#Domain = local.domain.edu
+   639	
+   640	# In multi-domain environments, some NFS servers will append the identity
+   641	# management domain to the owner and owner_group in lieu of a true NFSv4
+   642	# domain.  This option can facilitate lookups in such environments.  If
+   643	# set to a value other than "none", the nsswitch  plugin will first pass
+   644	# the name to the password/group lookup function without stripping the
+   645	# domain off.  If that mapping fails then the plugin will try again using
+   646	# the old method (comparing the domain in the string to the Domain value,
+   647	# stripping it if it matches, and passing the resulting short name to the
+   648	# lookup function).  Valid values are "user", "group", "both", and
+   649	# "none".  The default is "none".
+   650	#No-Strip = none
+   651	
+   652	# Winbind has a quirk whereby doing a group lookup in UPN format
+   653	# (e.g. staff@americas.example.com) will cause the group to be
+   654	# displayed prefixed with the full domain in uppercase
+   655	# (e.g. AMERICAS.EXAMPLE.COM\staff) instead of in the familiar netbios
+   656	# name format (e.g. AMERICAS\staff).  Setting this option to true
+   657	# causes the name to be reformatted before passing it to the group
+   658	# lookup function in order to work around this.  This setting is
+   659	# ignored unless No-Strip is set to either "both" or "group".
+   660	# The default is "false".
+   661	#Reformat-Group = false
+   662	
+   663	# The following is a comma-separated list of Kerberos realm
+   664	# names that should be considered to be equivalent to the
+   665	# local realm, such that <user>@REALM.A can be assumed to
+   666	# be the same user as <user>@REALM.B
+   667	# If not specified, the default local realm is the domain name,
+   668	# which defaults to the host's DNS domain name,
+   669	# translated to upper-case.
+   670	# Note that if this value is specified, the local realm name
+   671	# must be included in the list!
+   672	#Local-Realms = 
+   673	
+   674	[Mapping]
+   675	
+   676	Nobody-User = nobody
+   677	Nobody-Group = nobody
+   678	
+   679	[Translation]
+   680	
+   681	# Translation Method is an comma-separated, ordered list of
+   682	# translation methods that can be used.  Distributed methods
+   683	# include "nsswitch", "umich_ldap", and "static".  Each method
+   684	# is a dynamically loadable plugin library.
+   685	# New methods may be defined and inserted in the list.
+   686	# The default is "nsswitch".
+   687	Method = nsswitch
+   688	
+   689	# Optional.  This is a comma-separated, ordered list of
+   690	# translation methods to be used for translating GSS
+   691	# authenticated names to ids.
+   692	# If this option is omitted, the same methods as those
+   693	# specified in "Method" are used.
+   694	#GSS-Methods = <alternate method list for translating GSS names>
+   695	 
+   696	#-------------------------------------------------------------------#
+   697	# The following are used only for the "static" Translation Method.
+   698	#-------------------------------------------------------------------#
+   699	#[Static]
+   700	
+   701	# A "static" list of GSS-Authenticated names to
+   702	# local user name mappings
+   703	
+   704	#someuser@REALM = localuser
+   705	
+   706	
+   707	#-------------------------------------------------------------------#
+   708	# The following are used only for the "umich_ldap" Translation Method.
+   709	#-------------------------------------------------------------------#
+   710	
+   711	#[UMICH_SCHEMA]
+   712	
+   713	# server information (REQUIRED)
+   714	#LDAP_server = ldap-server.local.domain.edu
+   715	
+   716	# the default search base (REQUIRED)
+   717	#LDAP_base = dc=local,dc=domain,dc=edu
+   718	
+   719	#-----------------------------------------------------------#
+   720	# The remaining options have defaults (as shown)
+   721	# and are therefore not required.
+   722	#-----------------------------------------------------------#
+   723	
+   724	# whether or not to perform canonicalization on the
+   725	# name given as LDAP_server
+   726	#LDAP_canonicalize_name = true
+   727	
+   728	# absolute search base for (people) accounts
+   729	#LDAP_people_base = <LDAP_base>
+   730	
+   731	# absolute search base for groups
+   732	#LDAP_group_base = <LDAP_base>
+   733	
+   734	# Set to true to enable SSL - anything else is not enabled
+   735	#LDAP_use_ssl = false
+   736	
+   737	# You must specify a CA certificate location if you enable SSL
+   738	#LDAP_ca_cert = /etc/ldapca.cert
+   739	
+   740	# Objectclass mapping information
+   741	
+   742	# Mapping for the person (account) object class
+   743	#NFSv4_person_objectclass = NFSv4RemotePerson
+   744	
+   745	# Mapping for the nfsv4name attribute the person object
+   746	#NFSv4_name_attr = NFSv4Name
+   747	
+   748	# Mapping for the UID number
+   749	#NFSv4_uid_attr = UIDNumber
+   750	
+   751	# Mapping for the GSSAPI Principal name
+   752	#GSS_principal_attr = GSSAuthName
+   753	
+   754	# Mapping for the account name attribute (usually uid)
+   755	# The value for this attribute must match the value of 
+   756	# the group member attribute - NFSv4_member_attr
+   757	#NFSv4_acctname_attr = uid
+   758	
+   759	# Mapping for the group object class
+   760	#NFSv4_group_objectclass = NFSv4RemoteGroup
+   761	
+   762	# Mapping for the GID attribute
+   763	#NFSv4_gid_attr = GIDNumber
+   764	
+   765	# Mapping for the Group NFSv4 name
+   766	#NFSv4_group_attr = NFSv4Name
+   767	
+   768	# Mapping for the Group member attribute (usually memberUID)
+   769	# The value of this attribute must match the value of NFSv4_acctname_attr
+   770	#NFSv4_member_attr = memberUID
+   771	# Configures where to put the kdump /proc/vmcore files
+   772	#
+   773	# This file contains a series of commands to perform (in order) when a
+   774	# kernel crash has happened and the kdump kernel has been loaded.  Directives in
+   775	# this file are only applicable to the kdump initramfs, and have no effect if
+   776	# the root filesystem is mounted and the normal init scripts are processed
+   777	#
+   778	# Currently only one dump target and path may be configured at a time. If dump
+   779	# to configured dump target fails, the default action will be preformed.
+   780	# Default action may be configured with the "default" directive below.
+   781	#
+   782	# Basics commands supported are:
+   783	# path <path> 		- Append path to the filesystem device which you are
+   784	#			  dumping to.  Ignored for raw device dumps.
+   785	#		 	  If unset, will default to /var/crash.
+   786	#
+   787	# core_collector <command> <options>
+   788	#			- This allows you to specify the command to copy the
+   789	#			  vmcore.  You could use the dump filtering program
+   790	#			  makedumpfile, the default one, to retrieve your core,
+   791	#			  which on some arches can drastically reduce core file
+   792	#			  size. See /usr/sbin/makedumpfile --help for a list of
+   793	#			  options. Note that the -i and -g options are not
+   794	#			  needed here, as the initrd will automatically be
+   795	#			  populated with a config file appropriate for the
+   796	#			  running kernel.
+   797	#			  For ssh dump, scp should be used instead of cp.
+   798	#
+   799	# raw <partition>	- Will write /proc/vmcore into raw <partition>.
+   800	#
+   801	# nfs <nfs mount>	- Will mount fs and copy /proc/vmcore to
+   802	#			  <mnt>/<path>/%HOST-%DATE/, supports DNS.
+   803	#
+   804	# nfs4 <nfs mount>      - Will use NFSv4 instead of NFSv3
+   805	#
+   806	# net <nfs mount>       - This is a deprecated option to transfer vmcore over
+   807	#			  nfs.  Use "nfs" option instead.
+   808	#
+   809	# ssh <user@server>	- Will copy /proc/vmcore to
+   810	#			  <user@server>:<path>/%HOST-%DATE/ via SSH,
+   811	#			  supports DNS. If makedumpfile is the core_collector,
+   812	#			  it is piped to an "ssh" shell, otherwise use the
+   813	#			  specified core_collector like scp.
+   814	#			  NOTE: make sure user has necessary write
+   815	#			  permissions on server
+   816	#
+   817	# net <user@server>     - This is a deprecated option to transfer vmcore over
+   818	#			  ssh.  Use "ssh" option instead.
+   819	#
+   820	# <fs type> <partition> - Will mount -t <fs type> <partition> /mnt and copy
+   821	#		 	  /proc/vmcore to /mnt/<path>/127.0.0.1-%DATE/.
+   822	#			  NOTE: <partition> can be a device node, label or uuid.
+   823	#
+   824	# disk_timeout <seconds>
+   825	#			- Number of seconds to wait for disks to appear prior
+   826	#			  to continue to save dump. By default kdump waits
+   827	#			  180 seconds for the disks to show up it needs. This
+   828	#			  can be useful in some cases if disk never shows up
+   829	#			  (Either because disk was removed or because kdump is
+   830	#			  waiting on wrong disk).
+   831	#
+   832	# link_delay <seconds>
+   833	#			- Some network cards take a long time to initialize, and
+   834	#			  some spanning tree enabled networks do not transmit
+   835	#			  user traffic for long periods after a link state
+   836	#			  changes.  This optional parameter defines a wait
+   837	#			  period after a link is activated in which the
+   838	#			  initramfs will wait before attempting to transmit
+   839	#			  user data.
+   840	#
+   841	# kdump_post <binary | script>
+   842	# 			- This directive allows you to run a specified
+   843	# 			  executable just after the memory dump process
+   844	# 			  terminates. The exit status from the dump process
+   845	# 			  is fed to the kdump_post executable, which can be
+   846	# 			  used to trigger different actions for success or
+   847	# 			  failure.
+   848	#
+   849	# kdump_pre <binary | script>
+   850	#			- works just like the kdump_post directive, but instead
+   851	#			  of running after the dump process, runs immediately
+   852	#			  before.  Exit status of this binary is interpreted
+   853	#			  as follows:
+   854	#			  0 - continue with dump process as usual
+   855	#			  non 0 - reboot/halt the system
+   856	#
+   857	# extra_bins <binaries | shell scripts>
+   858	# 			- This directive allows you to specify additional
+   859	# 			  binaries or shell scripts you'd like to include in
+   860	# 			  your kdump initrd. Generally only useful in
+   861	# 			  conjunction with a kdump_post binary or script that
+   862	# 			  relies on other binaries or scripts.
+   863	#
+   864	# extra_modules <module(s)>
+   865	# 			- This directive allows you to specify extra kernel
+   866	# 			  modules that you want to be loaded in the kdump
+   867	# 			  initrd, typically used to set up access to
+   868	# 			  non-boot-path dump targets that might otherwise
+   869	# 			  not be accessible in the kdump environment. Multiple
+   870	# 			  modules can be listed, separated by a space, and any
+   871	# 			  dependent modules will automatically be included.
+   872	# 			  Module name should be specified without ".ko" suffix.
+   873	#
+   874	# options <module> <option list>
+   875	#			- This directive allows you to specify options to apply
+   876	#			  to modules in the initramfs.  This directive overrides
+   877	#			  options specified in /etc/modprobe.conf. Module name
+   878	#			  should be specified without ".ko" suffix.
+   879	#
+   880	# blacklist <module>
+   881	#			- The blacklist keyword indicates that all of that
+   882	#			  particular modules are to be ignored in the initramfs.
+   883	#			  General terminology for blacklist has been that module
+   884	#			  is present in initramfs but it is not actually loaded
+   885	#			  in kernel. This directive can be specified multiple
+   886	#			  times or as a space separated list. Module name should
+   887	#			  be specified without ".ko" suffix.
+   888	#
+   889	# sshkey <path>
+   890	#			- Specifies the path of the ssh identity file you want
+   891	#			  to use when doing ssh dump. It must be a private key,
+   892	#			  the default value is /root/.ssh/kdump_id_rsa. When
+   893	#			  progagating public key, the key is assumed to be
+   894	#			  identity_file.pub which by default is
+   895	#			  /root/.ssh/kdump_id_rsa.pub.
+   896	#
+   897	# default <reboot | halt | poweroff | shell | mount_root_run_init>
+   898	#			- Action to preform in case dumping to intended target
+   899	#			  fails. If no default action is specified, "reboot"
+   900	#			  is assumed default.
+   901	#
+   902	#			  reboot: If the default action is reboot simply reboot
+   903	#				  the system and loose the core that you are
+   904	#				  trying to retrieve.
+   905	#			  halt:   If the default action is halt, then simply
+   906	#				  halt the system after attempting to capture
+   907	#				  a vmcore, regardless of success or failure.
+   908	#			  poweroff: The system will be powered down
+   909	#			  shell:  If the default action is shell, then drop to
+   910	#				  an hush session inside the initramfs from
+   911	#				  where you can try to record the core manually.
+   912	#				  Exiting this shell reboots the system.
+   913	#	     mount_root_run_init: Mount root filesystem and run init. Kdump
+   914	#			  	    initscript will try to save dump to root
+   915	#			  	    filesystem in /var/crash dir. This will
+   916	#			  	    likely require a lot more memory to
+   917	#			  	    be reserved for kdump kernel.
+   918	#
+   919	# debug_mem_level <0-3>
+   920	#                       - Turns on debug/verbose output of kdump scripts
+   921	#                         regarding free/used memory at various points of
+   922	#                         execution. Higher level means more debugging output.
+   923	#                         0 - no output
+   924	#                         1 - partial /proc/meminfo
+   925	#                         2 - /proc/meminfo
+   926	#                         3 - /proc/meminfo + /proc/slabinfo
+   927	#
+   928	# force_rebuild <0 | 1>
+   929	#			- By default, kdump initrd only will be rebuilt when
+   930	#			  necessary. Specify 1 here to force rebuilding kdump
+   931	#			  initrd every time when kdump service starts.
+   932	#
+   933	# fence_kdump_args <arg(s)>
+   934	#			- Command line arguments for fence_kdump_send (it can contain
+   935	#			all valid arguments except hosts to send notification to).
+   936	#
+   937	# fence_kdump_nodes <node(s)>
+   938	# 			- List of cluster node(s) separated by space to send fence_kdump
+   939	# 			notification to (this option is mandatory to enable fence_kdump).
+   940	
+   941	
+   942	#raw /dev/sda5
+   943	#ext4 /dev/sda3
+   944	#ext4 LABEL=/boot
+   945	#ext4 UUID=03138356-5e61-4ab3-b58e-27507ac41937
+   946	#net my.server.com:/export/tmp
+   947	#net user@my.server.com
+   948	path /var/crash
+   949	core_collector makedumpfile -c --message-level 1 -d 31
+   950	#core_collector scp
+   951	#core_collector cp --sparse=always
+   952	#extra_bins /bin/cp
+   953	#link_delay 60
+   954	#kdump_post /var/crash/scripts/kdump-post.sh
+   955	#extra_bins /usr/bin/lftp
+   956	#disk_timeout 30
+   957	#extra_modules gfs2
+   958	#options modulename options
+   959	#default shell
+   960	#debug_mem_level 0
+   961	#force_rebuild 1
+   962	#sshkey /root/.ssh/kdump_id_rsa
+   963	#fence_kdump_args -p 7410 -f auto -c 0 -i 10
+   964	#fence_kdump_nodes node1 node2
+   965	[logging]
+   966	 default = FILE:/var/log/krb5libs.log
+   967	 kdc = FILE:/var/log/krb5kdc.log
+   968	 admin_server = FILE:/var/log/kadmind.log
+   969	
+   970	[libdefaults]
+   971	 default_realm = EXAMPLE.COM
+   972	 dns_lookup_realm = false
+   973	 dns_lookup_kdc = false
+   974	 ticket_lifetime = 24h
+   975	 renew_lifetime = 7d
+   976	 forwardable = true
+   977	
+   978	[realms]
+   979	 EXAMPLE.COM = {
+   980	  kdc = kerberos.example.com
+   981	  admin_server = kerberos.example.com
+   982	 }
+   983	
+   984	[domain_realm]
+   985	 .example.com = EXAMPLE.COM
+   986	 example.com = EXAMPLE.COM
+   987	
+   988	/* miscelaneous functions */
+   989	#include "misc.conf"
+   990	
+   991	/* miscelaneous typedefs */
+   992	#include "typedefs.conf"
+   993	
+   994	/* /usr/include/arpa/inet.h */
+   995	#include "inet.conf"
+   996	
+   997	/* /usr/include/ctype.h */
+   998	#include "ctype.conf"
+   999	
+  1000	/* /usr/include/stdlib.h */

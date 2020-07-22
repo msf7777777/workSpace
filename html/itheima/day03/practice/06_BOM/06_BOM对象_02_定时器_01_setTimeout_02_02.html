@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var sid = setTimeout("doIt()",2000);
+			function doIt(){
+				alert("BOOM~爆炸了......")
+			}
+			document.write("在炸弹爆炸前,撤销炸弹");
+			clearTimeout(sid);
+		</script>
+	</body>
+</html>

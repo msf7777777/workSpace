@@ -1,0 +1,22 @@
+package Diary0622;
+
+public class day0622_05_ZuoYe_3 {
+	public static void main(String[] args) {
+		for(int x = 1;x <= 9;x++){
+			for(int y = 1;y >= x;y++){
+				System.out.println(x + "*" + y + "=" + x * y);
+			}
+			System.out.println();
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+}

@@ -1,0 +1,16 @@
+
+public class day1111 {
+	public static void m1(Cat a) {
+		a.setAge(4);
+	}
+	
+	public static void m2(Cat a) {
+		a = new Cat("ÂéÉÙ·É",28);
+	}
+	
+	public static void main(String[] args) {
+		Cat c1 = new Cat("ÕÅ¼ÎÃô",23);
+		Cat c2 = new Cat("ÂéÉÙ·É",28);
+		
+	}
+}

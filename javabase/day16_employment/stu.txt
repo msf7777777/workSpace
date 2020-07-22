@@ -1,0 +1,2 @@
+Student{number='19901113', name='麻少飞', gender='男', age=29}
+Student{number='19960122', name='张嘉敏', gender='女', age=23}

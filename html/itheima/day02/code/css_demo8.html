@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				border: 1px solid #000000;
+			}
+			/* 使用类选择器 */
+			.div2{
+				border: #008000 1px red;
+				width: 400px;
+				height: 100px;
+				/* 让第二个div层浮动在左边位置 */
+				float: left;
+			}
+			.div3{
+				border: blue 1px solid;
+				width: 200px;
+				height: 100px;
+				/* 当前面已有使用float:left浮动的层存在了，就会后右排列（前面已有，我就靠后） */
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+		   <div class="div2">我是第2个DIV</div>
+		   
+		   <div class="div3">我是第3个DIV</div>
+		</div>
+		
+		
+	</body>
+</html>

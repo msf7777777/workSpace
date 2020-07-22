@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单操作</title>
+	</head>
+	<body>
+		<!--
+        	需求: 
+        		定义一个表单: 有用户名 密码 和 性别 爱好 提交按钮 和重置按钮
+        -->
+        <form method="post" action="#">
+        	用户名: <input type="text" name="username" /> <br />
+        	密码: <input type="password" name="password" />  <br />
+        	性别: <input type="radio" name="sex" value="nan" /> 男 
+        		  <input type="radio" name="sex" value="nv" checked="checked"/> 女     <br />
+        	爱好: <input type="checkbox" name="hobby" value="lanqiu" /> 篮球	
+        		  <input type="checkbox" name="hobby" value="zhuqiu" /> 足球
+        		  <input type="checkbox" name="hobby" value="yumaoqiu" checked="checked" /> 羽毛球   <br />
+        	
+        	<input type="reset" value="重置操作" /> <input type="submit" value="提交"  />
+        	
+        	
+        </form>
+		
+	</body>
+</html>

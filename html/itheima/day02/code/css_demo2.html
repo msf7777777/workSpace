@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>css选择器</title>
+		<!-- 
+		 在css书写的规范中，基于不现的书写方式，选择器可以划分：
+		 
+		 - 元素选择器。  例：  span{ 书写样式 }
+		 - ID选择器。 以#符号作为开头，后面书写id的名称。  例：#idname{ 书写样式 }
+		 - 类选择器。 以.符号作为开头，后面书写类的名称。例： .classname { 书写样式 }
+		 -->
+		<!-- 内部样式 -->
+		<style type="text/css">
+			/* 定义元素选择器（使用HTML标签元素作为名称） */
+			span {
+				color: red;
+				font-size: 28px;
+			}
+
+			/* 定义id选择器（id名称自定义） */
+			#id_span {
+				color: #008000;
+			}
+
+			/* 定义class选择器 （class名称自定义） */
+			.class_span {
+				color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 使用元素选择器中的样式 -->
+		<span>使用元素选择器的样式</span>
+		<br />
+		<!-- 使用id选择器中的样式：需要id属性，引入id名称的样式 -->
+		<span id="id_span">id样式的选择器</span>
+		<br />
+		<!-- 使用class选择器中的样式：需要使用class属性，来引入class名称的样式 -->
+		<span class="class_span">class样式的选择器</span>
+	
+	<!-- 针对三种不同的选择器，分别在什么场景下使用呢？
+	     通常当一个页面中，默认所有的p标签元素，都按照一个字体样式时：使用元素选择器
+	 -->
+	
+	</body>
+</html>

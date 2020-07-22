@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--关联连接数据的配置文件-->
+    <properties resource="jdbc.properties"/>
+    
+    <!--mybatis配置-->
+    <settings>
+        <!--是否开启自动驼峰命名规则（camel case）映射，即从经典数据库列名 A_COLUMN 到经典 Java 属性名 aColumn 的类似映射。-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <!--给类型起别名-->
+    <typeAliases>
+        <!--方式一: 给指定的全路径起别名-->
+        <!--<typeAlias type="cn.itcast.pojo.User" alias="user"/>-->
+        <!--<typeAlias type="cn.itcast.pojo.Order" alias="Order"/>-->
+        <!--<typeAlias type="cn.itcast.pojo.Orderitem" alias="Orderitem"/>-->
+        <!--<typeAlias type="cn.itcast.pojo.Product" alias="Product"/>-->
+
+        <!--方式二: 扫描包
+            例子; 给类 cn.itcast.pojo.User 起别名为 User或user
+        -->
+        <package name="cn.itcast.pojo"/>
+    </typeAliases>
+
+    <!--配置连接数据库的环境-->
+    <environments default="product">
+
+        <!--development 翻译 `开发`,  开发环境-->
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+
+        <!--测试环境-->
+        <environment id="test">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+
+        <!--生产环境-->
+        <environment id="product">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--加载保存sql语句的配置文件-->
+    <mappers>
+        <!--方式一:-->
+        <!--<mapper resource="mapper/UserMapper.xml"/>-->
+
+        <!--方式二: 不推荐使用-->
+        <!--<mapper url="file:///D:/idea_project/202005/itcast_parent_04/day1003/src/main/resources/mapper/UserMapper.xml"/>-->
+
+        <!--方式三: 要求 配置文件的目录 和 mapper接口的全路径 保持一致
+                1 接口名称 必须和 配置文件名称 保持一致, 如: UserMapper.java  跟 UserMapper.xml 的名字一致
+                2 接口的包名 必须和 配置文件的目录 保持一致, 如 cn.itcast.mapper.UserMapper 和  cn/itcast/mapper/UserMapper.xml
+        -->
+        <!--<mapper class="cn.itcast.mapper.UserMapper"/>-->
+
+        <!--方式四: 扫描包
+            1 接口名称 必须和 配置文件名称 保持一致, 如: UserMapper.java  跟 UserMapper.xml 的名字一致
+            2 接口的包名 必须和 配置文件的目录 保持一致, 如 cn.itcast.mapper.UserMapper 和  cn/itcast/mapper/UserMapper.xml
+        -->
+        <package name="cn.itcast.mapper"/>
+    </mappers>
+</configuration>

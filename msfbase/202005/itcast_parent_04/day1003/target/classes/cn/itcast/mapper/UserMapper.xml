@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    通常, 一个表 对应 一个 XXXMapper.xml文件
+    一个 XXXMapper.xml文件 对应 唯一的 namespace
+-->
+<mapper namespace="cn.itcast.mapper.UserMapper">
+    <!--需求1: 根据用户编号 查询用户信息
+
+        select标签表示 当前是一个 查询语句
+            id属性 是sql语句的唯一标志
+            resultType 结果类型, 将查询的结果封装到指定的对象中
+    -->
+    <select id="queryById" resultType="User">
+        select * from tb_user where id=#{id}
+    </select>
+
+    <select id="queryById2" resultType="User">
+        select * from tb_user where id=${id}
+    </select>
+
+    <!--查询所有
+           注意: 虽然查询的结果是list集合, 但是需要指定 resultType 结果类型为 list集合中的元素类型
+    -->
+    <select id="queryAll" resultType="User">
+          select * from tb_user
+    </select>
+
+    <!--插入一条sql语句
+        #{password}  mybatis会动态调用 参数对象的getPassword()方法
+    -->
+    <insert id="insertUser">
+        insert into tb_user(id, user_name, password, name, age, sex, birthday, created, updated)
+        values(null, #{userName}, #{password}, #{name}, #{age}, #{sex}, #{birthday}, now(), now())
+    </insert>
+
+    <!--
+        插入一条sql语句, 获取新增的用户编号 方式一
+            useGeneratedKeys="true"     是否使用新增的主键
+            keyProperty="id"            主键对应java对象的属性名
+            keyColumn="id"              主键对应数据库表的列名
+    -->
+    <insert id="insertUser2" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into tb_user(id, user_name, password, name, age, sex, birthday, created, updated)
+        values(null, #{userName}, #{password}, #{name}, #{age}, #{sex}, #{birthday}, now(), now())
+    </insert>
+
+    <!-- 插入一条sql语句, 获取新增的用户编号 方拾二-->
+    <insert id="insertUser3">
+        insert into tb_user(id, user_name, password, name, age, sex, birthday, created, updated)
+        values(null, #{userName}, #{password}, #{name}, #{age}, #{sex}, #{birthday}, now(), now())
+
+        <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="long">
+            select last_insert_id();
+        </selectKey>
+    </insert>
+
+    <!--修改-->
+    <update id="updateUser">
+          update tb_user
+            set
+                user_name=#{userName},
+                password=#{password},
+                name=#{name},
+                age=#{age},
+                sex=#{sex},
+                birthday=#{birthday},
+                updated=now()
+            where id = #{id}
+    </update>
+
+    <!--据id 删除对应的用户-->
+    <delete id="delById">
+          delete from tb_user where id = #{id}
+    </delete>
+
+    <!--根据用户名和密码查询用户信息-->
+    <select id="queryByUsernameAndPassword" resultType="User">
+        select * from tb_user
+        where user_name=#{username} and password=#{password}
+    </select>
+
+    <!--根据用户名和密码查询用户信息: ${}-->
+    <select id="queryByUsernameAndPassword2" resultType="User">
+        select * from tb_user
+        where user_name='${username}' and password='${password}'
+    </select>
+
+</mapper>

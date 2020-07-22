@@ -1,0 +1,28 @@
+package Diary0622;
+
+public class day0622_03_break {
+	public static void main(String[] args) {
+		//break语句可以使循环终止
+		for(int x = 0;x <= 10;x++){
+			System.out.print(x);//【0123456789】
+		}
+		System.out.println("***************");
+		for(int x = 0;x <= 10;x++){
+			System.out.print(x);//【012345】
+			if(x == 5){
+				break;
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+}

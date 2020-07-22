@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>echarts_msf_饼图</title>
+    <!-- 1. 引入 ECharts 文件 -->
+    <script src="js/echarts.js"></script>
+</head>
+
+<body>
+    <!-- 2. 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '色情商店访问来源',
+                subtext: '真实有效',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '{a} <br/>{b} : {c} ({d}%)'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['直接访问', '小姐介绍', '街边小广告', '赌博网站', '看场子转介绍']
+            },
+            series: [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: '80%',
+                    center: ['50%', '60%'],
+                    data: [
+                        {value: 1, name: '直接访问'},
+                        {value: 555, name: '小姐介绍'},
+                        {value: 998, name: '街边小广告'},
+                        {value: 1666, name: '赌博网站'},
+                        {value: 10, name: '看场子转介绍'}
+                    ],
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

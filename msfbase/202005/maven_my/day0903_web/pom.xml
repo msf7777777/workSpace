@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--1 当前项目的坐标 -->
+    <groupId>cn.itcast</groupId>
+    <artifactId>day0903_web</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!--
+        2 打包方式
+            java项目的打包方式: jar ===>  java rar ===> java项目的压缩包
+            web项目的打包方式:  war ===>  web rar ===> web项目的压缩包
+            pom : 将当前项目作为父工程, 只是用来管理jar包的
+
+            默认打包方式为: jar
+    -->
+    <packaging>war</packaging>
+
+    <name>day0903_web</name>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.9</maven.compiler.source>
+        <maven.compiler.target>1.9</maven.compiler.target>
+    </properties>
+
+    <!--引入jar包依赖-->
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.itcast</groupId>
+            <artifactId>day0901_java</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+
+    <!--引入tomcat插件-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <!--指定tomcat的端口号-->
+                    <port>9090</port>
+                    <!--指定项目路径-->
+                    <path>/day0903</path>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

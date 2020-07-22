@@ -1,0 +1,67 @@
+/* 
+ 操作步骤：
+ 1)	table居中,宽300px，高180px; 边框solid 1px gray，内边距为0
+ 2)	表格有四行，第一行和第四行跨2列，第一列占30%的宽度，第一行是标题th，第四行是放按钮
+ 3)	td的文字对齐居中，字体大小14px
+ 4)	table添加背景，重复平铺
+ 5)	用户名和密码文本框使用类样式，
+    宽150px，高32px，边框用实线，圆角5px，1个宽度，黑色
+ 6)	文本框前面有头像，密码框前面有键盘，左内边距32
+ 7)	用户登录的标题字体大小18px 
+ */
+
+/* table的样式: 使用HTML元素选择器 */
+table {
+	width: 300px;
+	height: 180px;
+	border: solid 1px gray;
+	padding: 0;
+	/*设置内边距*/
+	background-image: url(../images/02/bg1.jpg);
+	/* 设置背景图片 */
+}
+
+/* th样式 */
+th {
+	font-size: 18px;
+}
+
+/* td样式 */
+td {
+	text-align: center;
+	/*设置TD标签内的文本全部是居中对齐*/
+	font-size: 14px;
+}
+
+/* 针对用户名、密码设置样式：使用id选择器 */
+/* 因为用户名和密码使用相同的样式，所以可以采用以下方式 */
+#user,
+#pass {
+	width: 150px;
+	height: 32px;
+	border: #000000 1px solid;
+	border-radius: 5px;
+}
+
+/* CSS:层叠样式表。  多个样式可以叠加 */
+#user {
+	background-image: url(../images/02/head.png);
+	/* 设置背景图不能重复平铺 */
+	background-repeat: no-repeat;
+	padding-left: 32px;
+}
+
+#pass {
+	background-image: url(../images/02/keyboard.png);
+	/* 设置背景图不能重复平铺 */
+	background-repeat: no-repeat;
+	padding-left: 32px;
+}
+
+.button {
+	background-image: url(../images/02/regbtn.jpg);
+	width: 101px;
+	height: 32px;
+	border: none;
+	
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>轮播图</title>
+		<style>
+			#img_id {
+		                width: 700px;
+		            }
+		            div {
+		                margin-top: 150px;
+		                margin-left: 250px;
+		            }
+		        </style>
+
+	</head>
+
+	<body>
+
+		<div>
+			<input type="button" value="前一张" onclick="pre()">
+			<img src="../../img/3.jpg" id="img_id" />
+			<input type="button" value="下一张" onclick="next()" />
+		</div>
+
+		<script>
+			/* 1. 编写html页面，为页面设置加载事件onload
+			   2. 编写事件触发函数
+			   3. 获得轮播图图片
+			   4. 开启定时器， 每隔2000毫秒重新设置图片的src属性
+			*/
+			/*
+		    第1步：创建一个变量，记录当前图片的序号
+			第2步：定义函数：上一张图片、下一张图片
+			        
+		   */
+			var count = 1;
+
+			//上一张图片
+			function pre() {
+				count--; //获取上一张图片序号
+
+				if (count <= 0) {
+					count = 4;
+				}
+				//拿到img对象
+				var imgObj = document.getElementById("img_id");
+				//设置img对象中的src路径（重新设置）
+				imgObj.src = "../../img/" + count + ".jpg";
+			}
+			//下一张图片
+			function next() {
+				count++; //获取下一张图片序号
+				if (count >4) {
+					count = 1;
+				}
+				//拿到img对象
+				var imgObj = document.getElementById("img_id");
+				//设置img对象中的src路径（重新设置）
+				imgObj.src = "../../img/" + count + ".jpg";
+			}
+			
+			//开启一个定时器功能：每隔2000毫秒，切换到下一张图片上
+			//1. setTimeOut(只会执行1次)     2.setInterval(间隔性执行)
+			window.setInterval("next()",2000);
+			//语法：
+			//setTimeOut("函数名(参数)",毫秒值)
+			//setTimeOut(函数名,毫秒值,参数)
+			
+		</script>
+	</body>
+</html>

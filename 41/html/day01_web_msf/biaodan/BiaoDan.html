@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>注册页面</title>
+	</head>
+	<body>
+		<h3>用户注册</h3><hr />
+		<form method="post" action="#">
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td>用户名：</td>
+					<td><input type="text" name="username" /></td>
+				</tr>
+				
+				<tr>
+					<td>密码：</td>
+					<td><input type="password" name="password" /></td>
+				</tr>
+				
+				<tr>
+					<td>性别：</td>
+					<td>
+						<input type="radio" name="sex" value="man" />男
+						&nbsp;
+						<input type="radio" name="sex" value="woman" />女
+					</td>
+				</tr>
+				
+				<tr>
+					<td>爱好：</td>
+					<td>
+						<input type="checkbox" name="hobby" value="guitar" checked="checked" />吉他
+						<input type="checkbox" name="hobby" value="tennis" checked="checked"/>网球
+						<input type="checkbox" name="hobby" value="EC" checked="checked" />电竞
+						<input type="checkbox" name="hobby" value="daughter" checked="checked" />泡妞
+						<input type="checkbox" name="hobby" value="fucker" />杀人
+					</td>
+				</tr>
+				
+				<tr>
+					<td>学历：</td>
+					<td>
+						<!-- <select multiple="multiple" size="7" name="city"> -->
+						<select name="city">
+							<option>-------请选择学历-------</option>
+							<option>博士</option>
+							<option>研究生</option>
+							<option>本科</option>
+							<option>大专</option>
+							<option>中专/高中</option>
+							<option>初中</option>
+							<option>小学</option>
+							<option>幼儿园/学前</option>
+							<option>胎教</option>
+							<option>没教养</option>
+						</select>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>照片：</td>
+					<td><input type="file" /></td>
+				</tr>
+				
+				<tr>
+					<td>前世：</td>
+					<td>
+						<select name="wtf">
+							<option>-------请选择前世-------</option>
+							<option>沙雕</option>
+							<option>羊驼</option>
+							<option>憨憨</option>
+						</select>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>个人简介：</td>
+					<td><textarea name="news" rows="7"  cols="28"></textarea></td>
+				</tr>
+				
+				<tr align="center">
+					<td colspan="2">
+						<input type="submit" value="注册" />
+						<input type="reset" value="清空" />
+					</td>
+				</tr>
+				
+			</table>
+		</from>
+	</body>
+</html>

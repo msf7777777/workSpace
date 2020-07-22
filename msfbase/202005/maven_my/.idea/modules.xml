@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/day0901_java/day0901_java.iml" filepath="$PROJECT_DIR$/day0901_java/day0901_java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day0902_java/day0902_java.iml" filepath="$PROJECT_DIR$/day0902_java/day0902_java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day0903_web/day0903_web.iml" filepath="$PROJECT_DIR$/day0903_web/day0903_web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day0904_web/day0904_web.iml" filepath="$PROJECT_DIR$/day0904_web/day0904_web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itcast_parent_02/itcast_commons/itcast_commons.iml" filepath="$PROJECT_DIR$/itcast_parent_02/itcast_commons/itcast_commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itcast_parent/itcast_parent.iml" filepath="$PROJECT_DIR$/itcast_parent/itcast_parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itcast_parent_02/itcast_parent_02.iml" filepath="$PROJECT_DIR$/itcast_parent_02/itcast_parent_02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itcast_parent_02/itcast_weixin_oms/itcast_weixin_oms.iml" filepath="$PROJECT_DIR$/itcast_parent_02/itcast_weixin_oms/itcast_weixin_oms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/maven_my.iml" filepath="$PROJECT_DIR$/.idea/maven_my.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itcast_parent/zi_01/zi_01.iml" filepath="$PROJECT_DIR$/itcast_parent/zi_01/zi_01.iml" />
+    </modules>
+  </component>
+</project>

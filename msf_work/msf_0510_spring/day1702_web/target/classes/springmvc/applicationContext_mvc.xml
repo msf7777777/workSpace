@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--1 配置映射处理器-->
+    <!--<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>-->
+    <!--2 配置映射适配器-->
+    <!--<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>-->
+
+    <!--3 配置自定义controller-->
+    <bean name="/hello.do" class="cn.itcast.controller.HelloController"/>
+
+    <!--为了识别 @Controller 或 @service等的注解, 开启spring的组件扫描-->
+    <context:component-scan base-package="cn.itcast.controller"/>
+
+    <!--4 配置视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--
+            // 问题: 如何让 hello 找到 /WEB-INF/views/hello.jsp
+            // 解决: 对路径进行拆分 /WEB-INF/views/hello.jsp
+            // 拆分的结果: 前缀= /WEB-INF/views/, 视图名称=hello  ,后缀=.jsp
+        -->
+        <!--前缀-->
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <!--后缀-->
+        <property name="suffix" value=".jsp"/>
+    </bean>
+</beans>

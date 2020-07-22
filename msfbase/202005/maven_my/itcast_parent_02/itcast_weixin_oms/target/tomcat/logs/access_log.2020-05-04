@@ -1,0 +1,9 @@
+0:0:0:0:0:0:0:1 - - [04/May/2020:16:43:01 +0800] "GET /weixin HTTP/1.1" 302 - http-bio-7070-exec-1 0
+0:0:0:0:0:0:0:1 - - [04/May/2020:16:43:02 +0800] "GET /weixin/ HTTP/1.1" 200 118 http-bio-7070-exec-3 411
+0:0:0:0:0:0:0:1 - - [04/May/2020:16:43:02 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-7070-exec-4 0
+0:0:0:0:0:0:0:1 - - [04/May/2020:16:52:52 +0800] "GET /weixin HTTP/1.1" 302 - http-bio-7070-exec-1 0
+0:0:0:0:0:0:0:1 - - [04/May/2020:16:52:53 +0800] "GET /weixin/ HTTP/1.1" 200 202 http-bio-7070-exec-3 679
+0:0:0:0:0:0:0:1 - - [04/May/2020:16:54:10 +0800] "GET /weixin/UserListServlet HTTP/1.1" 200 227 http-bio-7070-exec-4 72144
+0:0:0:0:0:0:0:1 - - [04/May/2020:16:58:13 +0800] "GET /weixin/UserListServlet HTTP/1.1" 200 907 http-bio-7070-exec-1 6448
+0:0:0:0:0:0:0:1 - - [04/May/2020:16:58:45 +0800] "GET /weixin/UserListServlet HTTP/1.1" 200 965 http-bio-7070-exec-3 92
+0:0:0:0:0:0:0:1 - - [04/May/2020:16:59:07 +0800] "GET /weixin/UserListServlet HTTP/1.1" 200 1050 http-bio-7070-exec-5 55

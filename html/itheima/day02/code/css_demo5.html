@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>css样式：转换</title>
+		<style>
+			div{
+				border: 1px solid red;
+			}
+			span{
+				border: 1px solid green;
+			}
+		</style>
+	</head>
+	<body>
+		<div>我是div，我霸占一整行</div>
+		<span>我是span，我只占一部分内容</span>
+		<!-- 转换：可以把div的特性转给span使用，可以把span的物性转给div使用 
+		     可以使用属性：display
+			 display取值：
+						inline ：转换为行内标签（只占一部分）
+						block: 转换为块标签 （占用一整行）
+						none： 隐藏（看不到）
+		-->
+		<!-- 使用行内样式，改变内部样式中的div样式 -->
+	    <div style="display: inline;">我是div，我转换为span标签了</div>
+	    <span style="display: block;">我是span，我转换为div标签，我占用一行</span>
+		
+		<div style="display: none;">我是隐藏的，看不到</div>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="day1301" />
+        <module name="day1401" />
+        <module name="day1402" />
+        <module name="day1403_web" />
+        <module name="day1501_xml" />
+        <module name="day1501_xml_msf" />
+        <module name="day1502_annotation" />
+        <module name="day1502_annotation_msf" />
+        <module name="day1502_annotation_msf_again" />
+        <module name="day1601" />
+        <module name="day1602" />
+        <module name="day1701_web" />
+        <module name="day1702_web" />
+        <module name="day1704_web" />
+        <module name="day1801_web" />
+        <module name="day1802_web" />
+        <module name="day1803_web" />
+        <module name="day1804_web" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

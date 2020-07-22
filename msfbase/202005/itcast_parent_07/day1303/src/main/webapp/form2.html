@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--【麻少飞fucking提示】 关联 RegisterServlet-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script>
+        // 页面加载完成后执行
+        $(function () {
+            // 需求:校验用户名必须是 4~12位字母数字的组合
+            // 1 给用户名输入框绑定键盘弹起事件
+            $("#username").keyup(function() {
+                // 2 获取用户填写的用户名
+                var usernameVal = $("#username").val();
+                // 3 校验用户名必须是 4~12位字母数字的组合
+                var reg = new RegExp("^[a-zA-Z][a-zA-Z0-9]{3,11}$")
+                if(reg.test(usernameVal)) {
+                    // 合法
+                    //alert("合法")
+                    console.log(usernameVal + " 合法" )
+                    $("#usernameMsg").html("");
+                } else {
+                    // 不合法
+                    //alert("不合法")
+                    $("#usernameMsg").html("用户名必须是 4~12位字母数字的组合!").css("color", "red");
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+
+<h1>回顾 jquery: 校验用户名</h1>
+<form action="/RegisterServlet" method="post">
+    <table>
+        <tr>
+            <td>用户名</td>
+            <td><input type="text" name="username" id="username"/></td>
+            <td id="usernameMsg"></td>
+        </tr>
+        <tr>
+            <td>昵称</td>
+            <td><input type="text" name="nickname"/></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="注册"/></td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

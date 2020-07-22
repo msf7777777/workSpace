@@ -1,0 +1,12 @@
+package Diary0625;
+
+public class day0714_03_ChuanCan_02_04_03_02 {
+	public static int f(int a) {
+		a = 1;
+		return a;
+	}
+	public static void main(String[] args) {
+		f(2);
+		System.out.println(f(2));
+	}
+}

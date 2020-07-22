@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- BOM概述 
+		BOM对象：浏览器对象模型
+		BOM是由一系统的各种和浏览器进行交互的对象组成：
+		window ： 当前的浏览器窗口
+		location ： 浏览器的地址栏信息
+		histroy ： 浏览器的历史记录信息
+
+        screen：屏幕信息
+	    navigator：你安装的浏览器软件的相关信息（例：浏览器版本号、CPU）			
+		-->
+	</head>
+	<body>
+		<script>
+			//演示：window的弹窗方法
+			//标准写法：window.alert("")   提示框
+			// alert("提示信息");//当在使用window中的相关方法时，可以省略window
+			
+			//confirm() : 确认框   返回值是boolean类型
+			// var result = window.confirm("确认是否删除?");
+			// document.write(result)
+			
+			
+			//prompt() ：输入框   返回值是输入的内容
+			var result = window.prompt("请输入数据","默认值");
+			document.write(result)
+			
+		</script>
+	</body>
+</html>

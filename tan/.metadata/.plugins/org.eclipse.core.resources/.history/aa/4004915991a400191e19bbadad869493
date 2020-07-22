@@ -1,0 +1,8 @@
+package Diary0623;
+
+public class day09_04_ZuoYongYu_02_03 {
+	public static final int count = 0;
+	public static void main(String[] args) {
+		
+	}
+}

@@ -1,0 +1,6 @@
+
+public class day1111 {
+	public static void main(String[] args) {
+		Cat c1 = new Cat("’≈ºŒ√Ù",23)
+	}
+}

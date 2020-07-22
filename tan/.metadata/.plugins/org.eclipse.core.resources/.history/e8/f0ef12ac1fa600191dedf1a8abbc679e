@@ -1,0 +1,18 @@
+package Diary0625;
+
+public class day0714_01_ShuZu_03 {
+	//可以申明其他类型的数组
+	byte[] arr1 = new byte[5];
+	long[] arr2 = new long[10];
+	
+	String[] arr3 = new String[12];
+	
+	//str是对象变量，它引用了字符串对象abc
+	//将字符串对象abc的地址赋值给对象变量str
+	String str = "abc";
+	
+	arr3[0] = "aa";
+	arr3[1] = "bb";
+	arr3[2] = "cc";
+	
+}

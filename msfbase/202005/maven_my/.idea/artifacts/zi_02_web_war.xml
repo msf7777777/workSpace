@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="zi_02_web:war">
+    <output-path>$PROJECT_DIR$/zi_02_web/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>zi_02_web</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="zi_02_web.war">
+      <element id="artifact" artifact-name="zi_02_web:war exploded" />
+    </root>
+  </artifact>
+</component>

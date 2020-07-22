@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>天知道</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+
+  <body>
+    <div class="wrap" id="app">
+      <div class="search_form">
+        <div class="logo"><img src="img/logo.png" alt="logo" /></div>
+        <div class="form_group">
+          <input id="word"
+            type="text"
+            class="input_txt"
+            placeholder="请输入查询的天气"
+          />
+          <button class="input_sub">
+            搜 索
+          </button>
+        </div>
+        <div class="hotkey">
+          <a href="javascript:;">北京</a>
+          <a href="javascript:;">上海</a>
+          <a href="javascript:;">广州</a>
+          <a href="javascript:;">深圳</a>
+        </div>
+      </div>
+      <ul class="weather_list">
+        <li>
+          <div class='info_type'><span class='iconfont'>小雨</span></div>
+          <div class='info_temp'>
+            <b>低温 2℃</b>
+            ~
+            <b>高温 19℃</b>
+          </div>
+          <div class='info_date'><span>24日星期天</span></div>
+        </li>
+      </ul>
+    </div>
+    <!--导入jquery的包-->
+    <script src="js/jquery-2.1.0.js"></script>
+    <!--自定义js-->
+    <script>
+      function showWeatherByCity(cityVal) {
+          /**
+           * - 请求地址 http://wthrcdn.etouch.cn/weather_mini
+           * - 请求方式: get
+           * - 请求参数: city (查询的城市名)
+           * - 响应内容: 天气信息
+           */
+          $.ajax({
+              type: "get",
+              url: "http://wthrcdn.etouch.cn/weather_mini",
+              data: {city : cityVal},
+              success: function(data){
+                  console.log("==============以下是服务器返回的天气信息=====================");
+                  console.log(typeof(data))
+                  console.log(data);
+                  // 1.4 声明保存天气信息的变量
+                  var weatherStr = "";
+                  // 1.5 遍历天气信息数组
+                  var weatherArr = data.data.forecast;
+                  // 1.5.1 将天气信息 保存到 天气变量中
+                  for (var i = 0; i < weatherArr.length; i++) {
+                      var weatherJson = weatherArr[i];
+                      weatherStr += "<li>" +
+                          "          <div class='info_type'><span class='iconfont'>" + weatherJson.type + "</span></div>" +
+                          "          <div class='info_temp'>" +
+                          "            <b>" + weatherJson.low + "</b>" +
+                          "            ~" +
+                          "            <b>" + weatherJson.high + "</b>" +
+                          "          </div>" +
+                          "          <div class='info_date'><span>" + weatherJson.date + "</span></div>" +
+                          "        </li>"
+                  }
+                  // 1.6 将天气变量信息 放到 天气的ul标签中
+                  $(".weather_list").html(weatherStr);
+              },
+              dataType : "json"
+          });
+      }
+
+      $(function () {
+          // 需求: 1 点击搜索按钮, 获取用户输入的城市,  向服务器发送请求 索要指定城市的天气信息, 显示到页面上就可以了
+          // 1.1 给按钮绑定单击事件
+          $(".input_sub").click(function () {
+              // 1.2 获取用户输入的城市
+              var cityVal = $("#word").val();
+              console.log(cityVal);
+              // 1.3 向服务器发送请求 索要指定城市的天气信息
+              showWeatherByCity(cityVal);
+          })
+
+          // 需求2: 用户在输入框按回车键时, 搜索对应的城市信息 且 显示
+          // 2.1 给输入框绑定键盘弹起事件
+          $("#word").keyup(function (event) {
+              // 2.2 如何确认你按的是回车键, 回车键对应的数字 13
+              var keyCode = event.keyCode;
+              console.log("keyCode + " + keyCode);
+              if(keyCode == 13) {
+                  // 2.3 获取用户输入的值
+                  var cityVal = $("#word").val();
+                  // 2.4  搜索对应的城市信息 且 显示
+                  showWeatherByCity(cityVal);
+              }
+          })
+
+          // 需求3: 点击热点城市, 在输入框中显示热点城市, 查询对应城市的天气信息 且 显示
+          // 3.1 给每个热点城市绑定单击事件
+          $(".hotkey>a").click(function () {
+              // 3.2 获取热点城市
+              // this 指当前标签对象, 是js对象
+              var cityVal = $(this).text();
+              console.log("热点城市: " + cityVal);
+              // 3.3 在输入框中显示热点城市
+              $("#word").val(cityVal);
+              // 3.4 查询对应城市的天气信息 且 显示
+              showWeatherByCity(cityVal);
+          })
+      })
+    </script>
+
+  </body>
+</html>

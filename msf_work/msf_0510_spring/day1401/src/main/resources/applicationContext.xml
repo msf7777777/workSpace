@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--将dao交给spring管理-->
+    <!--
+        bean 指java对象
+            id 属性  给java对象起个别名，要求唯一
+            class 属性  将那个java类交给spring管理
+    -->
+    <bean id="userDao" class="cn.itcast.a_quickstart.UserDaoImpl"/>
+    <bean id="userDao2" class="cn.itcast.a_quickstart.UserDaoImpl"/>
+
+    <!--将业务类交给spring管理-->
+    <bean id="userService" class="cn.itcast.a_quickstart.UserServiceImpl">
+        <!--
+            问题：spring呗new了两次
+            解决：在spring容器中将dao交给业务类
+        -->
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+    <!--2 实例化bean的三种方式-->
+    <!--2.1 默认无参数构造器-->
+    <bean id="bean1" class="cn.itcast.b_definition.Bean1"/>
+
+    <!--2.2 静态工厂方法-->
+    <bean id="bean2"
+          class="cn.itcast.b_definition.Bean2Factory"
+          factory-method="getBean2"/>
+
+    <!--2.3 实力工厂方法实例化
+        bean3Factory = new Bean3Factory();
+        bean3 = bean3Factory.getBean3();
+    -->
+    <bean id="bean3Factory"
+          class="cn.itcast.b_definition.Bean3Factory"/>
+    <bean id="bean3"
+          factory-bean="bean3Factory"
+          factory-method="getBean3"/>
+
+    <!--2.4 扩展：通过实现spring其中的工厂接口来获取Bean3-->
+    <bean id="bean4" class="cn.itcast.b_definition.MyBean4Factory"/>
+
+    <!--3 Bean的作用域-->
+    <!--3.1 demo01 scope="singleton"当从spring容器中获取当前对象时，获取的是同一个-->
+    <bean id="singletonBean"
+          class="cn.itcast.c_scope.SingletonBean"
+          scope="singleton"/>
+
+    <!--3.2 demo02 scope="prototype"  每次从spring容器中获取当前bean，都会new新的-->
+    <bean id="prototypeBean"
+          class="cn.itcast.c_scope.PrototypeBean"
+          scope="prototype"/>
+
+    <!--4 Bean的生命周期-->
+    <!--demo01-->
+    <bean id="lifecycleBean"
+          class="cn.itcast.b_lifecycle.LifecycleBean"
+          init-method="init"
+          destroy-method="destory"
+    />
+
+    <!--5 依赖注入-->
+    <!--5.1 通过有参数的构造方法 设置属性-->
+    <!--demo01-->
+    <bean id="car" class="cn.itcast.e_di.Car">
+        <!--
+            constructor-arg     构造方法参数对象
+                name="price"    是构造方法的参数名
+                value="法拉利"   是构造方法的参数对应的值
+        -->
+        <constructor-arg name="name" value="法拉利"/>
+        <constructor-arg name="price" value="7000000"/>
+    </bean>
+    <!--demo01_2-->
+    <bean id="car2" class="cn.itcast.e_di.Car">
+        <!--
+            constructor-arg     构造方法参数对象
+                name="price"    是构造方法的参数名
+                value="法拉利"   是构造方法的参数对应的值
+        -->
+        <!--<constructor-arg name="name" value="法拉利"/>-->
+        <!--<constructor-arg name="price" value="7000000"/>-->
+
+        <constructor-arg index="0" value="特斯拉"/>
+        <constructor-arg index="1" value="600000"/>
+    </bean>
+
+    <!--5.2 通过setXXX方法 设置属性-->
+    <!--demo02-->
+    <bean id="employee" class="cn.itcast.e_di.Employee">
+        <!--通过setXXX方法 设置属性-->
+        <property name="name" value="麻少飞"/>
+        <property name="car" ref="car"/>
+    </bean>
+
+    <!--5.3 通过p名称空间来设置-->
+    <!--demo03-->
+    <bean id="employee2" class="cn.itcast.e_di.Employee"
+          p:name="张嘉敏" p:car-ref="car2"
+    />
+
+    <!--5.4 给类的属性集合 设置值-->
+    <!--demo04-->
+    <bean id="collectionBean" class="cn.itcast.e_di.CollectionBean">
+        <!--设置属性的值-->
+        <property name="list1">
+            <list>
+                <value>麻</value>
+                <value>少</value>
+                <value>飞</value>
+            </list>
+        </property>
+
+        <property name="set1">
+            <set>
+                <value>张</value>
+                <value>嘉</value>
+                <value>敏</value>
+            </set>
+        </property>
+
+        <property name="map1">
+            <map>
+                <entry key="男朋友" value="麻少飞"/>
+                <entry key="女朋友" value="张嘉敏"/>
+            </map>
+        </property>
+
+        <property name="props1">
+            <props>
+                <prop key="username">msf</prop>
+                <prop key="password">7777777</prop>
+            </props>
+        </property>
+    </bean>
+</beans>

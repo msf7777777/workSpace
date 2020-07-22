@@ -1,0 +1,30 @@
+
+/* 直接书写样式即可 */
+
+.green{
+	font-size: 12px;
+	color: #008000;
+}
+
+/* h2标签的默认样式 */
+h2{
+	color: #FF0000;
+}
+
+/* 特殊的h2标签：字体更大、颜色为绿色 */
+#one{
+	color: #008000;
+	font-size:30px; /*针对h2标签会修改字体大小 */
+}
+
+.blue{
+	font-size: 12px;
+	color: #0000FF;
+}
+
+
+.div_main{
+	width: 887px;
+	height:auto;
+	border: 2px solid gray;
+}

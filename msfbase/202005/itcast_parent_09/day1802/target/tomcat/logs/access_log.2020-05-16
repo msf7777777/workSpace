@@ -1,0 +1,9 @@
+0:0:0:0:0:0:0:1 - - [16/May/2020:12:14:26 +0800] "GET / HTTP/1.1" 200 3530 http-bio-80-exec-2 495
+0:0:0:0:0:0:0:1 - - [16/May/2020:12:14:33 +0800] "GET /params/gotoParams.do?id=123&name=lisi HTTP/1.1" 200 192 http-bio-80-exec-3 70
+0:0:0:0:0:0:0:1 - - [16/May/2020:12:14:35 +0800] "GET /params/gotoParamsBase.do?isVIP=0&name=zhangsan HTTP/1.1" 200 176 http-bio-80-exec-4 3
+0:0:0:0:0:0:0:1 - - [16/May/2020:12:14:39 +0800] "GET /params/gotoParamsRequestParam.do?id=1001 HTTP/1.1" 200 162 http-bio-80-exec-5 3
+0:0:0:0:0:0:0:1 - - [16/May/2020:12:14:45 +0800] "GET /params/gotoParamsPojo.do?id=2&name=%E6%9D%8E%E5%9B%9B HTTP/1.1" 200 186 http-bio-80-exec-7 3
+0:0:0:0:0:0:0:1 - - [16/May/2020:12:15:14 +0800] "GET /params/gotoParamsQueryVo.do?user.id=2&user.name=zhang3 HTTP/1.1" 200 229 http-bio-80-exec-8 4
+0:0:0:0:0:0:0:1 - - [16/May/2020:12:15:19 +0800] "GET /params/sendParamsDate.do?date=2019-11-19 HTTP/1.1" 200 181 http-bio-80-exec-10 2
+0:0:0:0:0:0:0:1 - - [16/May/2020:12:15:21 +0800] "GET /params/sendParamsHeader.do HTTP/1.1" 200 282 http-bio-80-exec-10 2
+0:0:0:0:0:0:0:1 - - [16/May/2020:12:15:23 +0800] "GET /params/sendParamsCookie.do HTTP/1.1" 200 191 http-bio-80-exec-10 3

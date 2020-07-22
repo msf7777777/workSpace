@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function changeImg(imgObj){
+            // url?xxx 如果图片的src值发生了变化,浏览器就会向服务器发送请求
+            imgObj.src = "/day0501/CheckcodeServlet?r=" + Math.random();
+        }
+    </script>
+</head>
+<body>
+<h1>登录表单</h1>
+验证码 <input type="text" name="code_form"/>
+<!--onclick="changeImg(this)" 给当前标签绑定单击事件, this 指当前标签对象-->
+<img src="/day0501/CheckcodeServlet" onclick="changeImg(this)"/>
+</body>
+</html>

@@ -1,0 +1,33 @@
+package Diary0623;
+
+import java.util.Scanner;
+
+public class day09_05_ZuoYe_03_01 {
+	//作业：定义一个方法，找出三个数的最大值，并在主方法中调用此方法，在主方法中打印结果
+	public static int x(int a,int b,int c){
+		int x = 1;
+		if(a > b && a > c){
+			x = a;
+		}else if(b > a && b > c){
+			x = b;
+		}else if(c > a && c > b){
+			x = c;
+		}
+		return x;
+	}
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		System.out.println("№ 比大小_随便输入三个数字 №");
+		System.out.println();
+		System.out.println("№ 第一个数_a №");
+		int A = s.nextInt();
+		System.out.println("№ 第二个数_b №");
+		int B = s.nextInt();
+		System.out.println("№ 第三个数_c №");
+		int C = s.nextInt();
+		s.close();
+		int X = x(A,B,C);
+		System.out.println("№ 下面是你要的最大的数字 №");
+		System.out.println(X);
+	}
+}

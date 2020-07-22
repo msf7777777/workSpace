@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 
+		 案例：动态改变字体颜色
+		 1 . 获取素材中div的class属性值；
+		 2. 给div的id值设置成"newDiv"并添加一个新的属性“style”值为"color:red"；
+		 3. 移除div的style属性；
+
+		 -->
+	</head>
+	<body>
+		<h2>dom属性操作</h2>
+		<hr />
+		<h3>操作按钮</h3>
+		<button id="btn1">点击btn1，获取id="myDiv"标签的class属性值</button>
+		<button id="btn2">点击btn2，为id="mySpan"的标签添加一个新的属性"style"值为"color: red"
+		</button>
+		<button id="btn3">点击btn3，移除id="mySpan"标签的style属性</button>
+
+		<div id="myDiv" class="myDiv">
+			传智<span id="mySpan">播客</span>
+		</div>
+
+		<script>
+			window.onload = function() {
+				//获取btn1的按钮对象，添加动态添加点击事件
+				document.getElementById("btn1").onclick = function() {
+					//getAttribute(属性的名称) 
+					var clsVal = document.getElementById("myDiv").getAttribute("class");
+					alert(clsVal)
+				}
+				
+				//获取btn2的按钮对象，添加动态添加点击事件
+				document.getElementById("btn2").onclick = function() {
+					
+					var spanObj = document.getElementById("mySpan");
+					//添加新属性
+					spanObj.setAttribute("style","color:red");
+				}
+				
+				//获取btn3的按钮对象，添加动态添加点击事件
+				document.getElementById("btn3").onclick = function() {
+					
+					var spanObj = document.getElementById("mySpan");
+					//移除属性
+					spanObj.removeAttribute("style");
+				}
+			}
+		</script>
+
+	</body>
+</html>

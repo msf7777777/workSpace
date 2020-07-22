@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// encodeURI(URIstring)
+			// decodeURI(URIstring)
+
+			var str = "http://www.baidu.com?wd=努力是一种态度";
+			document.write(str + "<hr/>");
+			
+			//模拟URL编码（把一些关键性的数据进行加密，不让外部看到具体的信息）
+			str = encodeURI(str);
+			document.write(str + "<hr/>");
+			
+			//对编码后的url进行解码
+			str= decodeURI(str);
+			document.write(str + "<hr/>");
+		</script>
+	</body>
+</html>

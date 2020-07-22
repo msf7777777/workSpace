@@ -1,0 +1,80 @@
+<!DOCTYPE html >
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表格隔行变色</title>
+		<script>
+			//页面加载完成执行js程序
+			window.onload=function(){
+				//获取table中所有的<tr>
+				var trs = document.getElementsByTagName("tr");
+				
+				//遍历所有的tr（不需要考虑第1行的tr）
+				for (var i = 1; i < trs.length; i++) {
+					//判断数组中的索引是否为偶数
+					if(i%2==0){
+						//偶数行：改变颜色
+						trs[i].style.backgroundColor="blue"
+					}else{
+						//奇数行：
+						trs[i].style.backgroundColor="red"
+					}
+					
+					//扩展：
+					var color="";//记录原始的颜色
+					//鼠标进行颜色更改
+					trs[i].onmouseenter=function(){
+						//把原始颜色保存下来
+						//this:表示当前对象
+						color=this.style.backgroundColor;
+						this.style.backgroundColor='#cccccc'
+					}
+					//当鼠标移走后，需要恢复原有颜色
+					trs[i].onmouseout=function(){
+						this.style.backgroundColor=color;
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<table id="tab1" border="1" width="800" align="center">
+			<tr style="background-color: #999999;">
+				<th><input type="checkbox"></th>
+				<th>分类ID</th>
+				<th>分类名称</th>
+				<th>分类描述</th>
+				<th>操作</th>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>1</td>
+				<td>手机数码</td>
+				<td>手机数码类商品</td>
+				<td><a href="">修改</a>| <a href="">删除</a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>2</td>
+				<td>电脑办公</td>
+				<td>电脑办公类商品</td>
+				<td><a href="">修改</a>| <a href="">删除</a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>3</td>
+				<td>鞋靴箱包</td>
+				<td>鞋靴箱包类商品</td>
+				<td><a href="">修改</a>| <a href="">删除</a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>4</td>
+				<td>家居饰品</td>
+				<td>家居饰品类商品</td>
+				<td><a href="">修改</a>| <a href="">删除</a></td>
+			</tr>
+		</table>
+	</body>
+</html>
